@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/CellPart.gd" type="Script" id=1]
+[ext_resource path="res://images/central vacuole.JPG" type="Texture" id=2]
+[ext_resource path="res://sounds/tick_002.tres" type="AudioStream" id=3]
+
+[node name="CellPart" type="TextureButton"]
+margin_left = -123.0
+margin_top = -128.0
+margin_right = 127.0
+margin_bottom = 122.0
+mouse_filter = 1
+texture_normal = ExtResource( 2 )
+script = ExtResource( 1 )
+cell_image = ExtResource( 2 )
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[connection signal="pressed" from="." to="." method="_on_CellPart_pressed"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/bong_001.ogg-37bd8b3b97228a6be4e610a384031199.oggstr"
+
+[deps]
+
+source_file="res://sounds/bong_001.ogg"
+dest_files=[ "res://.import/bong_001.ogg-37bd8b3b97228a6be4e610a384031199.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,729 @@
+[gd_scene load_steps=41 format=2]
+
+[ext_resource path="res://images/bg.jpg" type="Texture" id=1]
+[ext_resource path="res://components/CellPart.tscn" type="PackedScene" id=2]
+[ext_resource path="res://images/animal-cell.png" type="Texture" id=3]
+[ext_resource path="res://images/central-vacuole.png" type="Texture" id=4]
+[ext_resource path="res://shaders/outline.tres" type="Material" id=5]
+[ext_resource path="res://images/rough-endoplasmic-reticulum.png" type="Texture" id=6]
+[ext_resource path="res://images/mitochondrion.png" type="Texture" id=7]
+[ext_resource path="res://images/vesicles.png" type="Texture" id=8]
+[ext_resource path="res://images/centrioles.png" type="Texture" id=9]
+[ext_resource path="res://images/golgi-bodies.png" type="Texture" id=10]
+[ext_resource path="res://images/cytoplasm.png" type="Texture" id=11]
+[ext_resource path="res://images/ribosomes.png" type="Texture" id=12]
+[ext_resource path="res://images/nucleus.png" type="Texture" id=13]
+[ext_resource path="res://images/chloroplast.png" type="Texture" id=14]
+[ext_resource path="res://images/smooth-er.png" type="Texture" id=15]
+[ext_resource path="res://images/lysosomes.png" type="Texture" id=16]
+[ext_resource path="res://images/plasma-membrane.png" type="Texture" id=17]
+[ext_resource path="res://images/mitochondria-part.png" type="Texture" id=18]
+[ext_resource path="res://scenes/CellSlot.gd" type="Script" id=19]
+[ext_resource path="res://images/centrioles-part.png" type="Texture" id=20]
+[ext_resource path="res://fonts/Roboto-Regular.ttf" type="DynamicFontData" id=21]
+[ext_resource path="res://scenes/Score.gd" type="Script" id=22]
+[ext_resource path="res://sounds/error_006.tres" type="AudioStream" id=23]
+[ext_resource path="res://sounds/drop_004.tres" type="AudioStream" id=24]
+[ext_resource path="res://fonts/Roboto-Black.ttf" type="DynamicFontData" id=25]
+[ext_resource path="res://icons/star.png" type="Texture" id=26]
+[ext_resource path="res://images/green.png" type="Texture" id=27]
+[ext_resource path="res://scenes/HUD.gd" type="Script" id=28]
+[ext_resource path="res://images/gradient-right.png" type="Texture" id=29]
+[ext_resource path="res://shaders/outline-highlighted.tres" type="Material" id=30]
+[ext_resource path="res://ui/correct.png" type="Texture" id=31]
+[ext_resource path="res://ui/wrong.png" type="Texture" id=32]
+[ext_resource path="res://sounds/win sound 1.wav" type="AudioStream" id=33]
+
+[sub_resource type="DynamicFont" id=1]
+size = 120
+font_data = ExtResource( 25 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 76
+font_data = ExtResource( 21 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 54
+font_data = ExtResource( 21 )
+
+[sub_resource type="StreamTexture" id=5]
+flags = 4
+load_path = "res://.import/red.png-c4ab227a75bbc144a9af0bc0188ea4ba.stex"
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CorrectSound:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimationPlayer:reset_on_save")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "correct"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Correct:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Error:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Message:anchor_top")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 2.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.848, 0.848, 1.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Message/TextureRect:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 31 ), ExtResource( 31 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Message/Title:text")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "Correct", "Correct" ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("CorrectSound:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("AnimationPlayer:reset_on_save")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "wrong"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Correct:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Error:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Message:anchor_top")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 2.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.855, 0.855, 1.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Message/TextureRect:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 32 ), ExtResource( 32 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Message/Title:text")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "Wrong", "Wrong" ]
+}
+
+[node name="Game" type="Node"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -279.0
+margin_top = -299.0
+margin_right = 2363.0
+margin_bottom = 1289.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1023.0
+texture = ExtResource( 29 )
+expand = true
+
+[node name="Animal-cell" type="Sprite" parent="."]
+position = Vector2( 969, 551 )
+scale = Vector2( 0.844181, 0.844181 )
+texture = ExtResource( 3 )
+
+[node name="Parts" type="Node2D" parent="Animal-cell"]
+position = Vector2( 0, -2 )
+
+[node name="CellPartSlot" type="Area2D" parent="Animal-cell/Parts"]
+script = ExtResource( 19 )
+slot_target = "mitochondria"
+hud_path = NodePath("../../../HUD")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Animal-cell/Parts/CellPartSlot"]
+polygon = PoolVector2Array( -333, -227, -265, -226, -191, -263, -132, -312, -103, -355, -134, -415, -280, -378, -354, -299, -368, -262 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Animal-cell/Parts/CellPartSlot"]
+position = Vector2( 570, 90 )
+polygon = PoolVector2Array( -261, -387, -236, -279, -187, -223, -131, -186, -91, -196, -85, -241, -92, -303, -146, -393, -207, -442, -248, -435, -262, -413 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Animal-cell/Parts/CellPartSlot"]
+polygon = PoolVector2Array( -478, 94, -497, 118, -480, 180, -409, 261, -324, 301, -269, 290, -272, 245, -334, 155, -416, 99, -456, 86 )
+
+[node name="Drop" type="AudioStreamPlayer" parent="Animal-cell/Parts/CellPartSlot"]
+stream = ExtResource( 24 )
+
+[node name="Error" type="AudioStreamPlayer" parent="Animal-cell/Parts/CellPartSlot"]
+stream = ExtResource( 23 )
+
+[node name="Sprite" type="Sprite" parent="Animal-cell/Parts/CellPartSlot"]
+visible = false
+material = ExtResource( 30 )
+texture = ExtResource( 18 )
+
+[node name="CellPartSlot2" type="Area2D" parent="Animal-cell/Parts"]
+script = ExtResource( 19 )
+slot_target = "centrioles"
+hud_path = NodePath("../../../HUD")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Animal-cell/Parts/CellPartSlot2"]
+polygon = PoolVector2Array( -265.346, -180.425, -357.743, -105.797, -356.558, -66.7057, -370.773, -53.6753, -358.927, 16.2149, -281.93, 29.2452, -254.684, -15.7687, -254.684, -43.0141, -201.378, -97.5048, -221.516, -150.811 )
+
+[node name="Drop" type="AudioStreamPlayer" parent="Animal-cell/Parts/CellPartSlot2"]
+stream = ExtResource( 24 )
+
+[node name="Error" type="AudioStreamPlayer" parent="Animal-cell/Parts/CellPartSlot2"]
+stream = ExtResource( 23 )
+
+[node name="Sprite" type="Sprite" parent="Animal-cell/Parts/CellPartSlot2"]
+visible = false
+material = ExtResource( 30 )
+texture = ExtResource( 20 )
+
+[node name="CellPartSlot3" type="Area2D" parent="Animal-cell/Parts"]
+script = ExtResource( 19 )
+slot_target = "golgi_bodies"
+hud_path = NodePath("../../../HUD")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Animal-cell/Parts/CellPartSlot3"]
+polygon = PoolVector2Array( 191.902, -124.75, 257.054, -166.21, 331.682, -148.442, 367.22, 58.8597, 338.79, 81.3668, 332.867, 151.257, 304.437, 152.442, 281.93, 86.105, 209.671, 58.8597, 213.224, -52.4907 )
+
+[node name="Drop" type="AudioStreamPlayer" parent="Animal-cell/Parts/CellPartSlot3"]
+stream = ExtResource( 24 )
+
+[node name="Error" type="AudioStreamPlayer" parent="Animal-cell/Parts/CellPartSlot3"]
+stream = ExtResource( 23 )
+
+[node name="Sprite" type="Sprite" parent="Animal-cell/Parts/CellPartSlot3"]
+visible = false
+material = ExtResource( 30 )
+texture = ExtResource( 18 )
+
+[node name="CellPartSlot4" type="Area2D" parent="Animal-cell/Parts"]
+script = ExtResource( 19 )
+slot_target = "rough_endoplasmic_reticulum"
+hud_path = NodePath("../../../HUD")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Animal-cell/Parts/CellPartSlot4"]
+polygon = PoolVector2Array( -100.689, 138.227, 181.241, 90.8434, 262.977, 118.089, 220.332, 190.348, 193.087, 240.1, 247.577, 282.745, 183.61, 360.927, -68.7054, 350.266, -36.7218, 272.084, -131.488, 235.362 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Animal-cell/Parts/CellPartSlot4"]
+polygon = PoolVector2Array( -74.6284, -215.963, 58.0446, -225.439, 156.365, -180.425, 210.855, -151.995, 213.224, -239.654, 260.608, -282.299, 244.023, -355.743, 168.21, -396.019, 65.152, -382.988, -27.2452, -397.203, -34.3527, -361.666, 60.4137, -348.636, -99.5045, -245.577 )
+
+[node name="Drop" type="AudioStreamPlayer" parent="Animal-cell/Parts/CellPartSlot4"]
+stream = ExtResource( 24 )
+
+[node name="Error" type="AudioStreamPlayer" parent="Animal-cell/Parts/CellPartSlot4"]
+stream = ExtResource( 23 )
+
+[node name="CellPartSlot5" type="Area2D" parent="Animal-cell/Parts"]
+script = ExtResource( 19 )
+slot_target = "lysosomes"
+hud_path = NodePath("../../../HUD")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Animal-cell/Parts/CellPartSlot5"]
+polygon = PoolVector2Array( -274.822, 160.734, -230.993, 186.794, -153.995, 164.287, -129.119, 113.35, -177.687, 80.1822, -261.792, 101.505 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Animal-cell/Parts/CellPartSlot5"]
+polygon = PoolVector2Array( 414.603, 0.815369, 389.727, 58.8597, 409.865, 132.304, 451.325, 150.072, 489.231, 137.042, 488.047, 58.8597, 451.325, -1.55383 )
+
+[node name="Drop" type="AudioStreamPlayer" parent="Animal-cell/Parts/CellPartSlot5"]
+stream = ExtResource( 24 )
+
+[node name="Error" type="AudioStreamPlayer" parent="Animal-cell/Parts/CellPartSlot5"]
+stream = ExtResource( 23 )
+
+[node name="CellPartSlot6" type="Area2D" parent="Animal-cell/Parts"]
+script = ExtResource( 19 )
+slot_target = "central_vacuole"
+hud_path = NodePath("../../../HUD")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Animal-cell/Parts/CellPartSlot6"]
+polygon = PoolVector2Array( -489.231, -176.872, -444.217, -156.734, -484.493, -12.215, -544.906, -29.9837, -546.091, -77.3669 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Animal-cell/Parts/CellPartSlot6"]
+polygon = PoolVector2Array( 334.052, 182.056, 270.084, 244.839, 296.145, 302.883, 364.851, 285.114, 393.281, 217.593, 373.143, 174.948 )
+
+[node name="Drop" type="AudioStreamPlayer" parent="Animal-cell/Parts/CellPartSlot6"]
+stream = ExtResource( 24 )
+
+[node name="Error" type="AudioStreamPlayer" parent="Animal-cell/Parts/CellPartSlot6"]
+stream = ExtResource( 23 )
+
+[node name="CellPartSlot7" type="Area2D" parent="Animal-cell/Parts"]
+script = ExtResource( 19 )
+slot_target = "nucleus"
+hud_path = NodePath("../../../HUD")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Animal-cell/Parts/CellPartSlot7"]
+polygon = PoolVector2Array( -92.3971, -165.026, -148.072, -27.6146, -60.4135, 101.505, 133.858, 90.8434, 195.456, 15.0303, 176.502, -101.058, 99.5048, -187.533, -1.18445, -199.379 )
+
+[node name="Drop" type="AudioStreamPlayer" parent="Animal-cell/Parts/CellPartSlot7"]
+stream = ExtResource( 24 )
+
+[node name="Error" type="AudioStreamPlayer" parent="Animal-cell/Parts/CellPartSlot7"]
+stream = ExtResource( 23 )
+
+[node name="CellPartSlot9" type="Area2D" parent="Animal-cell/Parts"]
+script = ExtResource( 19 )
+slot_target = "cytoplasm"
+hud_path = NodePath("../../../HUD")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Animal-cell/Parts/CellPartSlot9"]
+polygon = PoolVector2Array( -369.589, -128.304, -298.514, -185.164, -390.911, -260.977, -318.652, -374.696, -221.517, -406.68, -127.935, -431.556, 9.47656, -418.526, 144.519, -407.865, 229.808, -438.664, 9.47656, -495.524, -200.194, -467.094, -389.727, -382.989, -533.061, -217.147 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Animal-cell/Parts/CellPartSlot9"]
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( -426.449, -133.042, -464.355, 6.73834, -559.122, -9.84576, -518.846, 102.689, -456.063, 58.8599, -305.622, 147.703, -265.346, 47.014, -387.358, 20.9533, -382.619, -118.827 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Animal-cell/Parts/CellPartSlot9"]
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( 379.066, 128.75, 373.143, 155.995, 407.495, 209.302, 380.25, 287.484, 421.71, 278.007, 477.386, 232.993, 498.708, 166.657, 453.694, 160.734 )
+
+[node name="Drop" type="AudioStreamPlayer" parent="Animal-cell/Parts/CellPartSlot9"]
+stream = ExtResource( 24 )
+
+[node name="Error" type="AudioStreamPlayer" parent="Animal-cell/Parts/CellPartSlot9"]
+stream = ExtResource( 23 )
+
+[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="Animal-cell/Parts/CellPartSlot9"]
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( -103.058, -407.864, -86.4742, -347.451, -170.579, -257.423, -270.084, -201.748, -207.301, -153.18, -187.163, -102.243, -204.932, -66.7056, -244.023, -38.2757, -253.5, 29.2453, -257.054, 82.5513, -171.764, 70.7055, -103.058, 121.642, -66.3364, 109.797, -159.918, -24.0608, -107.797, -167.395, -78.1821, -195.825, -116.089, -252.684, 22.5071, -339.159, -47.3832, -353.374, -37.9065, -407.864 )
+
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="Animal-cell/Parts/CellPartSlot9"]
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( 267.715, -268.084, 225.07, -237.285, 229.808, -173.318, 321.021, -175.687, 300.883, -270.453 )
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="Animal-cell/Parts/CellPartSlot9"]
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( 203.748, -401.942, 255.869, -366.404, 270.084, -307.175, 290.222, -292.96, 309.175, -365.22, 390.911, -367.589, 300.883, -424.449, 255.869, -403.126, 235.731, -431.556 )
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Animal-cell/Parts/CellPartSlot9"]
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( 353.005, -131.857, 376.696, 25.6916, 414.603, -21.6916, 466.724, -11.0304, 504.631, 54.1215, 503.446, 151.257, 561.491, 74.2593, 563.86, -73.8131, 510.554, -242.023, 411.049, -354.559, 479.755, -242.023, 499.893, -124.75, 479.755, -91.5818, 421.71, -74.9977 )
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Animal-cell/Parts/CellPartSlot9"]
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( -264.161, 204.563, -260.608, 241.285, -253.5, 293.407, -332.867, 321.837, -247.577, 384.619, -200.194, 340.79, -146.888, 353.82, -126.75, 409.496, 82.9205, 421.341, 304.437, 357.374, 377.881, 309.991, 297.33, 317.098, 170.579, 373.958, -81.7361, 362.112, -61.5981, 280.376, -143.334, 247.208, -151.626, 187.979 )
+
+[node name="CollisionPolygon2D9" type="CollisionPolygon2D" parent="Animal-cell/Parts/CellPartSlot9"]
+
+[node name="CellPartSlot8" type="Area2D" parent="Animal-cell/Parts"]
+script = ExtResource( 19 )
+slot_target = "plasma_membrane"
+hud_path = NodePath("../../../HUD")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Animal-cell/Parts/CellPartSlot8"]
+polygon = PoolVector2Array( -573.336, -3.92297, -495.154, 251.946, -236.916, 403.572, -203.748, 363.297, -156.364, 368.035, -144.519, 422.526, 82.9207, 434.371, 317.467, 370.404, 483.308, 242.47, 573.337, 74.2593, 580.444, 107.427, 528.323, 270.899, 350.636, 448.586, 56.8599, 531.507, -241.654, 498.339, -457.247, 372.773, -552.014, 232.993, -587.551, 36.3527 )
+
+[node name="Drop" type="AudioStreamPlayer" parent="Animal-cell/Parts/CellPartSlot8"]
+stream = ExtResource( 24 )
+
+[node name="Error" type="AudioStreamPlayer" parent="Animal-cell/Parts/CellPartSlot8"]
+stream = ExtResource( 23 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 104.0
+margin_top = 76.0
+margin_right = 366.0
+margin_bottom = 1056.0
+rect_scale = Vector2( 0.991225, 1.00817 )
+mouse_filter = 1
+scroll_horizontal_enabled = false
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+margin_right = 250.0
+margin_bottom = 3514.0
+mouse_filter = 2
+custom_constants/vseparation = 22
+
+[node name="CellPart" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
+material = ExtResource( 5 )
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 250.0
+margin_bottom = 250.0
+texture_normal = ExtResource( 4 )
+cell_image = ExtResource( 4 )
+identity_name = "central_vacuole"
+hud_path = NodePath("../../../HUD")
+
+[node name="CellPart2" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
+material = ExtResource( 5 )
+margin_left = 0.0
+margin_top = 272.0
+margin_right = 250.0
+margin_bottom = 522.0
+texture_normal = ExtResource( 9 )
+cell_image = ExtResource( 9 )
+identity_name = "centrioles"
+hud_path = NodePath("../../../HUD")
+
+[node name="CellPart3" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
+material = ExtResource( 5 )
+margin_left = 0.0
+margin_top = 544.0
+margin_right = 250.0
+margin_bottom = 794.0
+texture_normal = ExtResource( 14 )
+cell_image = ExtResource( 14 )
+identity_name = "chloroplast"
+hud_path = NodePath("../../../HUD")
+
+[node name="CellPart4" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
+material = ExtResource( 5 )
+margin_left = 0.0
+margin_top = 816.0
+margin_right = 250.0
+margin_bottom = 1066.0
+texture_normal = ExtResource( 11 )
+cell_image = ExtResource( 11 )
+identity_name = "cytoplasm"
+hud_path = NodePath("../../../HUD")
+
+[node name="CellPart5" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
+material = ExtResource( 5 )
+margin_left = 0.0
+margin_top = 1088.0
+margin_right = 250.0
+margin_bottom = 1338.0
+texture_normal = ExtResource( 10 )
+cell_image = ExtResource( 10 )
+identity_name = "golgi_bodies"
+hud_path = NodePath("../../../HUD")
+
+[node name="CellPart6" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
+material = ExtResource( 5 )
+margin_left = 0.0
+margin_top = 1360.0
+margin_right = 250.0
+margin_bottom = 1610.0
+texture_normal = ExtResource( 16 )
+cell_image = ExtResource( 16 )
+identity_name = "lysosome"
+hud_path = NodePath("../../../HUD")
+
+[node name="CellPart7" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
+material = ExtResource( 5 )
+margin_left = 0.0
+margin_top = 1632.0
+margin_right = 250.0
+margin_bottom = 1882.0
+texture_normal = ExtResource( 7 )
+cell_image = ExtResource( 7 )
+identity_name = "mitochondria"
+hud_path = NodePath("../../../HUD")
+
+[node name="CellPart8" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
+material = ExtResource( 5 )
+margin_left = 0.0
+margin_top = 1904.0
+margin_right = 250.0
+margin_bottom = 2154.0
+texture_normal = ExtResource( 13 )
+cell_image = ExtResource( 13 )
+identity_name = "nucleus"
+hud_path = NodePath("../../../HUD")
+
+[node name="CellPart9" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
+material = ExtResource( 5 )
+margin_left = 0.0
+margin_top = 2176.0
+margin_right = 250.0
+margin_bottom = 2426.0
+texture_normal = ExtResource( 17 )
+cell_image = ExtResource( 17 )
+identity_name = "plasma_membrane"
+hud_path = NodePath("../../../HUD")
+
+[node name="CellPart10" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
+material = ExtResource( 5 )
+margin_left = 0.0
+margin_top = 2448.0
+margin_right = 250.0
+margin_bottom = 2698.0
+texture_normal = ExtResource( 12 )
+cell_image = ExtResource( 12 )
+identity_name = "ribosomes"
+hud_path = NodePath("../../../HUD")
+
+[node name="CellPart11" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
+material = ExtResource( 5 )
+margin_left = 0.0
+margin_top = 2720.0
+margin_right = 250.0
+margin_bottom = 2970.0
+texture_normal = ExtResource( 6 )
+cell_image = ExtResource( 6 )
+identity_name = "rough_endoplasmic_reticulum"
+hud_path = NodePath("../../../HUD")
+
+[node name="CellPart12" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
+material = ExtResource( 5 )
+margin_left = 0.0
+margin_top = 2992.0
+margin_right = 250.0
+margin_bottom = 3242.0
+texture_normal = ExtResource( 15 )
+cell_image = ExtResource( 15 )
+identity_name = "smooth_endoplasmic_reticulum"
+hud_path = NodePath("../../../HUD")
+
+[node name="CellPart13" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
+material = ExtResource( 5 )
+margin_left = 0.0
+margin_top = 3264.0
+margin_right = 250.0
+margin_bottom = 3514.0
+texture_normal = ExtResource( 8 )
+cell_image = ExtResource( 8 )
+identity_name = "vesicles"
+hud_path = NodePath("../../../HUD")
+
+[node name="HUD" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 28 )
+correct_image = ExtResource( 31 )
+wrong_image = ExtResource( 32 )
+
+[node name="Score" type="Label" parent="HUD"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -257.0
+margin_top = 60.0
+margin_right = -25.0
+margin_bottom = 202.0
+custom_fonts/font = SubResource( 1 )
+text = "00"
+valign = 1
+script = ExtResource( 22 )
+
+[node name="Title" type="Label" parent="HUD"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -833.0
+margin_top = 238.0
+margin_right = -147.0
+margin_bottom = 421.0
+custom_fonts/font = SubResource( 2 )
+text = "Organelle"
+autowrap = true
+
+[node name="Description" type="Label" parent="HUD"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -833.0
+margin_top = 439.0
+margin_right = -147.0
+margin_bottom = 960.0
+custom_fonts/font = SubResource( 3 )
+text = "Tap an organelle to know more about it.
+
+Drag and drop an organelle to its match for points."
+autowrap = true
+
+[node name="Star" type="TextureRect" parent="HUD"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -357.0
+margin_top = 76.0
+margin_right = -257.0
+margin_bottom = 176.0
+texture = ExtResource( 26 )
+
+[node name="Correct" type="TextureRect" parent="HUD"]
+visible = false
+modulate = Color( 1, 1, 1, 0.156863 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 27 )
+expand = true
+
+[node name="Error" type="TextureRect" parent="HUD"]
+visible = false
+modulate = Color( 1, 1, 1, 0.117647 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = SubResource( 5 )
+expand = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD"]
+reset_on_save = false
+playback_speed = 2.0
+anims/RESET = SubResource( 9 )
+anims/correct = SubResource( 7 )
+anims/wrong = SubResource( 8 )
+
+[node name="Message" type="Panel" parent="HUD"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -282.0
+margin_top = 2.0
+margin_right = 282.0
+margin_bottom = 160.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="HUD/Message"]
+margin_left = 35.0
+margin_top = 38.0
+margin_right = 135.0
+margin_bottom = 133.0
+texture = ExtResource( 31 )
+
+[node name="Title" type="Label" parent="HUD/Message"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -397.0
+margin_right = -25.0
+margin_bottom = 158.0
+custom_fonts/font = SubResource( 2 )
+text = "Correct"
+valign = 1
+autowrap = true
+
+[node name="CorrectSound" type="AudioStreamPlayer" parent="HUD"]
+stream = ExtResource( 33 )
+volume_db = 4.0
+
+[connection signal="mouse_entered" from="Animal-cell/Parts/CellPartSlot" to="Animal-cell/Parts/CellPartSlot" method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_entered" from="Animal-cell/Parts/CellPartSlot2" to="Animal-cell/Parts/CellPartSlot2" method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_entered" from="Animal-cell/Parts/CellPartSlot3" to="Animal-cell/Parts/CellPartSlot3" method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_entered" from="Animal-cell/Parts/CellPartSlot4" to="Animal-cell/Parts/CellPartSlot4" method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_entered" from="Animal-cell/Parts/CellPartSlot5" to="Animal-cell/Parts/CellPartSlot5" method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_entered" from="Animal-cell/Parts/CellPartSlot6" to="Animal-cell/Parts/CellPartSlot6" method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_entered" from="Animal-cell/Parts/CellPartSlot7" to="Animal-cell/Parts/CellPartSlot7" method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_entered" from="Animal-cell/Parts/CellPartSlot9" to="Animal-cell/Parts/CellPartSlot9" method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_entered" from="Animal-cell/Parts/CellPartSlot8" to="Animal-cell/Parts/CellPartSlot8" method="_on_Area2D_mouse_entered"]

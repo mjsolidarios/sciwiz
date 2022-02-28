@@ -1,0 +1,57 @@
+{
+	"plasma_membrane": [
+		"The cell membrane, also known as plasma membrane or plasmalemma, is a double-layered membrane that encloses the cell.",
+		"It functions as the boundary between the cell and its external environment, and as a structure that controls the movement of substances into and out of the cell due to its semipermeable membrane"
+	],
+	"cell_wall": [
+		"It is an additional boundary surrounding the cells of plants, fungi, bacteria, and some protozoans.",
+		"The cell wall of plant cells is a very tough substance made up of cellulose, which supports the cell and protects it from injury."
+	],
+	"cytoplasm": [
+		"Gel-like fluid inside the cell and is the medium for chemical reaction.",
+		"The cytoplasm forms the largest part of the cell where most life processes occur.",
+		"It is made up of substances where the membrane-bound organelles are located."
+	],
+	"nucleus": [
+		"It is a circular dark-stained part of the protoplasm enclosed by a nuclear membrane or nuclear envelope.",
+		"It controls all the activities of the cell.",
+		"It contains the DNA (deoxyribonucleic acid) which contains the hereditary materials of living organisms, transmitted from one generation to another."
+	],
+	"mitochondria": [
+		"These are small, double-membraned, spherical or sausage-shaped organelles involved in the production of energy.",
+		"It is popularly known as the powerhouse of the cell."
+	],
+	"chloroplast": [
+		"It is the most common plastids in green plants. It contains green pigments called the chlorophyll.",
+		"These are the energy-capturing centers in plants, which are involved in the manufacture of the cell’s food, a process known as photosynthesis"
+	],
+	"ribosomes": [
+		"These are small, granular structures made up of RNA and proteins.",
+		"These are the site of protein synthesis in the cell."
+	],
+	"rough_endoplasmic_reticulum": [
+		"Rough endoplasmic reticulum – Membranous structure forming a network of canals where most of the ribosomes are attached"        
+	],
+	"smooth_endoplasmic_reticulum": [       
+		"Smooth ER – is a branching canal, devoid of ribosomes, which transports large molecules inside the cell. Some steroids are produced in the SER. It also stores calcium ions in muscle cells."
+	],
+	"golgi_bodies": [        
+		"Membranous organelle forming a stack of flattened sacs located very close to the ER.",
+		"It modifies proteins produced in the ribosomes that are embedded in the rough ER",
+		"Packages and sorts cell products in its center and transported them via its vesicles."
+	],
+	"vesicles": [
+		"Organelles that carry food particles and waste materials into and out of the cell."
+	],
+	"central_vacuole": [
+		"Large vacuoles contain a liquid called cell sap, which is basically made up of water, dissolved sugars, mineral salts, and amino acids."        
+	],
+	"lysosome": [
+		"Membrane-bound organelles that contain different hydrolytic enzymes",
+		"Digest bacteria, viruses, complex food particles, and damaged cell components."
+	],
+	"centrioles": [
+		"A form of cytoskeleton which are involve in cell division.",
+		"A cylindrical organelle made up of microtubules that play a role in the cell’s skeletal system."
+	]
+}
