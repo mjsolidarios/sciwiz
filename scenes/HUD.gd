@@ -18,8 +18,9 @@ func PlayWrongAnswer():
 
 func DisplayInfo():
 	var active_cell_part = $"/root/Globals".active_cell_part
-	$Title.text = str(active_cell_part).replace("_", " ").to_upper()	
-	$Description.text = data[active_cell_part][randi() % len(data[active_cell_part])]
+	print(active_cell_part)
+	$VBoxContainer/Title.text = str(active_cell_part).replace("_", " ").to_upper()
+	$VBoxContainer/Description.text = data[active_cell_part][randi() % len(data[active_cell_part])]
 
 #func _process(delta):
 #	if $"/root/Globals".active_cell_part != "":

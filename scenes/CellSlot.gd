@@ -22,7 +22,9 @@ func _on_Area2D_mouse_entered():
 		$"/root/Globals".total_score += 1
 		$Drop.play()
 		hud.PlayCorrectAnswer()
+		$"/root/Globals".set(active_cell_part+"_enabled", true)
 	else:
 		print("unmatched")
 		$Error.play()
+		$"/root/Globals".set(active_cell_part+"_enabled", false)
 		hud.PlayWrongAnswer()
