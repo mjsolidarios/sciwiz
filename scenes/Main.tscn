@@ -1,0 +1,146 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://fonts/Roboto-Black.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://sounds/click_001.tres" type="AudioStream" id=2]
+[ext_resource path="res://scenes/MainSceneManager.gd" type="Script" id=3]
+[ext_resource path="res://images/bg.jpg" type="Texture" id=4]
+[ext_resource path="res://sounds/Mind-Bender.mp3" type="AudioStream" id=5]
+[ext_resource path="res://images/particles/circle_01.png" type="Texture" id=6]
+
+[sub_resource type="CanvasItemMaterial" id=4]
+blend_mode = 1
+
+[sub_resource type="DynamicFont" id=1]
+size = 69
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 115
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxLine" id=3]
+thickness = 0
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1411.0
+margin_top = -1058.0
+margin_right = 1411.0
+margin_bottom = 1058.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+material = SubResource( 4 )
+position = Vector2( 5, 1052 )
+amount = 64
+lifetime = 11.57
+preprocess = 11.01
+texture = ExtResource( 6 )
+emission_shape = 1
+emission_sphere_radius = 128.0
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 200.0
+initial_velocity_random = 1.0
+angular_velocity = 1.0
+angular_velocity_random = 1.0
+radial_accel_random = 1.0
+scale_amount = 0.01
+scale_amount_random = 0.5
+color = Color( 0.419608, 0.866667, 0.933333, 0.376471 )
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="."]
+material = SubResource( 4 )
+position = Vector2( 1124, 1152 )
+amount = 64
+lifetime = 11.57
+preprocess = 11.01
+texture = ExtResource( 6 )
+emission_shape = 1
+emission_sphere_radius = 128.0
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 200.0
+initial_velocity_random = 1.0
+angular_velocity = 1.0
+angular_velocity_random = 1.0
+radial_accel_random = 1.0
+scale_amount = 0.01
+scale_amount_random = 0.5
+color = Color( 0.419608, 0.866667, 0.933333, 0.376471 )
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+material = SubResource( 4 )
+position = Vector2( 1933, 18 )
+amount = 64
+lifetime = 11.57
+preprocess = 11.01
+texture = ExtResource( 6 )
+emission_shape = 1
+emission_sphere_radius = 128.0
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 200.0
+initial_velocity_random = 1.0
+angular_velocity = 1.0
+angular_velocity_random = 1.0
+radial_accel_random = 1.0
+scale_amount = 0.01
+scale_amount_random = 0.5
+color = Color( 0.419608, 0.866667, 0.933333, 0.376471 )
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[node name="Button" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -601.0
+margin_top = -4.0
+margin_right = 23.0
+margin_bottom = 134.0
+custom_fonts/font = SubResource( 1 )
+text = "Animal Cell"
+
+[node name="Button2" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 65.0
+margin_top = -4.0
+margin_right = 689.0
+margin_bottom = 134.0
+custom_fonts/font = SubResource( 1 )
+text = "Plant Cell"
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -694.0
+margin_top = -235.0
+margin_right = 694.0
+margin_bottom = -53.0
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+text = "Select a Cell Puzzle"
+align = 1
+valign = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -5.0
+autoplay = true

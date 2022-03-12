@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Sky-Puzzle_LoFi.mp3-50d20ff399adc4b6f115ca27e17c6e80.mp3str"
+
+[deps]
+
+source_file="res://sounds/Sky-Puzzle_LoFi.mp3"
+dest_files=[ "res://.import/Sky-Puzzle_LoFi.mp3-50d20ff399adc4b6f115ca27e17c6e80.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

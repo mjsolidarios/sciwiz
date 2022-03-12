@@ -19,7 +19,14 @@ func PlayWrongAnswer():
 func DisplayInfo():
 	var active_cell_part = $"/root/Globals".active_cell_part
 	print(active_cell_part)
-	$VBoxContainer/Title.text = str(active_cell_part).replace("_", " ").to_upper()
+	var splits_string = active_cell_part.split("_", true, 1)
+	if len(splits_string) > 1:
+		if splits_string[1] == "animal" or splits_string[1] == "plant":
+			$VBoxContainer/Title.text = str(splits_string[0]).to_upper()
+		else:
+			$VBoxContainer/Title.text = str(active_cell_part).replace("_", " ").to_upper()	
+	else:
+		$VBoxContainer/Title.text = str(active_cell_part).replace("_", " ").to_upper()	
 	$VBoxContainer/Description.text = data[active_cell_part][randi() % len(data[active_cell_part])]
 
 #func _process(delta):

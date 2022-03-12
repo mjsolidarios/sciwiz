@@ -43,8 +43,11 @@
 	"vesicles": [
 		"Organelles that carry food particles and waste materials into and out of the cell."
 	],
-	"central_vacuole": [
+	"vacuoles_plant": [
 		"Large vacuoles contain a liquid called cell sap, which is basically made up of water, dissolved sugars, mineral salts, and amino acids."        
+	],
+	"vacuoles_animal": [
+		"Membrane-bound sacs used for storage of water and nutrients."        
 	],
 	"lysosomes": [
 		"Membrane-bound organelles that contain different hydrolytic enzymes",
