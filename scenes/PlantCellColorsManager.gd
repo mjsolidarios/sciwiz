@@ -14,3 +14,4 @@ func _process(delta):
 	$ribosomes.visible = $"/root/Globals".ribosomes_enabled
 	$vesicles.visible = $"/root/Globals".vesicles_enabled
 	$chloroplast.visible = $"/root/Globals".chloroplast_enabled
+	$plasma_membrane.visible = $"/root/Globals".plasma_membrane_enabled

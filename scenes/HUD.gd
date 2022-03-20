@@ -22,7 +22,12 @@ func DisplayInfo():
 	var splits_string = active_cell_part.split("_", true, 1)
 	if len(splits_string) > 1:
 		if splits_string[1] == "animal" or splits_string[1] == "plant":
-			$VBoxContainer/Title.text = str(splits_string[0]).to_upper()
+			if splits_string[1] == "animal":
+				print("animal")
+				$VBoxContainer/Title.text = "vacuoles".to_upper()
+			else:
+				print("plant")
+				$VBoxContainer/Title.text = "central vacuole".to_upper()
 		else:
 			$VBoxContainer/Title.text = str(active_cell_part).replace("_", " ").to_upper()	
 	else:

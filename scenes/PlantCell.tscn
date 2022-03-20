@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://images/bg.jpg" type="Texture" id=1]
 [ext_resource path="res://components/CellPart.tscn" type="PackedScene" id=2]
@@ -42,10 +42,12 @@
 [ext_resource path="res://images/lysosome-part-plant.png" type="Texture" id=40]
 [ext_resource path="res://images/cytoplasm-part-plant.png" type="Texture" id=41]
 [ext_resource path="res://images/smooth-endoplasmic-reticulum-part-plant.png" type="Texture" id=42]
+[ext_resource path="res://images/plasma-membrane.png" type="Texture" id=43]
 [ext_resource path="res://images/golgi-bodies-part-plant.png" type="Texture" id=44]
 [ext_resource path="res://images/rough-endoplasmic-reticulum-part-plant.png" type="Texture" id=45]
 [ext_resource path="res://icons/arrowLeft.png" type="Texture" id=46]
 [ext_resource path="res://sounds/click_001.tres" type="AudioStream" id=47]
+[ext_resource path="res://images/plasma-membrane-plant.png" type="Texture" id=48]
 [ext_resource path="res://images/vesicles-part-plant.png" type="Texture" id=49]
 [ext_resource path="res://images/ribosomes-part-plant.png" type="Texture" id=50]
 [ext_resource path="res://images/vacuole-part-plant.png" type="Texture" id=51]
@@ -502,10 +504,10 @@ stream = ExtResource( 24 )
 stream = ExtResource( 23 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlantCell/Parts/CellWall"]
-polygon = PoolVector2Array( -466.725, -353.374, -61.5983, -465.909, 380.25, -451.694, 408.68, -419.711, 471.463, -193.456, 496.339, -32.3528, 488.047, 257.869, 477.386, 315.914, 435.925, 347.897, 241.654, 402.388, 68.7056, 416.603, 90.0281, 525.584, 279.561, 520.846, 525.954, 385.804, 573.337, 420.157, 615.982, 325.39, 549.645, 257.869, 562.676, 69.5211, 538.984, -127.119, 483.309, -412.603, 537.799, -506.185, 469.094, -541.722, 375.512, -491.97, -8.29211, -514.477, -151.626, -495.524, -463.171, -411.418 )
+polygon = PoolVector2Array( -457.248, -378.25, -55.6753, -481.309, 398.019, -477.755, 444.218, -437.479, 492.785, -202.932, 517.661, -31.1682, 516.477, 255.5, 508.185, 324.206, 446.587, 372.774, 244.023, 427.264, 73.444, 439.11, 90.0281, 525.584, 279.561, 520.846, 525.954, 385.804, 573.337, 420.157, 615.982, 325.39, 549.645, 257.869, 562.676, 69.5211, 538.984, -127.119, 483.309, -412.603, 537.799, -506.185, 469.094, -541.722, 375.512, -491.97, -8.29211, -514.477, -151.626, -495.524, -463.171, -411.418 )
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="PlantCell/Parts/CellWall"]
-polygon = PoolVector2Array( -472.648, -354.559, -475.017, -411.418, -547.276, -476.57, -604.136, -382.989, -552.014, -334.421, -561.491, -193.456, -501.077, 246.024, -464.355, 372.774, -547.276, 495.97, -413.419, 542.169, -371.958, 455.694, 81.736, 526.769, 60.4136, 416.603, -262.977, 376.327, -389.727, 368.035, -450.141, 248.393, -489.232, 71.8903, -511.739, -146.073 )
+polygon = PoolVector2Array( -491.601, -355.743, -475.017, -411.418, -547.276, -476.57, -604.136, -382.989, -552.014, -334.421, -561.491, -193.456, -501.077, 246.024, -464.355, 372.774, -547.276, 495.97, -413.419, 542.169, -371.958, 455.694, 81.736, 526.769, 55.6752, 442.664, -265.346, 410.68, -413.419, 400.019, -477.386, 256.685, -507, 75.444, -528.323, -142.519 )
 
 [node name="Ribosomes" type="Area2D" parent="PlantCell/Parts"]
 script = ExtResource( 19 )
@@ -532,6 +534,20 @@ polygon = PoolVector2Array( 222.701, -59.5981, 238.101, -52.4907, 262.977, -60.7
 
 [node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="PlantCell/Parts/Ribosomes"]
 polygon = PoolVector2Array( 285.484, -20.507, 283.115, -5.10748, 302.068, -1.55371, 309.175, -22.8762 )
+
+[node name="PlasmaMembrane" type="Area2D" parent="PlantCell/Parts"]
+script = ExtResource( 19 )
+slot_target = "plasma_membrane"
+hud_path = NodePath("../../../HUD")
+
+[node name="Drop" type="AudioStreamPlayer" parent="PlantCell/Parts/PlasmaMembrane"]
+stream = ExtResource( 24 )
+
+[node name="Error" type="AudioStreamPlayer" parent="PlantCell/Parts/PlasmaMembrane"]
+stream = ExtResource( 23 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlantCell/Parts/PlasmaMembrane"]
+polygon = PoolVector2Array( -412.234, 391.727, 58.0444, 437.925, 242.839, 422.526, 445.402, 369.22, 502.262, 323.021, 514.108, -32.3528, 490.416, -205.302, 440.664, -437.479, 395.65, -475.386, -55.6753, -478.94, -454.879, -375.881, -488.047, -355.743, -525.954, -144.888, -475.017, 255.5, -414.603, 388.173, -389.727, 362.112, -395.65, 356.19, -445.402, 243.654, -469.094, 148.888, -488.047, 26.8762, -504.631, -142.519, -465.54, -329.682, -453.694, -345.082, -358.928, -379.435, -323.39, -391.281, -52.1216, -455.248, 182.425, -464.725, 384.989, -439.848, 388.542, -433.925, 432.372, -321.39, 463.171, -195.825, 483.309, -82.1052, 484.493, -37.0911, 485.678, 228.255, 471.463, 306.437, 453.694, 328.944, 369.589, 363.297, 230.993, 400.019, 56.8597, 411.865, -65.152, 403.573, -317.468, 368.035, -386.173, 364.482 )
 
 [node name="Chloroplasts" type="Area2D" parent="PlantCell/Parts"]
 script = ExtResource( 19 )
@@ -620,6 +636,11 @@ texture = ExtResource( 49 )
 position = Vector2( 969, 551 )
 scale = Vector2( 0.844, 0.844 )
 texture = ExtResource( 39 )
+
+[node name="plasma_membrane" type="Sprite" parent="PlantCellColors"]
+position = Vector2( 969, 551 )
+scale = Vector2( 0.844, 0.844 )
+texture = ExtResource( 48 )
 
 [node name="HUD" type="Control" parent="."]
 anchor_right = 1.0
@@ -748,7 +769,7 @@ scroll_horizontal_enabled = false
 
 [node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
 margin_right = 250.0
-margin_bottom = 3514.0
+margin_bottom = 3786.0
 mouse_filter = 2
 custom_constants/vseparation = 22
 
@@ -895,6 +916,17 @@ cell_image = ExtResource( 8 )
 identity_name = "vesicles"
 hud_path = NodePath("../../../HUD")
 
+[node name="PlasmaMembrane" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
+material = ExtResource( 5 )
+margin_left = 0.0
+margin_top = 3536.0
+margin_right = 250.0
+margin_bottom = 3786.0
+texture_normal = ExtResource( 43 )
+cell_image = ExtResource( 43 )
+identity_name = "plasma_membrane"
+hud_path = NodePath("../../../HUD")
+
 [node name="BackButton" type="TextureButton" parent="."]
 margin_right = 162.0
 margin_bottom = 141.0
@@ -923,5 +955,6 @@ autoplay = true
 [connection signal="mouse_entered" from="PlantCell/Parts/Cytoplasm" to="PlantCell/Parts/Cytoplasm" method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_entered" from="PlantCell/Parts/CellWall" to="PlantCell/Parts/CellWall" method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_entered" from="PlantCell/Parts/Ribosomes" to="PlantCell/Parts/Ribosomes" method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_entered" from="PlantCell/Parts/PlasmaMembrane" to="PlantCell/Parts/PlasmaMembrane" method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_entered" from="PlantCell/Parts/Chloroplasts" to="PlantCell/Parts/Chloroplasts" method="_on_Area2D_mouse_entered"]
 [connection signal="pressed" from="BackButton" to="BackButton" method="GotoScene"]
