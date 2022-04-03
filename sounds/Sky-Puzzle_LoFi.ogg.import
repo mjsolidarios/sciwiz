@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Sky-Puzzle_LoFi.ogg-5a482a583feade2df7f210f249cac1b2.oggstr"
+
+[deps]
+
+source_file="res://sounds/Sky-Puzzle_LoFi.ogg"
+dest_files=[ "res://.import/Sky-Puzzle_LoFi.ogg-5a482a583feade2df7f210f249cac1b2.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

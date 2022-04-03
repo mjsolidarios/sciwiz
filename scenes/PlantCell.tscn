@@ -29,7 +29,7 @@
 [ext_resource path="res://images/green.png" type="Texture" id=27]
 [ext_resource path="res://scenes/HUD.gd" type="Script" id=28]
 [ext_resource path="res://images/gradient-right.png" type="Texture" id=29]
-[ext_resource path="res://sounds/Sky-Puzzle_LoFi.mp3" type="AudioStream" id=30]
+[ext_resource path="res://sounds/Sky-Puzzle_LoFi.ogg" type="AudioStream" id=30]
 [ext_resource path="res://ui/correct.png" type="Texture" id=31]
 [ext_resource path="res://ui/wrong.png" type="Texture" id=32]
 [ext_resource path="res://sounds/win sound 1.wav" type="AudioStream" id=33]
@@ -51,6 +51,7 @@
 [ext_resource path="res://images/vesicles-part-plant.png" type="Texture" id=49]
 [ext_resource path="res://images/ribosomes-part-plant.png" type="Texture" id=50]
 [ext_resource path="res://images/vacuole-part-plant.png" type="Texture" id=51]
+
 
 [sub_resource type="CanvasItemMaterial" id=10]
 blend_mode = 1

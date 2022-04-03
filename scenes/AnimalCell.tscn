@@ -48,7 +48,8 @@
 [ext_resource path="res://icons/arrowLeft.png" type="Texture" id=46]
 [ext_resource path="res://images/vesicles-part.png" type="Texture" id=47]
 [ext_resource path="res://components/CellPart.tscn" type="PackedScene" id=48]
-[ext_resource path="res://sounds/Sky-Puzzle_LoFi.mp3" type="AudioStream" id=49]
+[ext_resource path="res://sounds/Sky-Puzzle_LoFi.ogg" type="AudioStream" id=49]
+
 
 [sub_resource type="CanvasItemMaterial" id=10]
 blend_mode = 1
