@@ -52,7 +52,6 @@
 [ext_resource path="res://images/ribosomes-part-plant.png" type="Texture" id=50]
 [ext_resource path="res://images/vacuole-part-plant.png" type="Texture" id=51]
 
-
 [sub_resource type="CanvasItemMaterial" id=10]
 blend_mode = 1
 
