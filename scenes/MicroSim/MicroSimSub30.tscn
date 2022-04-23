@@ -1,0 +1,108 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://scenes/TextButton.gd" type="Script" id=1]
+[ext_resource path="res://images/microsim_assets/Text Box.PNG" type="Texture" id=2]
+[ext_resource path="res://images/microsim_assets/Lab assistant.PNG" type="Texture" id=3]
+[ext_resource path="res://icons/arrowLeft.png" type="Texture" id=4]
+[ext_resource path="res://fonts/Roboto-Black.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://fonts/Roboto-Medium.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://sounds/Mind-Bender.ogg" type="AudioStream" id=7]
+[ext_resource path="res://sounds/click_001.tres" type="AudioStream" id=8]
+[ext_resource path="res://images/microsim_assets/Lab background (with blur).PNG" type="Texture" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 44
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 69
+font_data = ExtResource( 5 )
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Button
+
+export var path = \"\"
+
+func GotoScene():
+	$Click.play()
+	$\"/root/Globals\".goto_scene(path)
+"
+
+[node name="Node2D" type="Node2D"]
+
+[node name="LabBackground(withBlur)" type="Sprite" parent="."]
+position = Vector2( 969, 548 )
+scale = Vector2( 1.05463, 1.05463 )
+texture = ExtResource( 9 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 2 )
+
+[node name="LabAssistant" type="Sprite" parent="."]
+position = Vector2( 863, 626 )
+texture = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 578.0
+margin_top = 694.0
+margin_right = 1778.0
+margin_bottom = 1031.0
+custom_fonts/font = SubResource( 1 )
+text = "Before we proceed to a higher magnification, you must learn first to navigate the image under observation. Try to move the slide to the left, then to the right. Then up and down."
+autowrap = true
+
+[node name="BackButton" type="TextureButton" parent="."]
+margin_right = 162.0
+margin_bottom = 141.0
+texture_normal = ExtResource( 4 )
+expand = true
+script = ExtResource( 1 )
+path = "res://scenes/MainMenu.tscn"
+
+[node name="Click" type="AudioStreamPlayer" parent="BackButton"]
+stream = ExtResource( 8 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -5.0
+autoplay = true
+
+[node name="Button" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 1529.0
+margin_top = 932.0
+margin_right = 1829.0
+margin_bottom = 1020.0
+custom_fonts/font = SubResource( 2 )
+text = "Next"
+script = SubResource( 3 )
+path = "res://scenes/MicroSim/MicroSimSub31.tscn"
+
+[node name="Click" type="AudioStreamPlayer" parent="Button"]
+stream = ExtResource( 8 )
+
+[node name="Button2" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 576.0
+margin_top = 932.0
+margin_right = 876.0
+margin_bottom = 1020.0
+custom_fonts/font = SubResource( 2 )
+text = "Back"
+script = SubResource( 3 )
+path = "res://scenes/MicroSim/MicroSimSub30.tscn"
+
+[node name="Click" type="AudioStreamPlayer" parent="Button2"]
+stream = ExtResource( 8 )
+
+[connection signal="pressed" from="BackButton" to="BackButton" method="GotoScene"]
+[connection signal="pressed" from="Button" to="Button" method="GotoScene"]
+[connection signal="pressed" from="Button2" to="Button2" method="GotoScene"]

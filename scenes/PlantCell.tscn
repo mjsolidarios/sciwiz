@@ -1,6 +1,6 @@
 [gd_scene load_steps=60 format=2]
 
-[ext_resource path="res://images/bg.jpg" type="Texture" id=1]
+[ext_resource path="res://images/background.jpg" type="Texture" id=1]
 [ext_resource path="res://components/CellPart.tscn" type="PackedScene" id=2]
 [ext_resource path="res://images/plant-cell-bw.png" type="Texture" id=3]
 [ext_resource path="res://images/central-vacuole.png" type="Texture" id=4]
@@ -257,8 +257,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -279.0
 margin_top = -299.0
-margin_right = 2363.0
-margin_bottom = 1289.0
+margin_right = 976.0
+margin_bottom = 478.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 1 )

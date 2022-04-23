@@ -1,14 +1,14 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://images/microsim_assets/Lab assistant.PNG" type="Texture" id=1]
+[ext_resource path="res://scenes/TextButton.gd" type="Script" id=1]
 [ext_resource path="res://images/microsim_assets/Lab background (with blur).PNG" type="Texture" id=2]
 [ext_resource path="res://fonts/Roboto-Medium.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://images/microsim_assets/Text Box.PNG" type="Texture" id=4]
-[ext_resource path="res://fonts/Roboto-Black.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://scenes/TextButton.gd" type="Script" id=6]
-[ext_resource path="res://icons/arrowLeft.png" type="Texture" id=7]
-[ext_resource path="res://sounds/click_001.tres" type="AudioStream" id=8]
-[ext_resource path="res://sounds/Mind-Bender.ogg" type="AudioStream" id=9]
+[ext_resource path="res://fonts/Roboto-Black.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://sounds/click_001.tres" type="AudioStream" id=5]
+[ext_resource path="res://sounds/Mind-Bender.ogg" type="AudioStream" id=6]
+[ext_resource path="res://images/microsim_assets/Text Box.PNG" type="Texture" id=7]
+[ext_resource path="res://icons/arrowLeft.png" type="Texture" id=8]
+[ext_resource path="res://images/microsim_assets/Lab assistant.PNG" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 49
@@ -16,7 +16,17 @@ font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 69
-font_data = ExtResource( 5 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Button
+
+export var path = \"\"
+
+func GotoScene():
+	$Click.play()
+	$\"/root/Globals\".goto_scene(path)
+"
 
 [node name="Node2D" type="Node2D"]
 
@@ -28,11 +38,11 @@ texture = ExtResource( 2 )
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 7 )
 
 [node name="LabAssistant" type="Sprite" parent="."]
 position = Vector2( 863, 626 )
-texture = ExtResource( 1 )
+texture = ExtResource( 9 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = 576.0
@@ -40,7 +50,7 @@ margin_top = 706.0
 margin_right = 1780.0
 margin_bottom = 947.0
 custom_fonts/font = SubResource( 1 )
-text = "Hi, there! I’m Franz, your lab assistant. I’ll be helping you in learning how to use and focus a specimen using the compound light microscope. Are you ready? Let’s go!"
+text = "Get the microscope from its box or the cabinet. How are you going to carry the microscope in a proper way?"
 autowrap = true
 
 [node name="Button" type="Button" parent="."]
@@ -54,33 +64,27 @@ margin_right = 1829.0
 margin_bottom = 1020.0
 custom_fonts/font = SubResource( 2 )
 text = "Next"
+script = SubResource( 3 )
+path = "res://scenes/MicroSim/MicroSimSub2.tscn"
 
-[node name="Button2" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 1196.0
-margin_top = 932.0
-margin_right = 1488.0
-margin_bottom = 1020.0
-custom_fonts/font = SubResource( 2 )
-text = "Info"
+[node name="Click" type="AudioStreamPlayer" parent="Button"]
+stream = ExtResource( 5 )
 
 [node name="BackButton" type="TextureButton" parent="."]
 margin_right = 162.0
 margin_bottom = 141.0
-texture_normal = ExtResource( 7 )
+texture_normal = ExtResource( 8 )
 expand = true
-script = ExtResource( 6 )
+script = ExtResource( 1 )
 path = "res://scenes/MainMenu.tscn"
 
 [node name="Click" type="AudioStreamPlayer" parent="BackButton"]
-stream = ExtResource( 8 )
+stream = ExtResource( 5 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 9 )
+stream = ExtResource( 6 )
 volume_db = -5.0
 autoplay = true
 
+[connection signal="pressed" from="Button" to="Button" method="GotoScene"]
 [connection signal="pressed" from="BackButton" to="BackButton" method="GotoScene"]

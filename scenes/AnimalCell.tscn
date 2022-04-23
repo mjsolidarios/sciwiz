@@ -13,7 +13,7 @@
 [ext_resource path="res://scenes/CellSlot.gd" type="Script" id=11]
 [ext_resource path="res://images/central-vacuole.png" type="Texture" id=12]
 [ext_resource path="res://images/animal-cell-desat.png" type="Texture" id=13]
-[ext_resource path="res://images/bg.jpg" type="Texture" id=14]
+[ext_resource path="res://images/background.jpg" type="Texture" id=14]
 [ext_resource path="res://images/golgi-bodies.png" type="Texture" id=15]
 [ext_resource path="res://images/smooth-er.png" type="Texture" id=16]
 [ext_resource path="res://images/cytoplasm.png" type="Texture" id=17]
@@ -49,7 +49,6 @@
 [ext_resource path="res://images/vesicles-part.png" type="Texture" id=47]
 [ext_resource path="res://components/CellPart.tscn" type="PackedScene" id=48]
 [ext_resource path="res://sounds/Sky-Puzzle_LoFi.ogg" type="AudioStream" id=49]
-
 
 [sub_resource type="CanvasItemMaterial" id=10]
 blend_mode = 1
@@ -254,10 +253,10 @@ tracks/4/keys = {
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -279.0
-margin_top = -299.0
-margin_right = 2363.0
-margin_bottom = 1289.0
+margin_left = -271.0
+margin_top = -265.0
+margin_right = 762.0
+margin_bottom = 382.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 14 )

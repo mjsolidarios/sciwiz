@@ -1,11 +1,13 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://fonts/Roboto-Black.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://sounds/click_001.tres" type="AudioStream" id=2]
 [ext_resource path="res://scenes/MainSceneManager.gd" type="Script" id=3]
-[ext_resource path="res://images/bg.jpg" type="Texture" id=4]
+[ext_resource path="res://images/background.jpg" type="Texture" id=4]
 [ext_resource path="res://sounds/Mind-Bender.ogg" type="AudioStream" id=5]
 [ext_resource path="res://images/particles/circle_01.png" type="Texture" id=6]
+[ext_resource path="res://scenes/TextButton.gd" type="Script" id=7]
+[ext_resource path="res://icons/arrowLeft.png" type="Texture" id=8]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 1
@@ -26,17 +28,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
 
-[node name="TextureRect" type="TextureRect" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -1411.0
-margin_top = -1058.0
-margin_right = 1411.0
-margin_bottom = 1058.0
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 1021, 581 )
+scale = Vector2( 1.315, 1.315 )
 texture = ExtResource( 4 )
-expand = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 material = SubResource( 1 )
@@ -144,3 +139,16 @@ valign = 1
 stream = ExtResource( 5 )
 volume_db = -5.0
 autoplay = true
+
+[node name="BackButton" type="TextureButton" parent="."]
+margin_right = 162.0
+margin_bottom = 141.0
+texture_normal = ExtResource( 8 )
+expand = true
+script = ExtResource( 7 )
+path = "res://scenes/MainMenu.tscn"
+
+[node name="Click" type="AudioStreamPlayer" parent="BackButton"]
+stream = ExtResource( 2 )
+
+[connection signal="pressed" from="BackButton" to="BackButton" method="GotoScene"]
