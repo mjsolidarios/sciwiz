@@ -50,7 +50,8 @@ margin_top = 706.0
 margin_right = 1780.0
 margin_bottom = 947.0
 custom_fonts/font = SubResource( 1 )
-text = "Which is which? Drag the names below to the appropriate objectives."
+text = "First, let’s take a look again of the different parts of the
+compound light microscope."
 autowrap = true
 
 [node name="BackButton" type="TextureButton" parent="."]
