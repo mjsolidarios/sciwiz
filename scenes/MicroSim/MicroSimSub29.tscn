@@ -50,8 +50,7 @@ margin_top = 694.0
 margin_right = 1778.0
 margin_bottom = 1031.0
 custom_fonts/font = SubResource( 1 )
-text = "Excellent! You now have just focused the specimen and viewed it under the Low Power Objective. Let’s now view the specimen under a higher magnification.
-(Click anywhere to continue)"
+text = "Excellent! You now have just focused the specimen and viewed it under the Scanner objective. Let’s now view the specimen under a higher magnification."
 autowrap = true
 
 [node name="BackButton" type="TextureButton" parent="."]

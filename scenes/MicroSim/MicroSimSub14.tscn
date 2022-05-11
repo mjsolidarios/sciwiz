@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/TextButton.gd" type="Script" id=1]
 [ext_resource path="res://images/microsim_assets/Lab background (with blur).PNG" type="Texture" id=2]
@@ -9,6 +9,21 @@
 [ext_resource path="res://images/microsim_assets/Text Box.PNG" type="Texture" id=7]
 [ext_resource path="res://icons/arrowLeft.png" type="Texture" id=8]
 [ext_resource path="res://images/microsim_assets/Lab assistant.PNG" type="Texture" id=9]
+[ext_resource path="res://images/microsim_assets/black-texture.png" type="Texture" id=10]
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends Node2D
+
+var _is_popup_visible = false
+
+func toggle_popup():
+	$Popup.visible = !_is_popup_visible
+	_is_popup_visible = !_is_popup_visible
+
+func _ready():
+	get_node(\"Popup/CloseButton\").connect(\"pressed\", self, \"toggle_popup\")
+	get_node(\"InfoButton\").connect(\"pressed\", self, \"toggle_popup\")
+"
 
 [sub_resource type="DynamicFont" id=1]
 size = 49
@@ -28,7 +43,12 @@ func GotoScene():
 	$\"/root/Globals\".goto_scene(path)
 "
 
+[sub_resource type="DynamicFont" id=4]
+size = 60
+font_data = ExtResource( 3 )
+
 [node name="Node2D" type="Node2D"]
+script = SubResource( 5 )
 
 [node name="LabBackground(withBlur)" type="Sprite" parent="."]
 position = Vector2( 969, 548 )
@@ -81,7 +101,7 @@ margin_bottom = 1020.0
 custom_fonts/font = SubResource( 2 )
 text = "Next"
 script = SubResource( 3 )
-path = "res://scenes/MicroSim/MicroSimSub15.tscn"
+path = "res://scenes/MicroSim/MicroSimSub20.tscn"
 
 [node name="Click" type="AudioStreamPlayer" parent="Button"]
 stream = ExtResource( 5 )
@@ -103,6 +123,85 @@ path = "res://scenes/MicroSim/MicroSimSub13.tscn"
 [node name="Click" type="AudioStreamPlayer" parent="Button2"]
 stream = ExtResource( 5 )
 
+[node name="InfoButton" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 1036.0
+margin_top = 932.0
+margin_right = 1336.0
+margin_bottom = 1020.0
+custom_fonts/font = SubResource( 2 )
+text = "Info"
+
+[node name="Click" type="AudioStreamPlayer" parent="InfoButton"]
+stream = ExtResource( 5 )
+
+[node name="Popup" type="Popup" parent="."]
+margin_left = -113.0
+margin_top = -76.0
+margin_right = -73.0
+margin_bottom = -36.0
+
+[node name="TextureRect2" type="TextureRect" parent="Popup"]
+self_modulate = Color( 1, 1, 1, 0.854902 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 2162.0
+margin_bottom = 1219.0
+mouse_filter = 2
+texture = ExtResource( 10 )
+expand = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Popup"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 365.0
+margin_top = 157.0
+margin_right = 1610.0
+margin_bottom = 1059.0
+scroll_horizontal_enabled = false
+
+[node name="Label" type="Label" parent="Popup/ScrollContainer"]
+margin_right = 1200.0
+margin_bottom = 2000.0
+rect_min_size = Vector2( 1200, 2000 )
+custom_fonts/font = SubResource( 4 )
+text = "Procedures in Focusing in Viewing the Specimen Using the Microscope:
+
+1. Place your slide on the stage. Make sure to elevate first the objectives using the course adjustment knob.
+
+2. Drag the slide to the stage.
+
+3. Adjust the diaphragm so that enough amount of light can pass through the slide. Use the picture below as a guide in adjusting the diaphragm.
+
+
+"
+autowrap = true
+max_lines_visible = 999
+
+[node name="CloseButton" type="Button" parent="Popup"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 1649.0
+margin_top = 121.0
+margin_right = 1949.0
+margin_bottom = 209.0
+custom_fonts/font = SubResource( 2 )
+text = "Close"
+
+[node name="Click" type="AudioStreamPlayer" parent="Popup/CloseButton"]
+stream = ExtResource( 5 )
+
 [connection signal="pressed" from="BackButton" to="BackButton" method="GotoScene"]
 [connection signal="pressed" from="Button" to="Button" method="GotoScene"]
 [connection signal="pressed" from="Button2" to="Button2" method="GotoScene"]
+[connection signal="pressed" from="InfoButton" to="InfoButton" method="GotoScene"]
+[connection signal="pressed" from="Popup/CloseButton" to="Popup/CloseButton" method="GotoScene"]

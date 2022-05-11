@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/TextButton.gd" type="Script" id=1]
 [ext_resource path="res://images/microsim_assets/Lab background (with blur).PNG" type="Texture" id=2]
@@ -10,8 +10,23 @@
 [ext_resource path="res://icons/arrowLeft.png" type="Texture" id=8]
 [ext_resource path="res://images/microsim_assets/Lab assistant.PNG" type="Texture" id=9]
 
+[sub_resource type="GDScript" id=5]
+script/source = "extends Node2D
+
+func _ready():
+	get_node(\"Button\").disabled = true
+
+func _process(delta):
+	if $NumerInput.value == 40:
+		get_node(\"Button\").disabled = false
+"
+
 [sub_resource type="DynamicFont" id=1]
 size = 49
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 30
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=2]
@@ -29,6 +44,7 @@ func GotoScene():
 "
 
 [node name="Node2D" type="Node2D"]
+script = SubResource( 5 )
 
 [node name="LabBackground(withBlur)" type="Sprite" parent="."]
 position = Vector2( 969, 548 )
@@ -45,13 +61,22 @@ position = Vector2( 863, 626 )
 texture = ExtResource( 9 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 576.0
-margin_top = 706.0
-margin_right = 1780.0
-margin_bottom = 947.0
+margin_left = 580.0
+margin_top = 668.0
+margin_right = 1784.0
+margin_bottom = 909.0
 custom_fonts/font = SubResource( 1 )
 text = "To get the total magnification, multiply the magnification of the objective lens by 10, which is the magnification of the eyepiece.
 "
+autowrap = true
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 578.0
+margin_top = 887.0
+margin_right = 763.0
+margin_bottom = 926.0
+custom_fonts/font = SubResource( 4 )
+text = "Your Answer"
 autowrap = true
 
 [node name="BackButton" type="TextureButton" parent="."]
@@ -92,9 +117,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 576.0
+margin_left = 1206.0
 margin_top = 932.0
-margin_right = 876.0
+margin_right = 1506.0
 margin_bottom = 1020.0
 custom_fonts/font = SubResource( 2 )
 text = "Back"
@@ -103,6 +128,17 @@ path = "res://scenes/MicroSim/MicroSimSub11.tscn"
 
 [node name="Click" type="AudioStreamPlayer" parent="Button2"]
 stream = ExtResource( 5 )
+
+[node name="NumerInput" type="SpinBox" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 579.0
+margin_top = 930.0
+margin_right = 761.0
+margin_bottom = 970.0
+rect_scale = Vector2( 2, 2 )
 
 [connection signal="pressed" from="BackButton" to="BackButton" method="GotoScene"]
 [connection signal="pressed" from="Button" to="Button" method="GotoScene"]

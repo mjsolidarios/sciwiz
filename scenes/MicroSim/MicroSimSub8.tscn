@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scenes/TextButton.gd" type="Script" id=1]
 [ext_resource path="res://images/microsim_assets/Lab background (with blur).PNG" type="Texture" id=2]
@@ -9,6 +9,24 @@
 [ext_resource path="res://images/microsim_assets/Text Box.PNG" type="Texture" id=7]
 [ext_resource path="res://icons/arrowLeft.png" type="Texture" id=8]
 [ext_resource path="res://images/microsim_assets/Lab assistant.PNG" type="Texture" id=9]
+[ext_resource path="res://images/microsim_assets/Microscope.PNG" type="Texture" id=10]
+[ext_resource path="res://images/microsim_assets/callout.png" type="Texture" id=11]
+[ext_resource path="res://images/microsim_assets/mirror-active.PNG" type="Texture" id=12]
+[ext_resource path="res://images/microsim_assets/mirror.PNG" type="Texture" id=13]
+
+[sub_resource type="GDScript" id=7]
+script/source = "extends Node2D
+
+
+func level_pass():
+	$AnimationPlayer.play(\"Correct\")
+	$Button.disabled = false
+	$Mirror.modulate = Color(\"f2d449\")
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	get_node(\"Mirror\").connect(\"pressed\", self, \"level_pass\")
+"
 
 [sub_resource type="DynamicFont" id=1]
 size = 49
@@ -28,7 +46,43 @@ func GotoScene():
 	$\"/root/Globals\".goto_scene(path)
 "
 
+[sub_resource type="DynamicFont" id=4]
+size = 49
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "Correct"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Callout:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true, false ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Callout:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
 [node name="Node2D" type="Node2D"]
+script = SubResource( 7 )
 
 [node name="LabBackground(withBlur)" type="Sprite" parent="."]
 position = Vector2( 969, 548 )
@@ -50,7 +104,7 @@ margin_top = 706.0
 margin_right = 1780.0
 margin_bottom = 947.0
 custom_fonts/font = SubResource( 1 )
-text = "Now, locate the mirror. "
+text = "Now, locate and tap the mirror. "
 autowrap = true
 
 [node name="BackButton" type="TextureButton" parent="."]
@@ -74,11 +128,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 1529.0
+margin_left = 906.0
 margin_top = 932.0
-margin_right = 1829.0
+margin_right = 1206.0
 margin_bottom = 1020.0
 custom_fonts/font = SubResource( 2 )
+disabled = true
 text = "Next"
 script = SubResource( 3 )
 path = "res://scenes/MicroSim/MicroSimSub9.tscn"
@@ -102,6 +157,54 @@ path = "res://scenes/MicroSim/MicroSimSub7.tscn"
 
 [node name="Click" type="AudioStreamPlayer" parent="Button2"]
 stream = ExtResource( 5 )
+
+[node name="Callout" type="TextureRect" parent="."]
+visible = false
+margin_left = 444.0
+margin_top = 154.0
+margin_right = 2137.0
+margin_bottom = 1071.0
+rect_scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 1
+
+[node name="Label2" type="Label" parent="Callout"]
+margin_left = 280.0
+margin_top = 200.0
+margin_right = 594.0
+margin_bottom = 270.0
+rect_scale = Vector2( 4, 4 )
+custom_fonts/font = SubResource( 4 )
+text = "You are right!"
+autowrap = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Correct = SubResource( 5 )
+anims/RESET = SubResource( 6 )
+
+[node name="Microscope" type="TextureRect" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 981.0
+margin_top = -41.0
+margin_right = 3029.0
+margin_bottom = 2007.0
+rect_scale = Vector2( 0.6, 0.6 )
+mouse_filter = 2
+texture = ExtResource( 10 )
+
+[node name="Mirror" type="TextureButton" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 1477.0
+margin_top = 802.0
+margin_right = 1705.0
+margin_bottom = 1040.0
+rect_scale = Vector2( 0.6, 0.6 )
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 12 )
+texture_focused = ExtResource( 12 )
 
 [connection signal="pressed" from="BackButton" to="BackButton" method="GotoScene"]
 [connection signal="pressed" from="Button" to="Button" method="GotoScene"]

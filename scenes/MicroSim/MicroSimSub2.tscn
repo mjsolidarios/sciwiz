@@ -1,7 +1,7 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scenes/TextButton.gd" type="Script" id=1]
-[ext_resource path="res://images/microsim_assets/Lab background (with blur).PNG" type="Texture" id=2]
+[ext_resource path="res://images/microsim_assets/Microscope.PNG" type="Texture" id=2]
 [ext_resource path="res://fonts/Roboto-Medium.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://fonts/Roboto-Black.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://sounds/click_001.tres" type="AudioStream" id=5]
@@ -9,6 +9,33 @@
 [ext_resource path="res://images/microsim_assets/Text Box.PNG" type="Texture" id=7]
 [ext_resource path="res://icons/arrowLeft.png" type="Texture" id=8]
 [ext_resource path="res://images/microsim_assets/Lab assistant.PNG" type="Texture" id=9]
+[ext_resource path="res://images/microsim_assets/Microscope background.PNG" type="Texture" id=10]
+[ext_resource path="res://images/microsim_assets/MicroscopeBase.png" type="Texture" id=11]
+[ext_resource path="res://images/microsim_assets/MicroscopeArm.png" type="Texture" id=12]
+[ext_resource path="res://images/microsim_assets/callout.png" type="Texture" id=13]
+
+[sub_resource type="GDScript" id=6]
+script/source = "extends Node2D
+
+var arm_tapped = false
+var base_tapped = false
+
+func _process(delta):
+	if arm_tapped and base_tapped:
+		$\"NextButton\".disabled = false
+
+
+func _on_TextureButtonArm_pressed():
+	$TextureButtonArm.modulate = Color(\"f2d449\")
+	arm_tapped = true
+	$AnimationPlayer.play(\"Correct\")
+
+
+func _on_TextureButtonBase_pressed():
+	$TextureButtonBase.modulate = Color(\"f2d449\")
+	base_tapped = true
+	$AnimationPlayer.play(\"Correct\")
+"
 
 [sub_resource type="DynamicFont" id=1]
 size = 49
@@ -28,16 +55,48 @@ func GotoScene():
 	$\"/root/Globals\".goto_scene(path)
 "
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="Animation" id=7]
+resource_name = "Correct"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Callout:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true, false ]
+}
 
-[node name="LabBackground(withBlur)" type="Sprite" parent="."]
-position = Vector2( 969, 548 )
-scale = Vector2( 1.05463, 1.05463 )
-texture = ExtResource( 2 )
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Callout:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[node name="Node2D" type="Node2D"]
+script = SubResource( 6 )
+
+[node name="MicroscopeBackground" type="Sprite" parent="."]
+position = Vector2( 955.75, 163.75 )
+scale = Vector2( 0.980225, 0.980225 )
+texture = ExtResource( 10 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 1920.0
+margin_bottom = 1080.0
 texture = ExtResource( 7 )
 
 [node name="LabAssistant" type="Sprite" parent="."]
@@ -45,13 +104,39 @@ position = Vector2( 863, 626 )
 texture = ExtResource( 9 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 576.0
-margin_top = 706.0
-margin_right = 1780.0
-margin_bottom = 947.0
+margin_left = 571.0
+margin_top = 678.0
+margin_right = 1249.0
+margin_bottom = 919.0
 custom_fonts/font = SubResource( 1 )
 text = "Tap the two parts of the light microscope that you should hold in carrying the microscope"
 autowrap = true
+
+[node name="Callout" type="TextureRect" parent="."]
+visible = false
+margin_left = 444.0
+margin_top = 154.0
+margin_right = 2137.0
+margin_bottom = 1071.0
+rect_scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 13 )
+expand = true
+stretch_mode = 1
+
+[node name="Label2" type="Label" parent="Callout"]
+margin_left = 280.0
+margin_top = 200.0
+margin_right = 594.0
+margin_bottom = 270.0
+rect_scale = Vector2( 4, 4 )
+custom_fonts/font = SubResource( 1 )
+text = "You are right!"
+autowrap = true
+
+[node name="Microscope" type="Sprite" parent="."]
+position = Vector2( 1493, 450 )
+scale = Vector2( 0.531738, 0.531738 )
+texture = ExtResource( 2 )
 
 [node name="BackButton" type="TextureButton" parent="."]
 margin_right = 162.0
@@ -69,7 +154,7 @@ stream = ExtResource( 6 )
 volume_db = -5.0
 autoplay = true
 
-[node name="Button" type="Button" parent="."]
+[node name="NextButton" type="Button" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -79,11 +164,12 @@ margin_top = 932.0
 margin_right = 1829.0
 margin_bottom = 1020.0
 custom_fonts/font = SubResource( 4 )
+disabled = true
 text = "Next"
 script = SubResource( 5 )
 path = "res://scenes/MicroSim/MicroSimSub3.tscn"
 
-[node name="Click" type="AudioStreamPlayer" parent="Button"]
+[node name="Click" type="AudioStreamPlayer" parent="NextButton"]
 stream = ExtResource( 5 )
 
 [node name="Button2" type="Button" parent="."]
@@ -103,6 +189,28 @@ path = "res://scenes/MicroSim/MicroSimSub1.tscn"
 [node name="Click" type="AudioStreamPlayer" parent="Button2"]
 stream = ExtResource( 5 )
 
+[node name="TextureButtonArm" type="TextureButton" parent="."]
+margin_left = 1559.0
+margin_top = 222.0
+margin_right = 1842.0
+margin_bottom = 627.0
+rect_scale = Vector2( 0.532, 0.532 )
+texture_normal = ExtResource( 12 )
+
+[node name="TextureButtonBase" type="TextureButton" parent="."]
+margin_left = 1191.0
+margin_top = 671.0
+margin_right = 2384.0
+margin_bottom = 1219.0
+rect_scale = Vector2( 0.532, 0.532 )
+texture_normal = ExtResource( 11 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Correct = SubResource( 7 )
+anims/RESET = SubResource( 8 )
+
 [connection signal="pressed" from="BackButton" to="BackButton" method="GotoScene"]
-[connection signal="pressed" from="Button" to="Button" method="GotoScene"]
+[connection signal="pressed" from="NextButton" to="NextButton" method="GotoScene"]
 [connection signal="pressed" from="Button2" to="Button2" method="GotoScene"]
+[connection signal="pressed" from="TextureButtonArm" to="." method="_on_TextureButtonArm_pressed"]
+[connection signal="pressed" from="TextureButtonBase" to="." method="_on_TextureButtonBase_pressed"]

@@ -98,7 +98,7 @@ margin_bottom = 1020.0
 custom_fonts/font = SubResource( 2 )
 text = "Back"
 script = SubResource( 3 )
-path = "res://scenes/MicroSim/MicroSimSub19.tscn"
+path = "res://scenes/MicroSim/MicroSimSub14.tscn"
 
 [node name="Click" type="AudioStreamPlayer" parent="Button2"]
 stream = ExtResource( 8 )

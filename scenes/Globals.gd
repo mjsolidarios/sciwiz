@@ -2,6 +2,7 @@ extends Node
 
 
 var active_cell_part = ""
+var active_lens = ""
 var total_score = 0
 var current_scene = null
 

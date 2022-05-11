@@ -1,7 +1,7 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/TextButton.gd" type="Script" id=1]
-[ext_resource path="res://images/microsim_assets/Lab background (with blur).PNG" type="Texture" id=2]
+[ext_resource path="res://images/microsim_assets/Microscope.PNG" type="Texture" id=2]
 [ext_resource path="res://fonts/Roboto-Medium.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://fonts/Roboto-Black.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://sounds/click_001.tres" type="AudioStream" id=5]
@@ -9,6 +9,7 @@
 [ext_resource path="res://images/microsim_assets/Text Box.PNG" type="Texture" id=7]
 [ext_resource path="res://icons/arrowLeft.png" type="Texture" id=8]
 [ext_resource path="res://images/microsim_assets/Lab assistant.PNG" type="Texture" id=9]
+[ext_resource path="res://images/microsim_assets/Microscope background.PNG" type="Texture" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 49
@@ -30,9 +31,13 @@ func GotoScene():
 
 [node name="Node2D" type="Node2D"]
 
-[node name="LabBackground(withBlur)" type="Sprite" parent="."]
-position = Vector2( 969, 548 )
-scale = Vector2( 1.05463, 1.05463 )
+[node name="MicroscopeBackground" type="Sprite" parent="."]
+position = Vector2( 1003, 341 )
+scale = Vector2( 0.983887, 0.983887 )
+texture = ExtResource( 10 )
+
+[node name="Microscope" type="Sprite" parent="MicroscopeBackground"]
+position = Vector2( 148.391, -82.3265 )
 texture = ExtResource( 2 )
 
 [node name="TextureRect" type="TextureRect" parent="."]

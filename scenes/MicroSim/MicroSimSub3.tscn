@@ -8,7 +8,7 @@
 [ext_resource path="res://sounds/Mind-Bender.ogg" type="AudioStream" id=6]
 [ext_resource path="res://images/microsim_assets/Text Box.PNG" type="Texture" id=7]
 [ext_resource path="res://icons/arrowLeft.png" type="Texture" id=8]
-[ext_resource path="res://images/microsim_assets/Lab assistant.PNG" type="Texture" id=9]
+[ext_resource path="res://images/microsim_assets/Lab assistant + microscope.PNG" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 49
@@ -39,10 +39,6 @@ texture = ExtResource( 2 )
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 7 )
-
-[node name="LabAssistant" type="Sprite" parent="."]
-position = Vector2( 863, 626 )
-texture = ExtResource( 9 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = 576.0
@@ -102,6 +98,11 @@ path = "res://scenes/MicroSim/MicroSimSub2.tscn"
 
 [node name="Click" type="AudioStreamPlayer" parent="Button2"]
 stream = ExtResource( 5 )
+
+[node name="LabAssistant+Microscope" type="Sprite" parent="."]
+position = Vector2( 278, 634 )
+scale = Vector2( 0.482422, 0.482422 )
+texture = ExtResource( 9 )
 
 [connection signal="pressed" from="BackButton" to="BackButton" method="GotoScene"]
 [connection signal="pressed" from="Button" to="Button" method="GotoScene"]

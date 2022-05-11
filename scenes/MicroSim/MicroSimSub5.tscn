@@ -1,14 +1,104 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://scenes/TextButton.gd" type="Script" id=1]
-[ext_resource path="res://images/microsim_assets/Lab background (with blur).PNG" type="Texture" id=2]
+[ext_resource path="res://images/microsim_assets/Close up objectives (1).PNG" type="Texture" id=2]
 [ext_resource path="res://fonts/Roboto-Medium.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://fonts/Roboto-Black.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://sounds/click_001.tres" type="AudioStream" id=5]
 [ext_resource path="res://sounds/Mind-Bender.ogg" type="AudioStream" id=6]
-[ext_resource path="res://images/microsim_assets/Text Box.PNG" type="Texture" id=7]
+[ext_resource path="res://images/microsim_assets/Text Box Small.png" type="Texture" id=7]
 [ext_resource path="res://icons/arrowLeft.png" type="Texture" id=8]
 [ext_resource path="res://images/microsim_assets/Lab assistant.PNG" type="Texture" id=9]
+[ext_resource path="res://images/microsim_assets/Microscope background.PNG" type="Texture" id=10]
+[ext_resource path="res://images/microsim_assets/Lens5x.png" type="Texture" id=11]
+[ext_resource path="res://images/microsim_assets/Lens10x.png" type="Texture" id=12]
+[ext_resource path="res://images/microsim_assets/Lens100x.png" type="Texture" id=13]
+[ext_resource path="res://images/microsim_assets/Lens40x.png" type="Texture" id=14]
+[ext_resource path="res://ui/Callout.tscn" type="PackedScene" id=15]
+
+[sub_resource type="GDScript" id=9]
+script/source = "extends Node2D
+
+var scanner_enabled = false
+var lpo_enabled = false
+var hpo_enabled = false
+var oil_enabled = false
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if  scanner_enabled and lpo_enabled and hpo_enabled and oil_enabled:
+		$ButtonNext.disabled = false
+"
+
+[sub_resource type="GDScript" id=8]
+script/source = "extends Area2D
+
+export(String) var slot_target
+
+func _on_Lens10x2_mouse_entered():
+	var lens = $\"/root/Globals\".active_lens
+	if lens == slot_target:
+		$Lens.modulate = Color(\"f2d449\")
+		self.get_parent().lpo_enabled = true
+		get_parent().get_node(\"AnimationPlayer\").play(\"Correct\")
+
+
+func _on_Lens10x2_mouse_exited():
+	$\"/root/Globals\".active_lens = \"\"
+"
+
+[sub_resource type="GDScript" id=10]
+script/source = "extends Area2D
+
+export(String) var slot_target
+
+func _on_Lens5x2_mouse_entered():
+	var lens = $\"/root/Globals\".active_lens
+	if lens == slot_target:
+		$Lens.modulate = Color(\"f2d449\")
+		self.get_parent().scanner_enabled = true
+		get_parent().get_node(\"AnimationPlayer\").play(\"Correct\")
+
+
+func _on_Lens5x2_mouse_exited():
+	$\"/root/Globals\".active_lens = \"\"
+"
+
+[sub_resource type="GDScript" id=11]
+script/source = "extends Area2D
+
+export(String) var slot_target
+
+func _on_Lens100x2_mouse_entered():
+	var lens = $\"/root/Globals\".active_lens
+	if lens == slot_target:
+		$Lens.modulate = Color(\"f2d449\")
+		self.get_parent().oil_enabled = true
+		get_parent().get_node(\"AnimationPlayer\").play(\"Correct\")
+
+
+func _on_Lens100x2_mouse_exited():
+	$\"/root/Globals\".active_lens = \"\"
+"
+
+[sub_resource type="GDScript" id=12]
+script/source = "extends Area2D
+
+export(String) var slot_target
+
+func action_mouse_entered():
+	var lens = $\"/root/Globals\".active_lens
+	print(lens)
+	if lens == slot_target:
+		$Lens.modulate = Color(\"f2d449\")
+		self.get_parent( ).hpo_enabled = true
+		get_parent().get_node(\"AnimationPlayer\").play(\"Correct\")
+
+
+func _on_Lens40x3_mouse_exited():
+	$\"/root/Globals\".active_lens = \"\"
+"
 
 [sub_resource type="DynamicFont" id=1]
 size = 49
@@ -28,29 +118,238 @@ func GotoScene():
 	$\"/root/Globals\".goto_scene(path)
 "
 
+[sub_resource type="GDScript" id=4]
+script/source = "extends Button
+
+export(String) var identity_name
+
+func get_drag_data(_pos):
+	# Use a 2D sprite as drag preview.
+	var cp = Button.new()
+	cp.text = self.text
+	cp.rect_scale = Vector2(3.5,3.5)
+	cp.theme = self.theme
+	var c = Control.new()
+	c.add_child(cp)
+	cp.rect_position = -0.5 * cp.rect_size
+	
+	set_drag_preview(c)
+	
+	$Click.play()
+	
+	$\"/root/Globals\".active_lens = identity_name
+
+	return identity_name
+
+
+func can_drop_data(_pos, data):
+	return typeof(data) == TYPE_COLOR
+
+"
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends Button
+
+export(String) var identity_name
+
+func get_drag_data(_pos):
+	# Use a 2D sprite as drag preview.
+	var cp = Button.new()
+	cp.text = self.text
+	cp.rect_scale = Vector2(3.5,3.5)
+	cp.theme = self.theme
+	var c = Control.new()
+	c.add_child(cp)
+	cp.rect_position = -0.5 * cp.rect_size
+	
+	set_drag_preview(c)
+	
+	$Click.play()
+	
+	$\"/root/Globals\".active_lens = identity_name
+
+	return identity_name
+
+
+func can_drop_data(_pos, data):
+	return typeof(data) == TYPE_COLOR
+
+"
+
+[sub_resource type="GDScript" id=6]
+script/source = "extends Button
+
+export(String) var identity_name
+
+func get_drag_data(_pos):
+	# Use a 2D sprite as drag preview.
+	var cp = Button.new()
+	cp.text = self.text
+	cp.rect_scale = Vector2(3.5,3.5)
+	cp.theme = self.theme
+	var c = Control.new()
+	c.add_child(cp)
+	cp.rect_position = -0.5 * cp.rect_size
+	
+	set_drag_preview(c)	
+	
+	$Click.play()
+	
+	$\"/root/Globals\".active_lens = identity_name
+
+	return identity_name
+
+
+func can_drop_data(_pos, data):
+	return typeof(data) == TYPE_COLOR
+
+"
+
+[sub_resource type="GDScript" id=7]
+script/source = "extends Button
+
+export(String) var identity_name
+
+func get_drag_data(_pos):
+	# Use a 2D sprite as drag preview.
+	var cp = Button.new()
+	cp.text = self.text
+	cp.rect_scale = Vector2(3.5,3.5)
+	cp.theme = self.theme
+	var c = Control.new()
+	c.add_child(cp)
+	cp.rect_position = -0.5 * cp.rect_size
+	
+	set_drag_preview(c)	
+	
+	$Click.play()
+	
+	$\"/root/Globals\".active_lens = identity_name
+
+	return identity_name
+
+
+func can_drop_data(_pos, data):
+	return typeof(data) == TYPE_COLOR
+
+"
+
+[sub_resource type="Animation" id=14]
+resource_name = "Correct"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Callout:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true, false ]
+}
+
+[sub_resource type="Animation" id=15]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Callout:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
 [node name="Node2D" type="Node2D"]
+script = SubResource( 9 )
 
-[node name="LabBackground(withBlur)" type="Sprite" parent="."]
-position = Vector2( 969, 548 )
-scale = Vector2( 1.05463, 1.05463 )
-texture = ExtResource( 2 )
+[node name="MicroscopeBackground" type="Sprite" parent="."]
+position = Vector2( 993, 388 )
+texture = ExtResource( 10 )
 
-[node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="TextBox" type="Sprite" parent="."]
+position = Vector2( 559, 169 )
+scale = Vector2( 0.36742, 0.247167 )
 texture = ExtResource( 7 )
+
+[node name="CloseUpLenses" type="Sprite" parent="."]
+position = Vector2( 1381, 244 )
+scale = Vector2( 0.683838, 0.683838 )
+texture = ExtResource( 2 )
 
 [node name="LabAssistant" type="Sprite" parent="."]
 position = Vector2( 863, 626 )
 texture = ExtResource( 9 )
 
+[node name="Lens10x2" type="Area2D" parent="."]
+script = SubResource( 8 )
+slot_target = "lpo"
+
+[node name="Lens" type="Sprite" parent="Lens10x2"]
+position = Vector2( 1146, 496 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 12 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lens10x2"]
+polygon = PoolVector2Array( 1220, 360, 1262, 395, 1159, 526, 1162, 598, 1116, 637, 1062, 596, 1030, 548, 1030, 501 )
+
+[node name="Lens5x2" type="Area2D" parent="."]
+script = SubResource( 10 )
+slot_target = "scanner"
+
+[node name="Lens" type="Sprite" parent="Lens5x2"]
+position = Vector2( 1269, 518 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 11 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lens5x2"]
+polygon = PoolVector2Array( 1270, 399, 1169, 524, 1170, 584, 1229, 629, 1281, 630, 1380, 487 )
+
+[node name="Lens100x2" type="Area2D" parent="."]
+script = SubResource( 11 )
+slot_target = "oil"
+
+[node name="Lens" type="Sprite" parent="Lens100x2"]
+position = Vector2( 1316, 705 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 13 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lens100x2"]
+polygon = PoolVector2Array( 1386, 496, 1228, 822, 1234, 849, 1227, 867, 1263, 913, 1347, 920, 1416, 790, 1405, 506 )
+
+[node name="Lens40x3" type="Area2D" parent="."]
+script = SubResource( 12 )
+slot_target = "hpo"
+
+[node name="Lens" type="Sprite" parent="Lens40x3"]
+position = Vector2( 1487, 689 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 14 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lens40x3"]
+polygon = PoolVector2Array( 1419, 523, 1422, 831, 1444, 857, 1552, 858, 1571, 819, 1555, 607 )
+
 [node name="Label" type="Label" parent="."]
-margin_left = 576.0
-margin_top = 706.0
-margin_right = 1780.0
-margin_bottom = 947.0
+margin_left = 284.0
+margin_top = 71.0
+margin_right = 912.0
+margin_bottom = 277.0
 custom_fonts/font = SubResource( 1 )
 text = "Which is which? Drag the names below to the appropriate objectives."
+autowrap = true
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 574.0
+margin_top = 451.0
+margin_right = 796.0
+margin_bottom = 509.0
+custom_fonts/font = SubResource( 1 )
+text = "Names:"
 autowrap = true
 
 [node name="BackButton" type="TextureButton" parent="."]
@@ -69,21 +368,22 @@ stream = ExtResource( 6 )
 volume_db = -5.0
 autoplay = true
 
-[node name="Button" type="Button" parent="."]
+[node name="ButtonNext" type="Button" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 1529.0
+margin_left = 1569.0
 margin_top = 932.0
-margin_right = 1829.0
+margin_right = 1869.0
 margin_bottom = 1020.0
 custom_fonts/font = SubResource( 2 )
+disabled = true
 text = "Next"
 script = SubResource( 3 )
 path = "res://scenes/MicroSim/MicroSimSub6.tscn"
 
-[node name="Click" type="AudioStreamPlayer" parent="Button"]
+[node name="Click" type="AudioStreamPlayer" parent="ButtonNext"]
 stream = ExtResource( 5 )
 
 [node name="Button2" type="Button" parent="."]
@@ -91,9 +391,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 576.0
+margin_left = 1236.0
 margin_top = 932.0
-margin_right = 876.0
+margin_right = 1536.0
 margin_bottom = 1020.0
 custom_fonts/font = SubResource( 2 )
 text = "Back"
@@ -103,6 +403,92 @@ path = "res://scenes/MicroSim/MicroSimSub4.tscn"
 [node name="Click" type="AudioStreamPlayer" parent="Button2"]
 stream = ExtResource( 5 )
 
+[node name="ButtonScanner" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 566.0
+margin_top = 531.0
+margin_right = 920.0
+margin_bottom = 668.0
+rect_scale = Vector2( 0.7, 0.7 )
+custom_fonts/font = SubResource( 2 )
+text = "Scanner"
+script = SubResource( 4 )
+identity_name = "scanner"
+
+[node name="Click" type="AudioStreamPlayer" parent="ButtonScanner"]
+stream = ExtResource( 5 )
+
+[node name="ButtonLPO" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 568.0
+margin_top = 644.0
+margin_right = 887.0
+margin_bottom = 775.0
+rect_scale = Vector2( 0.7, 0.7 )
+custom_fonts/font = SubResource( 2 )
+text = "LPO"
+script = SubResource( 5 )
+identity_name = "lpo"
+
+[node name="Click" type="AudioStreamPlayer" parent="ButtonLPO"]
+stream = ExtResource( 5 )
+
+[node name="ButtonHPO" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 569.0
+margin_top = 750.0
+margin_right = 886.0
+margin_bottom = 884.0
+rect_scale = Vector2( 0.7, 0.7 )
+custom_fonts/font = SubResource( 2 )
+text = "HPO"
+script = SubResource( 6 )
+identity_name = "hpo"
+
+[node name="Click" type="AudioStreamPlayer" parent="ButtonHPO"]
+stream = ExtResource( 5 )
+
+[node name="ButtonOil" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 571.0
+margin_top = 857.0
+margin_right = 1097.0
+margin_bottom = 1016.0
+rect_scale = Vector2( 0.7, 0.7 )
+custom_fonts/font = SubResource( 2 )
+text = "Oil Immersion"
+script = SubResource( 7 )
+identity_name = "oil"
+
+[node name="Click" type="AudioStreamPlayer" parent="ButtonOil"]
+stream = ExtResource( 5 )
+
+[node name="Callout" parent="." instance=ExtResource( 15 )]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Correct = SubResource( 14 )
+anims/RESET = SubResource( 15 )
+
+[connection signal="mouse_entered" from="Lens10x2" to="Lens10x2" method="_on_Lens10x2_mouse_entered"]
+[connection signal="mouse_exited" from="Lens10x2" to="Lens10x2" method="_on_Lens10x2_mouse_exited"]
+[connection signal="mouse_entered" from="Lens5x2" to="Lens5x2" method="_on_Lens5x2_mouse_entered"]
+[connection signal="mouse_exited" from="Lens5x2" to="Lens5x2" method="_on_Lens5x2_mouse_exited"]
+[connection signal="mouse_entered" from="Lens100x2" to="Lens100x2" method="_on_Lens100x2_mouse_entered"]
+[connection signal="mouse_exited" from="Lens100x2" to="Lens100x2" method="_on_Lens100x2_mouse_exited"]
+[connection signal="mouse_entered" from="Lens40x3" to="Lens40x3" method="action_mouse_entered"]
+[connection signal="mouse_exited" from="Lens40x3" to="Lens40x3" method="_on_Lens40x3_mouse_exited"]
 [connection signal="pressed" from="BackButton" to="BackButton" method="GotoScene"]
-[connection signal="pressed" from="Button" to="Button" method="GotoScene"]
+[connection signal="pressed" from="ButtonNext" to="ButtonNext" method="GotoScene"]
 [connection signal="pressed" from="Button2" to="Button2" method="GotoScene"]
