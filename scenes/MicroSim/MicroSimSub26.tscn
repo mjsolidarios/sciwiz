@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/TextButton.gd" type="Script" id=1]
 [ext_resource path="res://images/microsim_assets/Text Box.PNG" type="Texture" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://sounds/Mind-Bender.ogg" type="AudioStream" id=7]
 [ext_resource path="res://sounds/click_001.tres" type="AudioStream" id=8]
 [ext_resource path="res://images/microsim_assets/Lab background (with blur).PNG" type="Texture" id=9]
+[ext_resource path="res://images/microsim_assets/Microscope side view.PNG" type="Texture" id=10]
+[ext_resource path="res://images/microsim_assets/Arrow 1.PNG" type="Texture" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 44
@@ -31,9 +33,14 @@ func GotoScene():
 [node name="Node2D" type="Node2D"]
 
 [node name="LabBackground(withBlur)" type="Sprite" parent="."]
-position = Vector2( 969, 548 )
-scale = Vector2( 1.05463, 1.05463 )
+position = Vector2( 1069, 555 )
+scale = Vector2( 1.23287, 1.23287 )
 texture = ExtResource( 9 )
+
+[node name="MicroscopeSideView" type="Sprite" parent="."]
+position = Vector2( 1218, 33 )
+scale = Vector2( 1.18359, 1.18359 )
+texture = ExtResource( 10 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 40.0
@@ -104,6 +111,12 @@ path = "res://scenes/MicroSim/MicroSimSub25.tscn"
 
 [node name="Click" type="AudioStreamPlayer" parent="Button2"]
 stream = ExtResource( 8 )
+
+[node name="Arrow1" type="Sprite" parent="."]
+position = Vector2( 1261, 361 )
+rotation = 1.57079
+scale = Vector2( 0.30957, 0.30957 )
+texture = ExtResource( 11 )
 
 [connection signal="pressed" from="BackButton" to="BackButton" method="GotoScene"]
 [connection signal="pressed" from="Button" to="Button" method="GotoScene"]

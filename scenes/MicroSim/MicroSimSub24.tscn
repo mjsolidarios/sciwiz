@@ -1,7 +1,7 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scenes/TextButton.gd" type="Script" id=1]
-[ext_resource path="res://images/microsim_assets/Text Box.PNG" type="Texture" id=2]
+[ext_resource path="res://images/microsim_assets/Text Box Small.png" type="Texture" id=2]
 [ext_resource path="res://images/microsim_assets/Lab assistant.PNG" type="Texture" id=3]
 [ext_resource path="res://icons/arrowLeft.png" type="Texture" id=4]
 [ext_resource path="res://fonts/Roboto-Black.ttf" type="DynamicFontData" id=5]
@@ -9,6 +9,38 @@
 [ext_resource path="res://sounds/Mind-Bender.ogg" type="AudioStream" id=7]
 [ext_resource path="res://sounds/click_001.tres" type="AudioStream" id=8]
 [ext_resource path="res://images/microsim_assets/Lab background (with blur).PNG" type="Texture" id=9]
+[ext_resource path="res://images/microsim_assets/Close up stage to base.PNG" type="Texture" id=10]
+[ext_resource path="res://images/microsim_assets/Open diaphragm.PNG" type="Texture" id=11]
+[ext_resource path="res://images/microsim_assets/Closed diaphragm.PNG" type="Texture" id=12]
+[ext_resource path="res://images/microsim_assets/Arrow 1.PNG" type="Texture" id=13]
+
+[sub_resource type="GDScript" id=6]
+script/source = "extends Node2D
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+func _on_TriggerButton_pressed():
+	$MainAnimation.play(\"Open\")
+
+
+func _on_MainAnimation_animation_finished(anim_name):
+	if anim_name == \"Open\":
+		$Button.disabled = false
+"
 
 [sub_resource type="DynamicFont" id=1]
 size = 44
@@ -28,29 +60,113 @@ func GotoScene():
 	$\"/root/Globals\".goto_scene(path)
 "
 
+[sub_resource type="Animation" id=4]
+resource_name = "New Anim"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Arrow1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1727, 338 ), Vector2( 1625, 338 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Arrow1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1727, 338 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Open"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("DiapgraghmTop/ClosedDiaphragm:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("DiapgraghmTop/ClosedDiaphragm:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="Node2D" type="Node2D"]
+script = SubResource( 6 )
 
 [node name="LabBackground(withBlur)" type="Sprite" parent="."]
-position = Vector2( 969, 548 )
-scale = Vector2( 1.05463, 1.05463 )
+position = Vector2( 1291, 573 )
+scale = Vector2( 1.48617, 1.31898 )
 texture = ExtResource( 9 )
 
-[node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 2 )
+[node name="CloseUpStageToBase" type="Sprite" parent="."]
+position = Vector2( 1596, 664 )
+scale = Vector2( 0.766602, 0.766602 )
+texture = ExtResource( 10 )
+
+[node name="DiapgraghmTop" type="Node2D" parent="."]
+position = Vector2( 499, 302 )
+scale = Vector2( 0.3, 0.3 )
+
+[node name="OpenDiaphragm" type="Sprite" parent="DiapgraghmTop"]
+texture = ExtResource( 11 )
+
+[node name="ClosedDiaphragm" type="Sprite" parent="DiapgraghmTop"]
+texture = ExtResource( 12 )
 
 [node name="LabAssistant" type="Sprite" parent="."]
-position = Vector2( 863, 626 )
+position = Vector2( 746, 850 )
 texture = ExtResource( 3 )
 
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 368.0
+margin_top = 668.0
+margin_right = 1437.0
+margin_bottom = 1071.0
+texture = ExtResource( 2 )
+expand = true
+
 [node name="Label" type="Label" parent="."]
-margin_left = 578.0
-margin_top = 713.0
-margin_right = 1778.0
-margin_bottom = 1031.0
+margin_left = 467.0
+margin_top = 726.0
+margin_right = 1352.0
+margin_bottom = 1021.0
 custom_fonts/font = SubResource( 1 )
-text = "Adjust the diaphragm so that enough amount of light can pass through the slide. Use the picture below as a guide in adjusting the diaphragm."
+text = "Adjust the diaphragm so that enough amount of light can pass through the slide.  (Tap on the diaphragm.)"
 autowrap = true
 
 [node name="BackButton" type="TextureButton" parent="."]
@@ -74,11 +190,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 1529.0
-margin_top = 932.0
-margin_right = 1829.0
-margin_bottom = 1020.0
+margin_left = 1057.0
+margin_top = 934.0
+margin_right = 1357.0
+margin_bottom = 1022.0
 custom_fonts/font = SubResource( 2 )
+disabled = true
 text = "Next"
 script = SubResource( 3 )
 path = "res://scenes/MicroSim/MicroSimSub25.tscn"
@@ -91,10 +208,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 576.0
-margin_top = 932.0
-margin_right = 876.0
-margin_bottom = 1020.0
+margin_left = 470.0
+margin_top = 923.0
+margin_right = 770.0
+margin_bottom = 1011.0
 custom_fonts/font = SubResource( 2 )
 text = "Back"
 script = SubResource( 3 )
@@ -103,6 +220,30 @@ path = "res://scenes/MicroSim/MicroSimSub23.tscn"
 [node name="Click" type="AudioStreamPlayer" parent="Button2"]
 stream = ExtResource( 8 )
 
+[node name="ArrowLoop" type="AnimationPlayer" parent="."]
+root_node = NodePath("../MainAnimation")
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 4 )
+anims/RESET = SubResource( 5 )
+
+[node name="MainAnimation" type="AnimationPlayer" parent="."]
+anims/Open = SubResource( 7 )
+anims/RESET = SubResource( 8 )
+
+[node name="Arrow1" type="Sprite" parent="."]
+position = Vector2( 1727, 338 )
+rotation = -1.57079
+scale = Vector2( 0.177002, 0.177002 )
+texture = ExtResource( 13 )
+
+[node name="TriggerButton" type="TextureButton" parent="."]
+margin_left = 1033.0
+margin_top = 176.0
+margin_right = 1898.0
+margin_bottom = 480.0
+
 [connection signal="pressed" from="BackButton" to="BackButton" method="GotoScene"]
 [connection signal="pressed" from="Button" to="Button" method="GotoScene"]
 [connection signal="pressed" from="Button2" to="Button2" method="GotoScene"]
+[connection signal="animation_finished" from="MainAnimation" to="." method="_on_MainAnimation_animation_finished"]
+[connection signal="pressed" from="TriggerButton" to="." method="_on_TriggerButton_pressed"]

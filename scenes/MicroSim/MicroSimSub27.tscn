@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/TextButton.gd" type="Script" id=1]
 [ext_resource path="res://images/microsim_assets/Text Box.PNG" type="Texture" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://sounds/Mind-Bender.ogg" type="AudioStream" id=7]
 [ext_resource path="res://sounds/click_001.tres" type="AudioStream" id=8]
 [ext_resource path="res://images/microsim_assets/Lab background (with blur).PNG" type="Texture" id=9]
+[ext_resource path="res://images/microsim_assets/Arrow 1.PNG" type="Texture" id=10]
+[ext_resource path="res://images/microsim_assets/Microscope side view.PNG" type="Texture" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 44
@@ -31,9 +33,20 @@ func GotoScene():
 [node name="Node2D" type="Node2D"]
 
 [node name="LabBackground(withBlur)" type="Sprite" parent="."]
-position = Vector2( 969, 548 )
-scale = Vector2( 1.05463, 1.05463 )
+position = Vector2( 1188, 531 )
+scale = Vector2( 1.29659, 1.23565 )
 texture = ExtResource( 9 )
+
+[node name="MicroscopeSideView" type="Sprite" parent="."]
+position = Vector2( 1333, 54 )
+scale = Vector2( 1.18359, 1.18359 )
+texture = ExtResource( 11 )
+
+[node name="Arrow1" type="Sprite" parent="."]
+position = Vector2( 1376, 382 )
+rotation = 1.57079
+scale = Vector2( 0.30957, 0.30957 )
+texture = ExtResource( 10 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 40.0
@@ -45,10 +58,10 @@ position = Vector2( 863, 626 )
 texture = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 578.0
-margin_top = 694.0
-margin_right = 1778.0
-margin_bottom = 1031.0
+margin_left = 581.0
+margin_top = 744.0
+margin_right = 1781.0
+margin_bottom = 1001.0
 custom_fonts/font = SubResource( 1 )
 text = "Great job! Now, while looking into the eyepiece, slowly rotate the coarse adjustment knob to bring the specimen into focus"
 autowrap = true

@@ -50,7 +50,7 @@ margin_top = 694.0
 margin_right = 1778.0
 margin_bottom = 1031.0
 custom_fonts/font = SubResource( 1 )
-text = "Great job! It’s now time to focus the image and get a clearer view of the specimen. When viewing a specimen, start with the lowest objective. (click anywhere to continue)"
+text = "Great job! It’s now time to focus the image and get a clearer view of the specimen. When viewing a specimen, start with the lowest objective."
 autowrap = true
 
 [node name="BackButton" type="TextureButton" parent="."]

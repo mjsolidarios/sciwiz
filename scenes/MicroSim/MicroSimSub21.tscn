@@ -1,7 +1,7 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scenes/TextButton.gd" type="Script" id=1]
-[ext_resource path="res://images/microsim_assets/Text Box.PNG" type="Texture" id=2]
+[ext_resource path="res://images/microsim_assets/base-part-1.png" type="Texture" id=2]
 [ext_resource path="res://images/microsim_assets/Lab assistant.PNG" type="Texture" id=3]
 [ext_resource path="res://icons/arrowLeft.png" type="Texture" id=4]
 [ext_resource path="res://fonts/Roboto-Black.ttf" type="DynamicFontData" id=5]
@@ -9,9 +9,130 @@
 [ext_resource path="res://sounds/Mind-Bender.ogg" type="AudioStream" id=7]
 [ext_resource path="res://sounds/click_001.tres" type="AudioStream" id=8]
 [ext_resource path="res://images/microsim_assets/Lab background (with blur).PNG" type="Texture" id=9]
+[ext_resource path="res://images/microsim_assets/base-part-4.png" type="Texture" id=10]
+[ext_resource path="res://images/microsim_assets/Text Box Small.png" type="Texture" id=11]
+[ext_resource path="res://images/microsim_assets/base-part-3.png" type="Texture" id=12]
+[ext_resource path="res://images/microsim_assets/base-part-2.png" type="Texture" id=13]
+[ext_resource path="res://images/microsim_assets/curve-arrow-2.png" type="Texture" id=14]
+[ext_resource path="res://images/microsim_assets/curve-arrow-1.png" type="Texture" id=15]
 
-[sub_resource type="DynamicFont" id=1]
-size = 38
+[sub_resource type="GDScript" id=9]
+script/source = "extends Node2D
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+func _on_TapButon_pressed():
+	$Base/BaseAnimation.play(\"Elevate\")
+
+
+func _on_BaseAnimation_animation_finished(anim_name):
+	if anim_name == \"Elevate\":
+		$Button.disabled = false;
+"
+
+[sub_resource type="Animation" id=5]
+resource_name = "New Anim"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("RotationKnob:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("RotationKnob:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Elevate"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Base-part-1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 654, 392 ), Vector2( 654, 266 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Base-part-2/Base-part-3:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 60.6 ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Base-part-1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 654, 392 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Base-part-2/Base-part-3:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="DynamicFont" id=4]
+size = 50
 font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=2]
@@ -29,32 +150,67 @@ func GotoScene():
 "
 
 [node name="Node2D" type="Node2D"]
+script = SubResource( 9 )
 
-[node name="LabBackground(withBlur)" type="Sprite" parent="."]
-position = Vector2( 969, 548 )
-scale = Vector2( 1.05463, 1.05463 )
+[node name="TextureRect2" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -102.0
+margin_top = -140.0
+margin_right = 2418.0
+margin_bottom = 1219.0
 texture = ExtResource( 9 )
-
-[node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 2 )
+expand = true
 
 [node name="LabAssistant" type="Sprite" parent="."]
-position = Vector2( 863, 626 )
+position = Vector2( 545, 706 )
 texture = ExtResource( 3 )
 
-[node name="Label" type="Label" parent="."]
-margin_left = 578.0
-margin_top = 677.0
-margin_right = 1778.0
-margin_bottom = 1031.0
-custom_fonts/font = SubResource( 1 )
-text = "Procedures in Focusing in Viewing the Specimen Using the Microscope
+[node name="Base" type="Node2D" parent="."]
+position = Vector2( 848, 272 )
+scale = Vector2( 0.5, 0.5 )
 
-Place your slide on the stage. Make sure to elevate first the objectives using the course adjustment knob.
-"
-autowrap = true
+[node name="Base-part-1" type="Sprite" parent="Base"]
+position = Vector2( 654, 392 )
+texture = ExtResource( 2 )
+
+[node name="Base-part-4" type="Sprite" parent="Base/Base-part-1"]
+position = Vector2( 720, 372 )
+texture = ExtResource( 10 )
+
+[node name="Base-part-2" type="Sprite" parent="Base"]
+position = Vector2( 958, 595 )
+texture = ExtResource( 13 )
+
+[node name="Base-part-3" type="Sprite" parent="Base/Base-part-2"]
+position = Vector2( 920, -321 )
+texture = ExtResource( 12 )
+
+[node name="RotationKnob" type="Node2D" parent="Base"]
+position = Vector2( 1874, 286 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Curve-arrow-1" type="Sprite" parent="Base/RotationKnob"]
+position = Vector2( 0, 240.251 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 15 )
+
+[node name="Curve-arrow-2" type="Sprite" parent="Base/RotationKnob"]
+position = Vector2( 0, -259.749 )
+rotation = -3.14159
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 14 )
+
+[node name="Rotation" type="AnimationPlayer" parent="Base"]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 5 )
+anims/RESET = SubResource( 6 )
+
+[node name="BaseAnimation" type="AnimationPlayer" parent="Base"]
+anims/Elevate = SubResource( 7 )
+anims/RESET = SubResource( 8 )
 
 [node name="BackButton" type="TextureButton" parent="."]
 margin_right = 162.0
@@ -72,16 +228,44 @@ stream = ExtResource( 7 )
 volume_db = -5.0
 autoplay = true
 
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 161.0
+margin_top = 170.0
+margin_right = 2075.0
+margin_bottom = 1654.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 11 )
+expand = true
+
+[node name="Label" type="Label" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 253.0
+margin_top = 262.0
+margin_right = 1053.0
+margin_bottom = 889.0
+custom_fonts/font = SubResource( 4 )
+text = "Procedures in Focusing in Viewing the Specimen Using the Microscope
+
+Place your slide on the stage. Make sure to elevate first the objectives using the course adjustment knob.
+
+(Tap the knob to rotate)
+"
+autowrap = true
+
 [node name="Button" type="Button" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 1529.0
-margin_top = 932.0
-margin_right = 1829.0
-margin_bottom = 1020.0
+margin_left = 761.0
+margin_top = 927.0
+margin_right = 1061.0
+margin_bottom = 1015.0
 custom_fonts/font = SubResource( 2 )
+disabled = true
 text = "Next"
 script = SubResource( 3 )
 path = "res://scenes/MicroSim/MicroSimSub22.tscn"
@@ -94,9 +278,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 576.0
+margin_left = 412.0
 margin_top = 932.0
-margin_right = 876.0
+margin_right = 712.0
 margin_bottom = 1020.0
 custom_fonts/font = SubResource( 2 )
 text = "Back"
@@ -106,5 +290,17 @@ path = "res://scenes/MicroSim/MicroSimSub20.tscn"
 [node name="Click" type="AudioStreamPlayer" parent="Button2"]
 stream = ExtResource( 8 )
 
+[node name="TapButon" type="TextureButton" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 1642.0
+margin_top = 247.0
+margin_right = 1912.0
+margin_bottom = 593.0
+
+[connection signal="animation_finished" from="Base/BaseAnimation" to="." method="_on_BaseAnimation_animation_finished"]
 [connection signal="pressed" from="BackButton" to="BackButton" method="GotoScene"]
 [connection signal="pressed" from="Button" to="Button" method="GotoScene"]
+[connection signal="pressed" from="TapButon" to="." method="_on_TapButon_pressed"]

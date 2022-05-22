@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/TextButton.gd" type="Script" id=1]
 [ext_resource path="res://images/microsim_assets/Text Box.PNG" type="Texture" id=2]
@@ -9,6 +9,26 @@
 [ext_resource path="res://sounds/Mind-Bender.ogg" type="AudioStream" id=7]
 [ext_resource path="res://sounds/click_001.tres" type="AudioStream" id=8]
 [ext_resource path="res://images/microsim_assets/Lab background (with blur).PNG" type="Texture" id=9]
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Node2D
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if $SpinBox.value == 400:
+		$Button.disabled = false
+"
 
 [sub_resource type="DynamicFont" id=1]
 size = 44
@@ -29,6 +49,7 @@ func GotoScene():
 "
 
 [node name="Node2D" type="Node2D"]
+script = SubResource( 4 )
 
 [node name="LabBackground(withBlur)" type="Sprite" parent="."]
 position = Vector2( 969, 548 )
@@ -50,7 +71,7 @@ margin_top = 694.0
 margin_right = 1778.0
 margin_bottom = 1031.0
 custom_fonts/font = SubResource( 1 )
-text = "Now, how much is the total magnification of the specimen, with HPO marked 40x and eyepiece with 10x?"
+text = "Now, how much is the total magnification of the specimen, with HPO marked 40x and eyepiece with 10x? Please enter your answer on the input below."
 autowrap = true
 
 [node name="BackButton" type="TextureButton" parent="."]
@@ -74,14 +95,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 1529.0
-margin_top = 932.0
-margin_right = 1829.0
-margin_bottom = 1020.0
+margin_left = 1508.0
+margin_top = 920.0
+margin_right = 1808.0
+margin_bottom = 1008.0
 custom_fonts/font = SubResource( 2 )
+disabled = true
 text = "Next"
 script = SubResource( 3 )
-path = "res://scenes/MicroSim/MicroSimSub35.tscn"
+path = "res://scenes/MicroSim/MicroSimSub38.tscn"
 
 [node name="Click" type="AudioStreamPlayer" parent="Button"]
 stream = ExtResource( 8 )
@@ -91,10 +113,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 576.0
-margin_top = 932.0
-margin_right = 876.0
-margin_bottom = 1020.0
+margin_left = 1161.0
+margin_top = 918.0
+margin_right = 1461.0
+margin_bottom = 1006.0
 custom_fonts/font = SubResource( 2 )
 text = "Back"
 script = SubResource( 3 )
@@ -102,6 +124,14 @@ path = "res://scenes/MicroSim/MicroSimSub33.tscn"
 
 [node name="Click" type="AudioStreamPlayer" parent="Button2"]
 stream = ExtResource( 8 )
+
+[node name="SpinBox" type="SpinBox" parent="."]
+margin_left = 578.0
+margin_top = 911.0
+margin_right = 750.0
+margin_bottom = 960.0
+rect_scale = Vector2( 2, 2 )
+max_value = 400.0
 
 [connection signal="pressed" from="BackButton" to="BackButton" method="GotoScene"]
 [connection signal="pressed" from="Button" to="Button" method="GotoScene"]

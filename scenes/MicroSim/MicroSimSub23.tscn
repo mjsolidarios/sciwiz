@@ -46,11 +46,11 @@ texture = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = 578.0
-margin_top = 765.0
+margin_top = 698.0
 margin_right = 1778.0
-margin_bottom = 1031.0
+margin_bottom = 955.0
 custom_fonts/font = SubResource( 1 )
-text = "Drag the slide to the stage
+text = "Adjust the diaphragm so that enough amount of light can pass through the slide. Use the picture below as a guide in adjusting the diaphragm.
 "
 autowrap = true
 
@@ -82,7 +82,7 @@ margin_bottom = 1020.0
 custom_fonts/font = SubResource( 2 )
 text = "Next"
 script = SubResource( 3 )
-path = "res://scenes/MicroSim/MicroSimSub24.tscn"
+path = "res://scenes/MicroSim/MicroSimSub23.tscn"
 
 [node name="Click" type="AudioStreamPlayer" parent="Button"]
 stream = ExtResource( 8 )
@@ -99,7 +99,7 @@ margin_bottom = 1020.0
 custom_fonts/font = SubResource( 2 )
 text = "Back"
 script = SubResource( 3 )
-path = "res://scenes/MicroSim/MicroSimSub22.tscn"
+path = "res://scenes/MicroSim/MicroSimSub21.tscn"
 
 [node name="Click" type="AudioStreamPlayer" parent="Button2"]
 stream = ExtResource( 8 )
