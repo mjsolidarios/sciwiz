@@ -102,7 +102,6 @@ path = "res://scenes/MicroSim/MicroSimSub3.tscn"
 
 [node name="Click" type="AudioStreamPlayer" parent="Button2"]
 stream = ExtResource( 5 )
-
 [connection signal="pressed" from="BackButton" to="BackButton" method="GotoScene"]
 [connection signal="pressed" from="Button" to="Button" method="GotoScene"]
 [connection signal="pressed" from="Button2" to="Button2" method="GotoScene"]

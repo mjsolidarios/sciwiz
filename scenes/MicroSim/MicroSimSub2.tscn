@@ -14,7 +14,7 @@
 [ext_resource path="res://images/microsim_assets/MicroscopeArm.png" type="Texture" id=12]
 [ext_resource path="res://images/microsim_assets/callout.png" type="Texture" id=13]
 
-[sub_resource type="GDScript" id=6]
+[sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
 
 var arm_tapped = false
@@ -37,15 +37,15 @@ func _on_TextureButtonBase_pressed():
 	$AnimationPlayer.play(\"Correct\")
 "
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 49
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=3]
 size = 69
 font_data = ExtResource( 4 )
 
-[sub_resource type="GDScript" id=5]
+[sub_resource type="GDScript" id=4]
 script/source = "extends Button
 
 export var path = \"\"
@@ -55,7 +55,7 @@ func GotoScene():
 	$\"/root/Globals\".goto_scene(path)
 "
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
 resource_name = "Correct"
 length = 1.5
 tracks/0/type = "value"
@@ -71,7 +71,7 @@ tracks/0/keys = {
 "values": [ false, true, true, false ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=6]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Callout:visible")
@@ -87,7 +87,7 @@ tracks/0/keys = {
 }
 
 [node name="Node2D" type="Node2D"]
-script = SubResource( 6 )
+script = SubResource( 1 )
 
 [node name="MicroscopeBackground" type="Sprite" parent="."]
 position = Vector2( 955.75, 163.75 )
@@ -98,6 +98,9 @@ texture = ExtResource( 10 )
 margin_right = 1920.0
 margin_bottom = 1080.0
 texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="LabAssistant" type="Sprite" parent="."]
 position = Vector2( 863, 626 )
@@ -108,7 +111,7 @@ margin_left = 571.0
 margin_top = 678.0
 margin_right = 1249.0
 margin_bottom = 919.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Tap the two parts of the light microscope that you should hold in carrying the microscope"
 autowrap = true
 
@@ -129,7 +132,7 @@ margin_top = 200.0
 margin_right = 594.0
 margin_bottom = 270.0
 rect_scale = Vector2( 4, 4 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "You are right!"
 autowrap = true
 
@@ -163,10 +166,10 @@ margin_left = 1529.0
 margin_top = 932.0
 margin_right = 1829.0
 margin_bottom = 1020.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 disabled = true
 text = "Next"
-script = SubResource( 5 )
+script = SubResource( 4 )
 path = "res://scenes/MicroSim/MicroSimSub3.tscn"
 
 [node name="Click" type="AudioStreamPlayer" parent="NextButton"]
@@ -181,9 +184,9 @@ margin_left = 576.0
 margin_top = 932.0
 margin_right = 876.0
 margin_bottom = 1020.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 text = "Back"
-script = SubResource( 5 )
+script = SubResource( 4 )
 path = "res://scenes/MicroSim/MicroSimSub1.tscn"
 
 [node name="Click" type="AudioStreamPlayer" parent="Button2"]
@@ -206,9 +209,8 @@ rect_scale = Vector2( 0.532, 0.532 )
 texture_normal = ExtResource( 11 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Correct = SubResource( 7 )
-anims/RESET = SubResource( 8 )
-
+anims/Correct = SubResource( 5 )
+anims/RESET = SubResource( 6 )
 [connection signal="pressed" from="BackButton" to="BackButton" method="GotoScene"]
 [connection signal="pressed" from="NextButton" to="NextButton" method="GotoScene"]
 [connection signal="pressed" from="Button2" to="Button2" method="GotoScene"]

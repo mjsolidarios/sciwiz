@@ -1,7 +1,7 @@
 [gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://scenes/TextButton.gd" type="Script" id=1]
-[ext_resource path="res://images/microsim_assets/Close up objectives (1).PNG" type="Texture" id=2]
+[ext_resource path="res://images/microsim_assets/CUO2.PNG" type="Texture" id=2]
 [ext_resource path="res://fonts/Roboto-Medium.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://fonts/Roboto-Black.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://sounds/click_001.tres" type="AudioStream" id=5]
@@ -16,7 +16,7 @@
 [ext_resource path="res://images/microsim_assets/Lens40x.png" type="Texture" id=14]
 [ext_resource path="res://ui/Callout.tscn" type="PackedScene" id=15]
 
-[sub_resource type="GDScript" id=9]
+[sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
 
 var scanner_enabled = false
@@ -31,7 +31,7 @@ func _process(delta):
 		$ButtonNext.disabled = false
 "
 
-[sub_resource type="GDScript" id=8]
+[sub_resource type="GDScript" id=2]
 script/source = "extends Area2D
 
 export(String) var slot_target
@@ -48,7 +48,7 @@ func _on_Lens10x2_mouse_exited():
 	$\"/root/Globals\".active_lens = \"\"
 "
 
-[sub_resource type="GDScript" id=10]
+[sub_resource type="GDScript" id=3]
 script/source = "extends Area2D
 
 export(String) var slot_target
@@ -65,7 +65,7 @@ func _on_Lens5x2_mouse_exited():
 	$\"/root/Globals\".active_lens = \"\"
 "
 
-[sub_resource type="GDScript" id=11]
+[sub_resource type="GDScript" id=4]
 script/source = "extends Area2D
 
 export(String) var slot_target
@@ -82,7 +82,7 @@ func _on_Lens100x2_mouse_exited():
 	$\"/root/Globals\".active_lens = \"\"
 "
 
-[sub_resource type="GDScript" id=12]
+[sub_resource type="GDScript" id=5]
 script/source = "extends Area2D
 
 export(String) var slot_target
@@ -100,15 +100,15 @@ func _on_Lens40x3_mouse_exited():
 	$\"/root/Globals\".active_lens = \"\"
 "
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=6]
 size = 49
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=7]
 size = 69
 font_data = ExtResource( 4 )
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id=8]
 script/source = "extends Button
 
 export var path = \"\"
@@ -118,7 +118,7 @@ func GotoScene():
 	$\"/root/Globals\".goto_scene(path)
 "
 
-[sub_resource type="GDScript" id=4]
+[sub_resource type="GDScript" id=9]
 script/source = "extends Button
 
 export(String) var identity_name
@@ -147,7 +147,7 @@ func can_drop_data(_pos, data):
 
 "
 
-[sub_resource type="GDScript" id=5]
+[sub_resource type="GDScript" id=10]
 script/source = "extends Button
 
 export(String) var identity_name
@@ -176,7 +176,7 @@ func can_drop_data(_pos, data):
 
 "
 
-[sub_resource type="GDScript" id=6]
+[sub_resource type="GDScript" id=11]
 script/source = "extends Button
 
 export(String) var identity_name
@@ -205,7 +205,7 @@ func can_drop_data(_pos, data):
 
 "
 
-[sub_resource type="GDScript" id=7]
+[sub_resource type="GDScript" id=12]
 script/source = "extends Button
 
 export(String) var identity_name
@@ -234,7 +234,7 @@ func can_drop_data(_pos, data):
 
 "
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=13]
 resource_name = "Correct"
 length = 1.5
 tracks/0/type = "value"
@@ -250,7 +250,7 @@ tracks/0/keys = {
 "values": [ false, true, true, false ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=14]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Callout:visible")
@@ -266,7 +266,7 @@ tracks/0/keys = {
 }
 
 [node name="Node2D" type="Node2D"]
-script = SubResource( 9 )
+script = SubResource( 1 )
 
 [node name="MicroscopeBackground" type="Sprite" parent="."]
 position = Vector2( 993, 388 )
@@ -287,7 +287,7 @@ position = Vector2( 863, 626 )
 texture = ExtResource( 9 )
 
 [node name="Lens10x2" type="Area2D" parent="."]
-script = SubResource( 8 )
+script = SubResource( 2 )
 slot_target = "lpo"
 
 [node name="Lens" type="Sprite" parent="Lens10x2"]
@@ -299,7 +299,7 @@ texture = ExtResource( 12 )
 polygon = PoolVector2Array( 1220, 360, 1262, 395, 1159, 526, 1162, 598, 1116, 637, 1062, 596, 1030, 548, 1030, 501 )
 
 [node name="Lens5x2" type="Area2D" parent="."]
-script = SubResource( 10 )
+script = SubResource( 3 )
 slot_target = "scanner"
 
 [node name="Lens" type="Sprite" parent="Lens5x2"]
@@ -311,7 +311,7 @@ texture = ExtResource( 11 )
 polygon = PoolVector2Array( 1270, 399, 1169, 524, 1170, 584, 1229, 629, 1281, 630, 1380, 487 )
 
 [node name="Lens100x2" type="Area2D" parent="."]
-script = SubResource( 11 )
+script = SubResource( 4 )
 slot_target = "oil"
 
 [node name="Lens" type="Sprite" parent="Lens100x2"]
@@ -323,7 +323,7 @@ texture = ExtResource( 13 )
 polygon = PoolVector2Array( 1386, 496, 1228, 822, 1234, 849, 1227, 867, 1263, 913, 1347, 920, 1416, 790, 1405, 506 )
 
 [node name="Lens40x3" type="Area2D" parent="."]
-script = SubResource( 12 )
+script = SubResource( 5 )
 slot_target = "hpo"
 
 [node name="Lens" type="Sprite" parent="Lens40x3"]
@@ -339,7 +339,7 @@ margin_left = 284.0
 margin_top = 71.0
 margin_right = 912.0
 margin_bottom = 277.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 6 )
 text = "Which is which? Drag the names below to the appropriate objectives."
 autowrap = true
 
@@ -348,7 +348,7 @@ margin_left = 574.0
 margin_top = 451.0
 margin_right = 796.0
 margin_bottom = 509.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 6 )
 text = "Names:"
 autowrap = true
 
@@ -377,10 +377,10 @@ margin_left = 1569.0
 margin_top = 932.0
 margin_right = 1869.0
 margin_bottom = 1020.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 7 )
 disabled = true
 text = "Next"
-script = SubResource( 3 )
+script = SubResource( 8 )
 path = "res://scenes/MicroSim/MicroSimSub6.tscn"
 
 [node name="Click" type="AudioStreamPlayer" parent="ButtonNext"]
@@ -395,9 +395,9 @@ margin_left = 1236.0
 margin_top = 932.0
 margin_right = 1536.0
 margin_bottom = 1020.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 7 )
 text = "Back"
-script = SubResource( 3 )
+script = SubResource( 8 )
 path = "res://scenes/MicroSim/MicroSimSub4.tscn"
 
 [node name="Click" type="AudioStreamPlayer" parent="Button2"]
@@ -413,9 +413,9 @@ margin_top = 531.0
 margin_right = 920.0
 margin_bottom = 668.0
 rect_scale = Vector2( 0.7, 0.7 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 7 )
 text = "Scanner"
-script = SubResource( 4 )
+script = SubResource( 9 )
 identity_name = "scanner"
 
 [node name="Click" type="AudioStreamPlayer" parent="ButtonScanner"]
@@ -431,9 +431,9 @@ margin_top = 644.0
 margin_right = 887.0
 margin_bottom = 775.0
 rect_scale = Vector2( 0.7, 0.7 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 7 )
 text = "LPO"
-script = SubResource( 5 )
+script = SubResource( 10 )
 identity_name = "lpo"
 
 [node name="Click" type="AudioStreamPlayer" parent="ButtonLPO"]
@@ -449,9 +449,9 @@ margin_top = 750.0
 margin_right = 886.0
 margin_bottom = 884.0
 rect_scale = Vector2( 0.7, 0.7 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 7 )
 text = "HPO"
-script = SubResource( 6 )
+script = SubResource( 11 )
 identity_name = "hpo"
 
 [node name="Click" type="AudioStreamPlayer" parent="ButtonHPO"]
@@ -467,9 +467,9 @@ margin_top = 857.0
 margin_right = 1097.0
 margin_bottom = 1016.0
 rect_scale = Vector2( 0.7, 0.7 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 7 )
 text = "Oil Immersion"
-script = SubResource( 7 )
+script = SubResource( 12 )
 identity_name = "oil"
 
 [node name="Click" type="AudioStreamPlayer" parent="ButtonOil"]
@@ -478,9 +478,8 @@ stream = ExtResource( 5 )
 [node name="Callout" parent="." instance=ExtResource( 15 )]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Correct = SubResource( 14 )
-anims/RESET = SubResource( 15 )
-
+anims/Correct = SubResource( 13 )
+anims/RESET = SubResource( 14 )
 [connection signal="mouse_entered" from="Lens10x2" to="Lens10x2" method="_on_Lens10x2_mouse_entered"]
 [connection signal="mouse_exited" from="Lens10x2" to="Lens10x2" method="_on_Lens10x2_mouse_exited"]
 [connection signal="mouse_entered" from="Lens5x2" to="Lens5x2" method="_on_Lens5x2_mouse_entered"]
