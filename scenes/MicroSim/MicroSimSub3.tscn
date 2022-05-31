@@ -103,6 +103,7 @@ stream = ExtResource( 5 )
 position = Vector2( 278, 634 )
 scale = Vector2( 0.482422, 0.482422 )
 texture = ExtResource( 9 )
+
 [connection signal="pressed" from="BackButton" to="BackButton" method="GotoScene"]
 [connection signal="pressed" from="Button" to="Button" method="GotoScene"]
 [connection signal="pressed" from="Button2" to="Button2" method="GotoScene"]

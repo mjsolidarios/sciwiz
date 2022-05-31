@@ -188,7 +188,7 @@ scroll_horizontal_enabled = false
 
 [node name="Label" type="Label" parent="Popup/ScrollContainer"]
 margin_right = 1200.0
-margin_bottom = 2000.0
+margin_bottom = 2291.0
 rect_min_size = Vector2( 1200, 2000 )
 custom_fonts/font = SubResource( 6 )
 text = "These steps can be accessed when the student clicks the “After Using the Microscope”

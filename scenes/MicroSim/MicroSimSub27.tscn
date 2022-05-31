@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scenes/TextButton.gd" type="Script" id=1]
 [ext_resource path="res://images/microsim_assets/Text Box.PNG" type="Texture" id=2]
@@ -10,7 +10,35 @@
 [ext_resource path="res://sounds/click_001.tres" type="AudioStream" id=8]
 [ext_resource path="res://images/microsim_assets/Lab background (with blur).PNG" type="Texture" id=9]
 [ext_resource path="res://images/microsim_assets/Arrow 1.PNG" type="Texture" id=10]
-[ext_resource path="res://images/microsim_assets/Microscope side view.PNG" type="Texture" id=11]
+[ext_resource path="res://images/microsim_assets/Microscope side view-closer.PNG" type="Texture" id=11]
+[ext_resource path="res://images/microsim_assets/base-part-4.png" type="Texture" id=12]
+[ext_resource path="res://images/microsim_assets/Microscope side view-closer-part.PNG" type="Texture" id=13]
+[ext_resource path="res://images/microsim_assets/Open diaphragm.PNG" type="Texture" id=14]
+[ext_resource path="res://images/microsim_assets/clear-specimen.png" type="Texture" id=15]
+
+[sub_resource type="GDScript" id=8]
+script/source = "extends Node2D
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+func _on_TextureButton_pressed():
+	$AnimationPlayer.play(\"Trigger\")
+	$Button.disabled = false
+"
 
 [sub_resource type="DynamicFont" id=1]
 size = 44
@@ -30,7 +58,119 @@ func GotoScene():
 	$\"/root/Globals\".goto_scene(path)
 "
 
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Base-part-4:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 89.9996 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MicroscopeSideView2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1333, 299 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("OpenDiaphragm:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Trigger"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Base-part-4:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 89.9996, 106.8 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MicroscopeSideView2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1333, 299 ), Vector2( 1333, 286 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("OpenDiaphragm:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "New Anim"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arrow1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1425.69, 634.313 ), Vector2( 1335.69, 634.313 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arrow1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1425.69, 634.313 ) ]
+}
+
 [node name="Node2D" type="Node2D"]
+script = SubResource( 8 )
 
 [node name="LabBackground(withBlur)" type="Sprite" parent="."]
 position = Vector2( 1188, 531 )
@@ -38,30 +178,55 @@ scale = Vector2( 1.29659, 1.23565 )
 texture = ExtResource( 9 )
 
 [node name="MicroscopeSideView" type="Sprite" parent="."]
-position = Vector2( 1333, 54 )
+position = Vector2( 1333, 282 )
 scale = Vector2( 1.18359, 1.18359 )
 texture = ExtResource( 11 )
 
-[node name="Arrow1" type="Sprite" parent="."]
-position = Vector2( 1376, 382 )
+[node name="FocusedDiaphragm" type="Sprite" parent="."]
+position = Vector2( 512, 249 )
+scale = Vector2( 0.231933, 0.231933 )
+texture = ExtResource( 15 )
+
+[node name="OpenDiaphragm" type="Sprite" parent="."]
+position = Vector2( 512, 249 )
+scale = Vector2( 0.231933, 0.231933 )
+texture = ExtResource( 14 )
+
+[node name="MicroscopeSideView2" type="Sprite" parent="."]
+position = Vector2( 1333, 299 )
+scale = Vector2( 1.18359, 1.18359 )
+texture = ExtResource( 13 )
+
+[node name="Base-part-4" type="Sprite" parent="."]
+position = Vector2( 1710.33, 632.24 )
 rotation = 1.57079
-scale = Vector2( 0.30957, 0.30957 )
+scale = Vector2( 0.751511, 0.751511 )
+texture = ExtResource( 12 )
+
+[node name="Arrow1" type="Sprite" parent="."]
+position = Vector2( 1425.69, 634.313 )
+rotation = 1.57079
+scale = Vector2( 0.208679, 0.208679 )
 texture = ExtResource( 10 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_top = 315.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+mouse_filter = 2
 texture = ExtResource( 2 )
+expand = true
+stretch_mode = 1
 
 [node name="LabAssistant" type="Sprite" parent="."]
-position = Vector2( 863, 626 )
+position = Vector2( 733, 663 )
 texture = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = 581.0
-margin_top = 744.0
+margin_top = 813.0
 margin_right = 1781.0
-margin_bottom = 1001.0
+margin_bottom = 922.0
 custom_fonts/font = SubResource( 1 )
 text = "Great job! Now, while looking into the eyepiece, slowly rotate the coarse adjustment knob to bring the specimen into focus"
 autowrap = true
@@ -92,6 +257,7 @@ margin_top = 932.0
 margin_right = 1829.0
 margin_bottom = 1020.0
 custom_fonts/font = SubResource( 2 )
+disabled = true
 text = "Next"
 script = SubResource( 3 )
 path = "res://scenes/MicroSim/MicroSimSub28.tscn"
@@ -116,6 +282,26 @@ path = "res://scenes/MicroSim/MicroSimSub26.tscn"
 [node name="Click" type="AudioStreamPlayer" parent="Button2"]
 stream = ExtResource( 8 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 5 )
+anims/Trigger = SubResource( 4 )
+
+[node name="Loop" type="AnimationPlayer" parent="."]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 6 )
+anims/RESET = SubResource( 7 )
+
+[node name="TextureButton" type="TextureButton" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 1574.0
+margin_top = 512.0
+margin_right = 2033.0
+margin_bottom = 755.0
+
 [connection signal="pressed" from="BackButton" to="BackButton" method="GotoScene"]
 [connection signal="pressed" from="Button" to="Button" method="GotoScene"]
 [connection signal="pressed" from="Button2" to="Button2" method="GotoScene"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]

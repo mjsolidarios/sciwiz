@@ -480,6 +480,7 @@ stream = ExtResource( 5 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Correct = SubResource( 13 )
 anims/RESET = SubResource( 14 )
+
 [connection signal="mouse_entered" from="Lens10x2" to="Lens10x2" method="_on_Lens10x2_mouse_entered"]
 [connection signal="mouse_exited" from="Lens10x2" to="Lens10x2" method="_on_Lens10x2_mouse_exited"]
 [connection signal="mouse_entered" from="Lens5x2" to="Lens5x2" method="_on_Lens5x2_mouse_entered"]

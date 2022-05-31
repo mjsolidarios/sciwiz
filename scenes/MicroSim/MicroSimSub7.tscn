@@ -9,10 +9,10 @@
 [ext_resource path="res://images/microsim_assets/Text Box.PNG" type="Texture" id=7]
 [ext_resource path="res://icons/arrowLeft.png" type="Texture" id=8]
 [ext_resource path="res://images/microsim_assets/Lab assistant.PNG" type="Texture" id=9]
-[ext_resource path="res://images/microsim_assets/Microscope.PNG" type="Texture" id=10]
+[ext_resource path="res://images/microsim_assets/Microscope stage view.PNG" type="Texture" id=10]
 [ext_resource path="res://images/microsim_assets/callout.png" type="Texture" id=11]
-[ext_resource path="res://images/microsim_assets/Microscope-eyepiece.PNG" type="Texture" id=12]
-[ext_resource path="res://images/microsim_assets/Microscope-eyepiece-active.PNG" type="Texture" id=13]
+[ext_resource path="res://images/microsim_assets/Microscope stage view-eye.PNG" type="Texture" id=12]
+[ext_resource path="res://images/microsim_assets/Microscope stage view-eye-active.PNG" type="Texture" id=13]
 
 [sub_resource type="GDScript" id=7]
 script/source = "extends Node2D
@@ -29,7 +29,7 @@ func _ready():
 "
 
 [sub_resource type="DynamicFont" id=1]
-size = 42
+size = 38
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=2]
@@ -102,9 +102,9 @@ texture = ExtResource( 9 )
 margin_left = 576.0
 margin_top = 700.0
 margin_right = 1419.0
-margin_bottom = 927.0
+margin_bottom = 913.0
 custom_fonts/font = SubResource( 1 )
-text = "Locate and tap the eyepiece. You can view the specimen through it. It further magnifies the image of the specimen that has been magnified by the objective."
+text = "Locate and tap the body tube with the eyepiece. You can view the specimen through it. It further magnifies the image of the specimen that has been magnified by the objective."
 autowrap = true
 
 [node name="BackButton" type="TextureButton" parent="."]
@@ -198,10 +198,10 @@ texture = ExtResource( 10 )
 modulate = Color( 0.47451, 0.682353, 0.698039, 1 )
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = 1643.0
-margin_top = 5.0
-margin_right = 2105.0
-margin_bottom = 336.0
+margin_left = 1615.0
+margin_top = -16.0
+margin_right = 2077.0
+margin_bottom = 315.0
 rect_scale = Vector2( 0.6, 0.6 )
 texture_normal = ExtResource( 12 )
 texture_pressed = ExtResource( 13 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scenes/TextButton.gd" type="Script" id=1]
 [ext_resource path="res://images/microsim_assets/Text Box.PNG" type="Texture" id=2]
@@ -9,8 +9,34 @@
 [ext_resource path="res://sounds/Mind-Bender.ogg" type="AudioStream" id=7]
 [ext_resource path="res://sounds/click_001.tres" type="AudioStream" id=8]
 [ext_resource path="res://images/microsim_assets/Lab background (with blur).PNG" type="Texture" id=9]
-[ext_resource path="res://images/microsim_assets/Microscope side view.PNG" type="Texture" id=10]
+[ext_resource path="res://images/microsim_assets/Microscope side view-closer.PNG" type="Texture" id=10]
 [ext_resource path="res://images/microsim_assets/Arrow 1.PNG" type="Texture" id=11]
+[ext_resource path="res://images/microsim_assets/Microscope side view-closer-part.PNG" type="Texture" id=12]
+[ext_resource path="res://images/microsim_assets/base-part-4.png" type="Texture" id=13]
+
+[sub_resource type="GDScript" id=8]
+script/source = "extends Node2D
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+func _on_TextureButton_pressed():
+	$AnimationPlayer.play(\"Default\")
+	$Button.disabled = false
+"
 
 [sub_resource type="DynamicFont" id=1]
 size = 44
@@ -30,7 +56,68 @@ func GotoScene():
 	$\"/root/Globals\".goto_scene(path)
 "
 
+[sub_resource type="Animation" id=4]
+resource_name = "Default"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("MicroscopeSideView2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1218, 335 ), Vector2( 1218, 197 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Base-part-4:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 89.6 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "New Anim"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arrow1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1171, 545 ), Vector2( 1239, 545 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arrow1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1239, 545 ) ]
+}
+
 [node name="Node2D" type="Node2D"]
+script = SubResource( 8 )
 
 [node name="LabBackground(withBlur)" type="Sprite" parent="."]
 position = Vector2( 1069, 555 )
@@ -38,13 +125,19 @@ scale = Vector2( 1.23287, 1.23287 )
 texture = ExtResource( 9 )
 
 [node name="MicroscopeSideView" type="Sprite" parent="."]
-position = Vector2( 1218, 33 )
+position = Vector2( 1218, 197 )
 scale = Vector2( 1.18359, 1.18359 )
 texture = ExtResource( 10 )
+
+[node name="MicroscopeSideView2" type="Sprite" parent="."]
+position = Vector2( 1218, 335 )
+scale = Vector2( 1.18359, 1.18359 )
+texture = ExtResource( 12 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
+mouse_filter = 2
 texture = ExtResource( 2 )
 
 [node name="LabAssistant" type="Sprite" parent="."]
@@ -88,6 +181,7 @@ margin_top = 932.0
 margin_right = 1829.0
 margin_bottom = 1020.0
 custom_fonts/font = SubResource( 2 )
+disabled = true
 text = "Next"
 script = SubResource( 3 )
 path = "res://scenes/MicroSim/MicroSimSub27.tscn"
@@ -113,11 +207,35 @@ path = "res://scenes/MicroSim/MicroSimSub25.tscn"
 stream = ExtResource( 8 )
 
 [node name="Arrow1" type="Sprite" parent="."]
-position = Vector2( 1261, 361 )
+position = Vector2( 1239, 545 )
 rotation = 1.57079
 scale = Vector2( 0.30957, 0.30957 )
 texture = ExtResource( 11 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Default = SubResource( 4 )
+
+[node name="Loop" type="AnimationPlayer" parent="."]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 6 )
+anims/RESET = SubResource( 7 )
+
+[node name="Base-part-4" type="Sprite" parent="."]
+position = Vector2( 1593, 549 )
+scale = Vector2( 0.817597, 0.817596 )
+texture = ExtResource( 13 )
+
+[node name="TextureButton" type="TextureButton" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 1411.0
+margin_top = 483.0
+margin_right = 1890.0
+margin_bottom = 614.0
+
 [connection signal="pressed" from="BackButton" to="BackButton" method="GotoScene"]
 [connection signal="pressed" from="Button" to="Button" method="GotoScene"]
 [connection signal="pressed" from="Button2" to="Button2" method="GotoScene"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]

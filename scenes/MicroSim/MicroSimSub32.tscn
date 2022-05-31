@@ -50,7 +50,7 @@ margin_top = 694.0
 margin_right = 1778.0
 margin_bottom = 1031.0
 custom_fonts/font = SubResource( 1 )
-text = "To shift to a higher magnification, we will use the High Power Objective marked 40x. (Note: Make sure to slighly elevate the body tube first using the coarse adjustment knob before turning to HPO so that it will not hit/touch the slide)"
+text = "To shift to a higher magnification, we will use the Low Power Objective marked 10x. (Note: Make sure to slightly lower the stage first using the coarse adjustment knob before turning to LPO so that it will not hit/ touch the slide)"
 autowrap = true
 
 [node name="BackButton" type="TextureButton" parent="."]

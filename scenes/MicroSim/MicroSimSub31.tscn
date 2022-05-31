@@ -88,10 +88,13 @@ scale = Vector2( 0.237457, 0.237457 )
 texture = ExtResource( 10 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_top = 286.0
+margin_right = 1958.0
+margin_bottom = 1089.0
 mouse_filter = 2
 texture = ExtResource( 2 )
+expand = true
+stretch_mode = 1
 
 [node name="LabAssistant" type="Sprite" parent="."]
 position = Vector2( 863, 626 )
@@ -99,8 +102,8 @@ texture = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = 578.0
-margin_top = 694.0
-margin_right = 1200.0
+margin_top = 790.0
+margin_right = 1695.0
 margin_bottom = 1031.0
 custom_fonts/font = SubResource( 1 )
 text = "Now, move the slide so that the marked area is centered. Use the arrow controls to move the slide."
@@ -157,58 +160,41 @@ path = "res://scenes/MicroSim/MicroSimSub30.tscn"
 [node name="Click" type="AudioStreamPlayer" parent="Button2"]
 stream = ExtResource( 8 )
 
-[node name="Up" type="TextureButton" parent="."]
+[node name="GridContainer" type="GridContainer" parent="."]
 anchor_left = 1.0
-anchor_top = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 1446.0
-margin_top = 577.0
-margin_right = 1546.0
-margin_bottom = 677.0
+margin_left = 1713.0
+margin_right = 1813.0
+margin_bottom = 412.0
 rect_scale = Vector2( 2, 2 )
+
+[node name="Up" type="TextureButton" parent="GridContainer"]
+margin_right = 100.0
+margin_bottom = 100.0
 texture_normal = ExtResource( 11 )
 
-[node name="Right" type="TextureButton" parent="."]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 1608.0
-margin_top = 711.0
-margin_right = 1708.0
-margin_bottom = 811.0
-rect_scale = Vector2( 2, 2 )
-texture_normal = ExtResource( 12 )
-
-[node name="Down" type="TextureButton" parent="."]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 1448.0
-margin_top = 845.0
-margin_right = 1548.0
-margin_bottom = 945.0
-rect_scale = Vector2( 2, 2 )
+[node name="Down" type="TextureButton" parent="GridContainer"]
+margin_top = 104.0
+margin_right = 100.0
+margin_bottom = 204.0
 texture_normal = ExtResource( 13 )
 
-[node name="Left" type="TextureButton" parent="."]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 1290.0
-margin_top = 707.0
-margin_right = 1390.0
-margin_bottom = 807.0
-rect_scale = Vector2( 2, 2 )
+[node name="Right" type="TextureButton" parent="GridContainer"]
+margin_top = 208.0
+margin_right = 100.0
+margin_bottom = 308.0
+texture_normal = ExtResource( 12 )
+
+[node name="Left" type="TextureButton" parent="GridContainer"]
+margin_top = 312.0
+margin_right = 100.0
+margin_bottom = 412.0
 texture_normal = ExtResource( 4 )
 
 [connection signal="pressed" from="BackButton" to="BackButton" method="GotoScene"]
 [connection signal="pressed" from="Button" to="Button" method="GotoScene"]
 [connection signal="pressed" from="Button2" to="Button2" method="GotoScene"]
-[connection signal="pressed" from="Up" to="." method="_on_Up_pressed"]
-[connection signal="pressed" from="Right" to="." method="_on_Right_pressed"]
-[connection signal="pressed" from="Down" to="." method="_on_Down_pressed"]
-[connection signal="pressed" from="Left" to="." method="_on_Left_pressed"]
+[connection signal="pressed" from="GridContainer/Up" to="." method="_on_Up_pressed"]
+[connection signal="pressed" from="GridContainer/Down" to="." method="_on_Down_pressed"]
+[connection signal="pressed" from="GridContainer/Right" to="." method="_on_Right_pressed"]
+[connection signal="pressed" from="GridContainer/Left" to="." method="_on_Left_pressed"]

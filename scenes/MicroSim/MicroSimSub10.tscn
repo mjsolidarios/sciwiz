@@ -9,7 +9,7 @@
 [ext_resource path="res://images/microsim_assets/Text Box.PNG" type="Texture" id=7]
 [ext_resource path="res://icons/arrowLeft.png" type="Texture" id=8]
 [ext_resource path="res://images/microsim_assets/Lab assistant.PNG" type="Texture" id=9]
-[ext_resource path="res://images/microsim_assets/CUO2.PNG" type="Texture" id=10]
+[ext_resource path="res://images/microsim_assets/CUO.PNG" type="Texture" id=10]
 [ext_resource path="res://images/microsim_assets/nosepiece-active.PNG" type="Texture" id=11]
 [ext_resource path="res://images/microsim_assets/nosepiece.PNG" type="Texture" id=12]
 [ext_resource path="res://images/microsim_assets/callout.png" type="Texture" id=13]

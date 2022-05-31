@@ -94,8 +94,7 @@ margin_top = 694.0
 margin_right = 1169.0
 margin_bottom = 1031.0
 custom_fonts/font = SubResource( 1 )
-text = "Looking from the side, rotate the revolving nosepiece to put the HPO in place.
-(Tap the nosepiece)"
+text = "Looking from the side, rotate the revolving nosepiece to put the LPO in place. (Tap the nosepiece."
 autowrap = true
 
 [node name="BackButton" type="TextureButton" parent="."]
