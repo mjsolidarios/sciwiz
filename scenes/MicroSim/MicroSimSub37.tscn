@@ -50,7 +50,7 @@ margin_top = 694.0
 margin_right = 1778.0
 margin_bottom = 1031.0
 custom_fonts/font = SubResource( 1 )
-text = " If you want to use a higher magnifcation that the HPO, you can try the oil immersion objective marked 100x. With this, you are going to use a lens oil (usually pine oil). How much will the image be magnified under the the oil immersion objective?"
+text = "If you want to use a higher magnifcation that the HPO, you can try the oil immersion objective marked 100x. With this, you are going to use a lens oil (usually pine oil). How much will the image be magnified under the the oil immersion objective?"
 autowrap = true
 
 [node name="BackButton" type="TextureButton" parent="."]

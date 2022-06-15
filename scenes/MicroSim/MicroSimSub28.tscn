@@ -9,7 +9,7 @@
 [ext_resource path="res://sounds/Mind-Bender.ogg" type="AudioStream" id=7]
 [ext_resource path="res://sounds/click_001.tres" type="AudioStream" id=8]
 [ext_resource path="res://images/microsim_assets/Lab background (with blur).PNG" type="Texture" id=9]
-[ext_resource path="res://images/microsim_assets/Open diaphragm.PNG" type="Texture" id=10]
+[ext_resource path="res://images/microsim_assets/Open diaphragm2.PNG" type="Texture" id=10]
 [ext_resource path="res://images/microsim_assets/Close up stage to base.PNG" type="Texture" id=11]
 [ext_resource path="res://images/microsim_assets/clear-specimen.png" type="Texture" id=12]
 [ext_resource path="res://images/microsim_assets/curve-arrow-2.png" type="Texture" id=13]

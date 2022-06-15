@@ -50,7 +50,7 @@ margin_top = 683.0
 margin_right = 1780.0
 margin_bottom = 924.0
 custom_fonts/font = SubResource( 1 )
-text = "The light microscope that we will use has 5x, 10x, and 40x objective lenses. These are the 4x, low power objective, and high power objective, respectively."
+text = "The light microscope that we will use has 4x, 10x, and 40x objective lenses. These are the scanner, low power objective, and high power objective, respectively."
 autowrap = true
 
 [node name="BackButton" type="TextureButton" parent="."]

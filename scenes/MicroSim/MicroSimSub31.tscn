@@ -36,7 +36,7 @@ func _process(delta):
 
 
 func _on_Up_pressed():
-	yPos += 1
+	yPos -= 1
 
 
 func _on_Right_pressed():
@@ -44,7 +44,7 @@ func _on_Right_pressed():
 
 
 func _on_Down_pressed():
-	yPos -= 1
+	yPos += 1
 
 
 func _on_Left_pressed():

@@ -13,7 +13,7 @@
 [ext_resource path="res://images/microsim_assets/Microscope side view-closer.PNG" type="Texture" id=11]
 [ext_resource path="res://images/microsim_assets/base-part-4.png" type="Texture" id=12]
 [ext_resource path="res://images/microsim_assets/Microscope side view-closer-part.PNG" type="Texture" id=13]
-[ext_resource path="res://images/microsim_assets/Open diaphragm.PNG" type="Texture" id=14]
+[ext_resource path="res://images/microsim_assets/Open diaphragm2.PNG" type="Texture" id=14]
 [ext_resource path="res://images/microsim_assets/clear-specimen.png" type="Texture" id=15]
 
 [sub_resource type="GDScript" id=8]
