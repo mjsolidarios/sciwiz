@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://images/ans_assets/Fire 1.PNG" type="Texture" id=1]
 [ext_resource path="res://images/ans_assets/ice_beam_pressed.png" type="Texture" id=2]
@@ -18,8 +18,13 @@
 [ext_resource path="res://images/ans_assets/A withdraw.PNG" type="Texture" id=16]
 [ext_resource path="res://images/ans_assets/heart pixel art 254x254.png" type="Texture" id=17]
 [ext_resource path="res://images/ans_assets/MM S conjugation.PNG" type="Texture" id=18]
+[ext_resource path="res://images/ans_assets/S idle.PNG" type="Texture" id=19]
+[ext_resource path="res://images/ans_assets/S withdraw.PNG" type="Texture" id=20]
+[ext_resource path="res://images/ans_assets/S attack.PNG" type="Texture" id=21]
+[ext_resource path="res://images/ans_assets/S punch.PNG" type="Texture" id=22]
 
 [sub_resource type="GDScript" id=2]
+resource_local_to_scene = true
 script/source = "extends Node2D
 
 
@@ -39,7 +44,7 @@ func _ready():
 
 
 func _on_FireButton_pressed():
-	$AnimationPlayer.play(\"fireball\")
+	get_node(\"AnimationPlayer\").play(\"fireball\")
 
 
 func _on_IceButton_pressed():
@@ -52,11 +57,35 @@ func _on_ElectricButton_pressed():
 
 func _on_BeamButton_pressed():
 	$AnimationPlayer.play(\"laser_beam\")
+
+
+func _on_FireButton_pressed2():
+	$AnimationPlayer2.play(\"fireball\")
+
+
+func _on_IceButton_pressed2():
+	$AnimationPlayer2.play(\"ice\")
+
+
+func _on_ElectricButton_pressed2():
+	$AnimationPlayer2.play(\"electric\")
+
+
+func _on_BeamButton_pressed2():
+	$AnimationPlayer2.play(\"laser\")
 "
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 9 ), ExtResource( 4 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"frames": [ ExtResource( 21 ), ExtResource( 19 ), ExtResource( 22 ), ExtResource( 20 ) ],
+"loop": false,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 9 ), ExtResource( 15 ), ExtResource( 16 ) ],
 "loop": false,
 "name": "default",
 "speed": 5.0
@@ -162,30 +191,6 @@ tracks/7/keys = {
 "update": 0,
 "values": [ false ]
 }
-tracks/8/type = "value"
-tracks/8/path = NodePath("CharacterBase/Monster:position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1192, 249 ) ]
-}
-tracks/9/type = "value"
-tracks/9/path = NodePath("CharacterBase/Monster:modulate")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
-}
 
 [sub_resource type="Animation" id=6]
 resource_name = "electric_shock"
@@ -213,18 +218,6 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 1, 2, 2, 1 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("CharacterBase/Monster:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.572549 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.572549 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.572549 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.572549 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -290,18 +283,6 @@ tracks/4/keys = {
 "update": 1,
 "values": [ false, true, true, false ]
 }
-tracks/5/type = "value"
-tracks/5/path = NodePath("CharacterBase/Monster:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 1, 1.1, 1.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 0.921569, 0.466667, 0.192157, 1 ), Color( 1, 1, 1, 1 ) ]
-}
 
 [sub_resource type="Animation" id=5]
 resource_name = "ice_beam"
@@ -330,18 +311,6 @@ tracks/1/keys = {
 "update": 1,
 "values": [ false, true, true, false, false ]
 }
-tracks/2/type = "value"
-tracks/2/path = NodePath("CharacterBase/Monster:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.3, 1.2, 1.3 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 0.0117647, 0.415686, 0.658824, 1 ), Color( 1, 1, 1, 1 ) ]
-}
 
 [sub_resource type="Animation" id=7]
 resource_name = "laser_beam"
@@ -369,17 +338,200 @@ tracks/1/keys = {
 "update": 1,
 "values": [ 1, 2, 2, 1 ]
 }
+
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Fire2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 460.75, 721.25 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Fire2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 tracks/2/type = "value"
-tracks/2/path = NodePath("CharacterBase/Monster:modulate")
+tracks/2/path = NodePath("Electric2:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.5, 0.9, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0.129412, 0.92549, 1 ), Color( 0.623529, 0, 0.192157, 1 ), Color( 1, 0.129412, 0.92549, 1 ), Color( 1, 1, 1, 1 ) ]
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Ice2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Laser2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Character2:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "electric"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Electric2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.7, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true, false, true, false, true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Character2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 2, 1 ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "fireball"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Fire2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 460.75, 721.25 ), Vector2( 1388.75, 721.25 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Fire2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Character2:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 2, 1 ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "ice"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ice2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Character2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 2, 1 ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "laser"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Laser2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Character2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 2, 1 ]
 }
 
 [node name="CharacterBase" type="Node2D"]
@@ -423,9 +575,47 @@ margin_bottom = 675.0
 texture_normal = ExtResource( 13 )
 texture_pressed = ExtResource( 11 )
 
+[node name="GridContainer2" type="GridContainer" parent="."]
+margin_left = 9.0
+margin_top = 523.0
+margin_right = 159.0
+margin_bottom = 1198.0
+rect_scale = Vector2( 0.6, 0.6 )
+custom_constants/vseparation = 25
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="FireButton" type="TextureButton" parent="GridContainer2"]
+margin_right = 150.0
+margin_bottom = 150.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 6 )
+
+[node name="IceButton" type="TextureButton" parent="GridContainer2"]
+margin_top = 175.0
+margin_right = 150.0
+margin_bottom = 325.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 2 )
+
+[node name="ElectricButton" type="TextureButton" parent="GridContainer2"]
+margin_top = 350.0
+margin_right = 150.0
+margin_bottom = 500.0
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 14 )
+
+[node name="BeamButton" type="TextureButton" parent="GridContainer2"]
+margin_top = 525.0
+margin_right = 150.0
+margin_bottom = 675.0
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 11 )
+
 [node name="Monster" type="Sprite" parent="."]
-position = Vector2( 1192, 249 )
-scale = Vector2( 0.426625, 0.426625 )
+position = Vector2( 1472, 482 )
+scale = Vector2( 0.700193, 0.683834 )
 texture = ExtResource( 18 )
 
 [node name="Character" type="AnimatedSprite" parent="."]
@@ -433,6 +623,11 @@ position = Vector2( 305, 216.8 )
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 1 )
 frame = 1
+
+[node name="Character2" type="AnimatedSprite" parent="."]
+position = Vector2( 305, 718 )
+scale = Vector2( 0.2, 0.2 )
+frames = SubResource( 9 )
 
 [node name="Laser" type="Sprite" parent="."]
 visible = false
@@ -457,7 +652,7 @@ texture = ExtResource( 5 )
 [node name="Fire" type="Sprite" parent="."]
 visible = false
 position = Vector2( 460.75, 227.55 )
-scale = Vector2( 1e-05, 1e-05 )
+scale = Vector2( 0.199463, 0.199463 )
 texture = ExtResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -483,7 +678,59 @@ position = Vector2( 367.4, 54.4 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 17 )
 
+[node name="Hear4" type="Sprite" parent="."]
+position = Vector2( 251.4, 534.4 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 17 )
+
+[node name="Hear5" type="Sprite" parent="."]
+position = Vector2( 310.4, 534.4 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 17 )
+
+[node name="Hear6" type="Sprite" parent="."]
+position = Vector2( 367.4, 534.4 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 17 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 10 )
+anims/electric = SubResource( 11 )
+anims/fireball = SubResource( 12 )
+anims/ice = SubResource( 13 )
+anims/laser = SubResource( 14 )
+
+[node name="Laser2" type="Sprite" parent="."]
+visible = false
+position = Vector2( 827.25, 725 )
+scale = Vector2( 0.78833, 0.197754 )
+texture = ExtResource( 10 )
+
+[node name="Ice2" type="Sprite" parent="."]
+visible = false
+position = Vector2( 427, 721.7 )
+scale = Vector2( 0.864746, 0.197754 )
+texture = ExtResource( 8 )
+offset = Vector2( 377.063, 6.57361 )
+
+[node name="Electric2" type="Sprite" parent="."]
+visible = false
+material = SubResource( 8 )
+position = Vector2( 776, 723 )
+scale = Vector2( 0.78833, 0.197754 )
+texture = ExtResource( 5 )
+
+[node name="Fire2" type="Sprite" parent="."]
+visible = false
+position = Vector2( 460.75, 721.25 )
+scale = Vector2( 0.199463, 0.199463 )
+texture = ExtResource( 1 )
+
 [connection signal="pressed" from="GridContainer/FireButton" to="." method="_on_FireButton_pressed"]
 [connection signal="pressed" from="GridContainer/IceButton" to="." method="_on_IceButton_pressed"]
 [connection signal="pressed" from="GridContainer/ElectricButton" to="." method="_on_ElectricButton_pressed"]
 [connection signal="pressed" from="GridContainer/BeamButton" to="." method="_on_BeamButton_pressed"]
+[connection signal="pressed" from="GridContainer2/FireButton" to="." method="_on_FireButton_pressed2"]
+[connection signal="pressed" from="GridContainer2/IceButton" to="." method="_on_IceButton_pressed2"]
+[connection signal="pressed" from="GridContainer2/ElectricButton" to="." method="_on_ElectricButton_pressed2"]
+[connection signal="pressed" from="GridContainer2/BeamButton" to="." method="_on_BeamButton_pressed2"]

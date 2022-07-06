@@ -38,7 +38,7 @@ rect_scale = Vector2( 2, 2 )
 text = "Weapon Name"
 
 [node name="CharacterBase" parent="." instance=ExtResource( 1 )]
-position = Vector2( 235, 345 )
+position = Vector2( 239, 107 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
