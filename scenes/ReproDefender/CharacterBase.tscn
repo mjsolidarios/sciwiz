@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://images/ans_assets/Fire 1.PNG" type="Texture" id=1]
 [ext_resource path="res://images/ans_assets/ice_beam_pressed.png" type="Texture" id=2]
@@ -17,11 +17,29 @@
 [ext_resource path="res://images/ans_assets/A punch.PNG" type="Texture" id=15]
 [ext_resource path="res://images/ans_assets/A withdraw.PNG" type="Texture" id=16]
 [ext_resource path="res://images/ans_assets/heart pixel art 254x254.png" type="Texture" id=17]
-[ext_resource path="res://images/ans_assets/MM S conjugation.PNG" type="Texture" id=18]
+[ext_resource path="res://scenes/ReproDefender/Monsters/MM A 1.tscn" type="PackedScene" id=18]
 [ext_resource path="res://images/ans_assets/S idle.PNG" type="Texture" id=19]
 [ext_resource path="res://images/ans_assets/S withdraw.PNG" type="Texture" id=20]
 [ext_resource path="res://images/ans_assets/S attack.PNG" type="Texture" id=21]
 [ext_resource path="res://images/ans_assets/S punch.PNG" type="Texture" id=22]
+[ext_resource path="res://scenes/ReproDefender/Monsters/MM A 3.tscn" type="PackedScene" id=23]
+[ext_resource path="res://scenes/ReproDefender/Monsters/MM S Fertilization.tscn" type="PackedScene" id=24]
+[ext_resource path="res://scenes/ReproDefender/Monsters/MM S Polination.tscn" type="PackedScene" id=25]
+[ext_resource path="res://scenes/ReproDefender/Monsters/MM A 4.tscn" type="PackedScene" id=26]
+[ext_resource path="res://scenes/ReproDefender/Monsters/MM S 2.tscn" type="PackedScene" id=27]
+[ext_resource path="res://scenes/ReproDefender/Monsters/MM A Spore Formation.tscn" type="PackedScene" id=28]
+[ext_resource path="res://scenes/ReproDefender/Monsters/MM A 2.tscn" type="PackedScene" id=29]
+[ext_resource path="res://scenes/ReproDefender/Monsters/MM A Binary Fission.tscn" type="PackedScene" id=30]
+[ext_resource path="res://scenes/ReproDefender/Monsters/MM S Conjugation.tscn" type="PackedScene" id=31]
+[ext_resource path="res://scenes/ReproDefender/Monsters/MM A Fragmentation.tscn" type="PackedScene" id=32]
+[ext_resource path="res://scenes/ReproDefender/Monsters/MM S 1.tscn" type="PackedScene" id=33]
+[ext_resource path="res://scenes/ReproDefender/Monsters/MM A Budding.tscn" type="PackedScene" id=34]
+[ext_resource path="res://scenes/ReproDefender/Monsters/MM S Zygote.tscn" type="PackedScene" id=35]
+[ext_resource path="res://images/ans_assets/punch-2_pressed.png" type="Texture" id=82]
+[ext_resource path="res://images/ans_assets/punch-1.png" type="Texture" id=83]
+[ext_resource path="res://images/ans_assets/punch-1_pressed.png" type="Texture" id=84]
+[ext_resource path="res://images/ans_assets/punch-2.png" type="Texture" id=85]
+[ext_resource path="res://fonts/ANS_Labels.tres" type="DynamicFont" id=86]
 
 [sub_resource type="GDScript" id=2]
 resource_local_to_scene = true
@@ -73,6 +91,14 @@ func _on_ElectricButton_pressed2():
 
 func _on_BeamButton_pressed2():
 	$AnimationPlayer2.play(\"laser\")
+
+
+func _on_PowerPunch1_pressed():
+	$AnimationPlayer.play(\"power\")
+
+
+func _on_PowerPunch2_pressed():
+	$AnimationPlayer2.play(\"punch\")
 "
 
 [sub_resource type="SpriteFrames" id=1]
@@ -224,64 +250,64 @@ tracks/1/keys = {
 resource_name = "fireball"
 length = 1.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("CharacterBase/Fire:position")
+tracks/0/path = NodePath("CharacterBase/Fire:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 460.75, 227.55 ), Vector2( 1204, 227.55 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CharacterBase/Fire:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 0.2, 1, 1.2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1e-05, 1e-05 ), Vector2( 0.199463, 0.199463 ), Vector2( 0.199463, 0.199463 ), Vector2( 0.3, 0.3 ) ]
 }
-tracks/2/type = "value"
-tracks/2/path = NodePath("CharacterBase/Character:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
+tracks/1/type = "value"
+tracks/1/path = NodePath("CharacterBase/Character:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ 1, 2, 1 ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("CharacterBase/Fire:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/path = NodePath("CharacterBase/Fire:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0, 1, 1.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("CharacterBase/Fire:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 1.2, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true, false ]
+}
 tracks/4/type = "value"
-tracks/4/path = NodePath("CharacterBase/Fire:visible")
+tracks/4/path = NodePath("CharacterBase/Fire:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.1, 1.2, 1.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ false, true, true, false ]
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 460.75, 320 ), Vector2( 1479, 320 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -337,6 +363,21 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 1, 2, 2, 1 ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "power"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CharacterBase/Character:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 1 ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -444,40 +485,40 @@ tracks/1/keys = {
 [sub_resource type="Animation" id=12]
 resource_name = "fireball"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Fire2:position")
+tracks/0/path = NodePath("Fire2:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 460.75, 721.25 ), Vector2( 1388.75, 721.25 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Fire2:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 0.2, 0.9, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, true, false ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Character2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 2, 1 ]
+}
 tracks/2/type = "value"
-tracks/2/path = NodePath("Character2:frame")
+tracks/2/path = NodePath("Fire2:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 2, 1 ]
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 471, 864 ), Vector2( 1436, 864 ) ]
 }
 
 [sub_resource type="Animation" id=13]
@@ -534,110 +575,320 @@ tracks/1/keys = {
 "values": [ 1, 2, 2, 1 ]
 }
 
+[sub_resource type="Animation" id=17]
+resource_name = "punch"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Character2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 2, 0 ]
+}
+
 [node name="CharacterBase" type="Node2D"]
 script = SubResource( 2 )
 
 [node name="GridContainer" type="GridContainer" parent="."]
 margin_left = 9.0
-margin_top = 22.8
+margin_top = 36.0
 margin_right = 159.0
-margin_bottom = 697.8
+margin_bottom = 886.0
 rect_scale = Vector2( 0.6, 0.6 )
-custom_constants/vseparation = 25
+custom_constants/vseparation = 15
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="FireButton" type="TextureButton" parent="GridContainer"]
+[node name="GridContainer" type="GridContainer" parent="GridContainer"]
+margin_right = 388.0
+margin_bottom = 159.0
+custom_constants/hseparation = 15
+columns = 2
+
+[node name="PowerPunch" type="TextureButton" parent="GridContainer/GridContainer"]
+margin_right = 159.0
+margin_bottom = 159.0
+texture_normal = ExtResource( 85 )
+texture_pressed = ExtResource( 82 )
+
+[node name="Label" type="Label" parent="GridContainer/GridContainer"]
+margin_left = 174.0
+margin_top = 58.0
+margin_right = 388.0
+margin_bottom = 101.0
+custom_fonts/font = ExtResource( 86 )
+text = "Power Punch"
+
+[node name="GridContainer2" type="GridContainer" parent="GridContainer"]
+margin_top = 174.0
+margin_right = 388.0
+margin_bottom = 324.0
+custom_constants/hseparation = 15
+columns = 2
+
+[node name="FireButton" type="TextureButton" parent="GridContainer/GridContainer2"]
 margin_right = 150.0
 margin_bottom = 150.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 6 )
 
-[node name="IceButton" type="TextureButton" parent="GridContainer"]
-margin_top = 175.0
+[node name="Label" type="Label" parent="GridContainer/GridContainer2"]
+margin_left = 165.0
+margin_top = 53.0
+margin_right = 277.0
+margin_bottom = 96.0
+custom_fonts/font = ExtResource( 86 )
+text = "Zygote"
+
+[node name="GridContainer3" type="GridContainer" parent="GridContainer"]
+margin_top = 339.0
+margin_right = 388.0
+margin_bottom = 489.0
+custom_constants/hseparation = 15
+columns = 2
+
+[node name="IceButton" type="TextureButton" parent="GridContainer/GridContainer3"]
 margin_right = 150.0
-margin_bottom = 325.0
+margin_bottom = 150.0
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 2 )
 
-[node name="ElectricButton" type="TextureButton" parent="GridContainer"]
-margin_top = 350.0
+[node name="Label" type="Label" parent="GridContainer/GridContainer3"]
+margin_left = 165.0
+margin_top = 53.0
+margin_right = 337.0
+margin_bottom = 96.0
+custom_fonts/font = ExtResource( 86 )
+text = "Pollination"
+
+[node name="GridContainer4" type="GridContainer" parent="GridContainer"]
+margin_top = 504.0
+margin_right = 388.0
+margin_bottom = 654.0
+custom_constants/hseparation = 15
+columns = 2
+
+[node name="ElectricButton" type="TextureButton" parent="GridContainer/GridContainer4"]
 margin_right = 150.0
-margin_bottom = 500.0
+margin_bottom = 150.0
 texture_normal = ExtResource( 12 )
 texture_pressed = ExtResource( 14 )
 
-[node name="BeamButton" type="TextureButton" parent="GridContainer"]
-margin_top = 525.0
+[node name="Label" type="Label" parent="GridContainer/GridContainer4"]
+margin_left = 165.0
+margin_top = 53.0
+margin_right = 355.0
+margin_bottom = 96.0
+custom_fonts/font = ExtResource( 86 )
+text = "Fertilization"
+
+[node name="GridContainer5" type="GridContainer" parent="GridContainer"]
+margin_top = 669.0
+margin_right = 388.0
+margin_bottom = 819.0
+custom_constants/hseparation = 15
+columns = 2
+
+[node name="BeamButton" type="TextureButton" parent="GridContainer/GridContainer5"]
 margin_right = 150.0
-margin_bottom = 675.0
+margin_bottom = 150.0
 texture_normal = ExtResource( 13 )
 texture_pressed = ExtResource( 11 )
+
+[node name="Label" type="Label" parent="GridContainer/GridContainer5"]
+margin_left = 165.0
+margin_top = 53.0
+margin_right = 360.0
+margin_bottom = 96.0
+custom_fonts/font = ExtResource( 86 )
+text = "Conjugation"
 
 [node name="GridContainer2" type="GridContainer" parent="."]
 margin_left = 9.0
-margin_top = 523.0
+margin_top = 571.0
 margin_right = 159.0
-margin_bottom = 1198.0
+margin_bottom = 1421.0
 rect_scale = Vector2( 0.6, 0.6 )
-custom_constants/vseparation = 25
+custom_constants/vseparation = 15
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="FireButton" type="TextureButton" parent="GridContainer2"]
+[node name="GridContainer6" type="GridContainer" parent="GridContainer2"]
+margin_right = 435.0
+margin_bottom = 159.0
+custom_constants/hseparation = 15
+columns = 2
+
+[node name="PowerPunch" type="TextureButton" parent="GridContainer2/GridContainer6"]
+margin_right = 159.0
+margin_bottom = 159.0
+texture_normal = ExtResource( 83 )
+texture_pressed = ExtResource( 84 )
+
+[node name="Label" type="Label" parent="GridContainer2/GridContainer6"]
+margin_left = 174.0
+margin_top = 58.0
+margin_right = 388.0
+margin_bottom = 101.0
+custom_fonts/font = ExtResource( 86 )
+text = "Power Punch"
+
+[node name="GridContainer7" type="GridContainer" parent="GridContainer2"]
+margin_top = 174.0
+margin_right = 435.0
+margin_bottom = 324.0
+custom_constants/hseparation = 15
+columns = 2
+
+[node name="FireButton" type="TextureButton" parent="GridContainer2/GridContainer7"]
 margin_right = 150.0
 margin_bottom = 150.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 6 )
 
-[node name="IceButton" type="TextureButton" parent="GridContainer2"]
-margin_top = 175.0
+[node name="Label" type="Label" parent="GridContainer2/GridContainer7"]
+margin_left = 165.0
+margin_top = 53.0
+margin_right = 400.0
+margin_bottom = 96.0
+custom_fonts/font = ExtResource( 86 )
+text = "Fragmentation"
+
+[node name="GridContainer8" type="GridContainer" parent="GridContainer2"]
+margin_top = 339.0
+margin_right = 435.0
+margin_bottom = 489.0
+custom_constants/hseparation = 15
+columns = 2
+
+[node name="IceButton" type="TextureButton" parent="GridContainer2/GridContainer8"]
 margin_right = 150.0
-margin_bottom = 325.0
+margin_bottom = 150.0
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 2 )
 
-[node name="ElectricButton" type="TextureButton" parent="GridContainer2"]
-margin_top = 350.0
+[node name="Label" type="Label" parent="GridContainer2/GridContainer8"]
+margin_left = 165.0
+margin_top = 53.0
+margin_right = 297.0
+margin_bottom = 96.0
+custom_fonts/font = ExtResource( 86 )
+text = "Budding"
+
+[node name="GridContainer9" type="GridContainer" parent="GridContainer2"]
+margin_top = 504.0
+margin_right = 435.0
+margin_bottom = 654.0
+custom_constants/hseparation = 15
+columns = 2
+
+[node name="ElectricButton" type="TextureButton" parent="GridContainer2/GridContainer9"]
 margin_right = 150.0
-margin_bottom = 500.0
+margin_bottom = 150.0
 texture_normal = ExtResource( 12 )
 texture_pressed = ExtResource( 14 )
 
-[node name="BeamButton" type="TextureButton" parent="GridContainer2"]
-margin_top = 525.0
+[node name="Label" type="Label" parent="GridContainer2/GridContainer9"]
+margin_left = 165.0
+margin_top = 53.0
+margin_right = 393.0
+margin_bottom = 96.0
+custom_fonts/font = ExtResource( 86 )
+text = "Binary Fission"
+
+[node name="GridContainer10" type="GridContainer" parent="GridContainer2"]
+margin_top = 669.0
+margin_right = 435.0
+margin_bottom = 819.0
+custom_constants/hseparation = 15
+columns = 2
+
+[node name="BeamButton" type="TextureButton" parent="GridContainer2/GridContainer10"]
 margin_right = 150.0
-margin_bottom = 675.0
+margin_bottom = 150.0
 texture_normal = ExtResource( 13 )
 texture_pressed = ExtResource( 11 )
 
-[node name="Monster" type="Sprite" parent="."]
-position = Vector2( 1472, 482 )
-scale = Vector2( 0.700193, 0.683834 )
-texture = ExtResource( 18 )
+[node name="Label" type="Label" parent="GridContainer2/GridContainer10"]
+margin_left = 165.0
+margin_top = 53.0
+margin_right = 435.0
+margin_bottom = 96.0
+custom_fonts/font = ExtResource( 86 )
+text = "Spore Formation"
 
 [node name="Character" type="AnimatedSprite" parent="."]
-position = Vector2( 305, 216.8 )
+position = Vector2( 400.8, 300.8 )
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 1 )
 frame = 1
 
+[node name="Hear1" type="Sprite" parent="Character"]
+position = Vector2( -268, -812 )
+texture = ExtResource( 17 )
+
+[node name="Hear2" type="Sprite" parent="Character"]
+position = Vector2( 26.9999, -812 )
+texture = ExtResource( 17 )
+
+[node name="Hear3" type="Sprite" parent="Character"]
+position = Vector2( 312, -812 )
+texture = ExtResource( 17 )
+
+[node name="Label2" type="Label" parent="Character"]
+margin_left = -439.0
+margin_top = 701.0
+margin_right = -223.0
+margin_bottom = 790.0
+rect_scale = Vector2( 4, 4 )
+custom_fonts/font = ExtResource( 86 )
+text = "Sexual
+Reproduction"
+align = 1
+
 [node name="Character2" type="AnimatedSprite" parent="."]
-position = Vector2( 305, 718 )
+position = Vector2( 400.8, 829 )
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 9 )
 
+[node name="Hear4" type="Sprite" parent="Character2"]
+position = Vector2( -268, -918 )
+texture = ExtResource( 17 )
+
+[node name="Hear5" type="Sprite" parent="Character2"]
+position = Vector2( 27.0001, -918 )
+texture = ExtResource( 17 )
+
+[node name="Hear6" type="Sprite" parent="Character2"]
+position = Vector2( 312, -918 )
+texture = ExtResource( 17 )
+
+[node name="Label3" type="Label" parent="Character2"]
+margin_left = -439.0
+margin_top = 704.999
+margin_right = -223.0
+margin_bottom = 793.999
+rect_scale = Vector2( 4, 4 )
+custom_fonts/font = ExtResource( 86 )
+text = "Asexual
+Reproduction"
+align = 1
+
 [node name="Laser" type="Sprite" parent="."]
 visible = false
-position = Vector2( 827.25, 231.3 )
+position = Vector2( 896, 311 )
 scale = Vector2( 0.78833, 0.197754 )
 texture = ExtResource( 10 )
 
 [node name="Ice" type="Sprite" parent="."]
 visible = false
-position = Vector2( 427, 228 )
+position = Vector2( 527, 306 )
 scale = Vector2( 0.864746, 0.197754 )
 texture = ExtResource( 8 )
 offset = Vector2( 377.063, 6.57361 )
@@ -645,7 +896,7 @@ offset = Vector2( 377.063, 6.57361 )
 [node name="Electric" type="Sprite" parent="."]
 visible = false
 material = SubResource( 8 )
-position = Vector2( 776, 228 )
+position = Vector2( 821, 314 )
 scale = Vector2( 0.78833, 0.197754 )
 texture = ExtResource( 5 )
 
@@ -662,36 +913,7 @@ anims/electric_shock = SubResource( 6 )
 anims/fireball = SubResource( 4 )
 anims/ice_beam = SubResource( 5 )
 anims/laser_beam = SubResource( 7 )
-
-[node name="Hear1" type="Sprite" parent="."]
-position = Vector2( 251.4, 54.4 )
-scale = Vector2( 0.2, 0.2 )
-texture = ExtResource( 17 )
-
-[node name="Hear2" type="Sprite" parent="."]
-position = Vector2( 310.4, 54.4 )
-scale = Vector2( 0.2, 0.2 )
-texture = ExtResource( 17 )
-
-[node name="Hear3" type="Sprite" parent="."]
-position = Vector2( 367.4, 54.4 )
-scale = Vector2( 0.2, 0.2 )
-texture = ExtResource( 17 )
-
-[node name="Hear4" type="Sprite" parent="."]
-position = Vector2( 251.4, 534.4 )
-scale = Vector2( 0.2, 0.2 )
-texture = ExtResource( 17 )
-
-[node name="Hear5" type="Sprite" parent="."]
-position = Vector2( 310.4, 534.4 )
-scale = Vector2( 0.2, 0.2 )
-texture = ExtResource( 17 )
-
-[node name="Hear6" type="Sprite" parent="."]
-position = Vector2( 367.4, 534.4 )
-scale = Vector2( 0.2, 0.2 )
-texture = ExtResource( 17 )
+anims/power = SubResource( 16 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 10 )
@@ -699,16 +921,17 @@ anims/electric = SubResource( 11 )
 anims/fireball = SubResource( 12 )
 anims/ice = SubResource( 13 )
 anims/laser = SubResource( 14 )
+anims/punch = SubResource( 17 )
 
 [node name="Laser2" type="Sprite" parent="."]
 visible = false
-position = Vector2( 827.25, 725 )
+position = Vector2( 888, 839 )
 scale = Vector2( 0.78833, 0.197754 )
 texture = ExtResource( 10 )
 
 [node name="Ice2" type="Sprite" parent="."]
 visible = false
-position = Vector2( 427, 721.7 )
+position = Vector2( 518, 838 )
 scale = Vector2( 0.864746, 0.197754 )
 texture = ExtResource( 8 )
 offset = Vector2( 377.063, 6.57361 )
@@ -716,7 +939,7 @@ offset = Vector2( 377.063, 6.57361 )
 [node name="Electric2" type="Sprite" parent="."]
 visible = false
 material = SubResource( 8 )
-position = Vector2( 776, 723 )
+position = Vector2( 820, 843 )
 scale = Vector2( 0.78833, 0.197754 )
 texture = ExtResource( 5 )
 
@@ -726,11 +949,96 @@ position = Vector2( 460.75, 721.25 )
 scale = Vector2( 0.199463, 0.199463 )
 texture = ExtResource( 1 )
 
-[connection signal="pressed" from="GridContainer/FireButton" to="." method="_on_FireButton_pressed"]
-[connection signal="pressed" from="GridContainer/IceButton" to="." method="_on_IceButton_pressed"]
-[connection signal="pressed" from="GridContainer/ElectricButton" to="." method="_on_ElectricButton_pressed"]
-[connection signal="pressed" from="GridContainer/BeamButton" to="." method="_on_BeamButton_pressed"]
-[connection signal="pressed" from="GridContainer2/FireButton" to="." method="_on_FireButton_pressed2"]
-[connection signal="pressed" from="GridContainer2/IceButton" to="." method="_on_IceButton_pressed2"]
-[connection signal="pressed" from="GridContainer2/ElectricButton" to="." method="_on_ElectricButton_pressed2"]
-[connection signal="pressed" from="GridContainer2/BeamButton" to="." method="_on_BeamButton_pressed2"]
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 1076.0
+margin_top = 44.0
+margin_right = 1564.0
+margin_bottom = 1050.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+margin_bottom = 6500.0
+custom_constants/separation = 500
+
+[node name="Node2D" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 18 )]
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="Node2D2" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 29 )]
+margin_top = 500.0
+margin_right = 0.0
+margin_bottom = 500.0
+
+[node name="Node2D3" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 23 )]
+margin_top = 1000.0
+margin_right = 0.0
+margin_bottom = 1000.0
+
+[node name="Node2D4" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 26 )]
+margin_top = 1500.0
+margin_right = 0.0
+margin_bottom = 1500.0
+
+[node name="Node2D5" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 30 )]
+margin_top = 2000.0
+margin_right = 0.0
+margin_bottom = 2000.0
+
+[node name="Node2D6" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 34 )]
+margin_top = 2500.0
+margin_right = 0.0
+margin_bottom = 2500.0
+
+[node name="Node2D7" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 32 )]
+margin_top = 3000.0
+margin_right = 0.0
+margin_bottom = 3000.0
+
+[node name="Node2D8" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 28 )]
+margin_top = 3500.0
+margin_right = 0.0
+margin_bottom = 3500.0
+
+[node name="Node2D9" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 33 )]
+margin_top = 4000.0
+margin_right = 0.0
+margin_bottom = 4000.0
+
+[node name="Node2D10" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 27 )]
+margin_top = 4500.0
+margin_right = 0.0
+margin_bottom = 4500.0
+
+[node name="Node2D11" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 31 )]
+margin_top = 5000.0
+margin_right = 0.0
+margin_bottom = 5000.0
+
+[node name="Node2D12" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 24 )]
+margin_top = 5500.0
+margin_right = 0.0
+margin_bottom = 5500.0
+
+[node name="Node2D13" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 25 )]
+margin_top = 6000.0
+margin_right = 0.0
+margin_bottom = 6000.0
+
+[node name="Node2D14" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 35 )]
+margin_top = 6500.0
+margin_right = 0.0
+margin_bottom = 6500.0
+
+[connection signal="pressed" from="GridContainer/GridContainer/PowerPunch" to="." method="_on_PowerPunch1_pressed"]
+[connection signal="pressed" from="GridContainer/GridContainer2/FireButton" to="." method="_on_FireButton_pressed"]
+[connection signal="pressed" from="GridContainer/GridContainer3/IceButton" to="." method="_on_IceButton_pressed"]
+[connection signal="pressed" from="GridContainer/GridContainer4/ElectricButton" to="." method="_on_ElectricButton_pressed"]
+[connection signal="pressed" from="GridContainer/GridContainer5/BeamButton" to="." method="_on_BeamButton_pressed"]
+[connection signal="pressed" from="GridContainer2/GridContainer6/PowerPunch" to="." method="_on_PowerPunch2_pressed"]
+[connection signal="pressed" from="GridContainer2/GridContainer7/FireButton" to="." method="_on_FireButton_pressed2"]
+[connection signal="pressed" from="GridContainer2/GridContainer8/IceButton" to="." method="_on_IceButton_pressed2"]
+[connection signal="pressed" from="GridContainer2/GridContainer9/ElectricButton" to="." method="_on_ElectricButton_pressed2"]
+[connection signal="pressed" from="GridContainer2/GridContainer10/BeamButton" to="." method="_on_BeamButton_pressed2"]
