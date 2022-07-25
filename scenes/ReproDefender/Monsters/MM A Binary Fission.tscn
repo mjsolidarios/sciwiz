@@ -77,7 +77,7 @@ margin_bottom = 483.0
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 217, 132 )
 frames = SubResource( 1 )
-frame = 36
+frame = 4
 speed_scale = 5.0
 playing = true
 

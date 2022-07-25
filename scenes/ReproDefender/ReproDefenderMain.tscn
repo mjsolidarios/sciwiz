@@ -24,7 +24,8 @@ margin_top = 7.0
 margin_right = 960.0
 margin_bottom = 102.0
 custom_fonts/font = SubResource( 2 )
-text = "SCORE"
+text = "Score: 10"
+align = 1
 
 [node name="CharacterBase" parent="." instance=ExtResource( 1 )]
 position = Vector2( 25, -11 )
