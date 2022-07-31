@@ -71,21 +71,22 @@ animations = [ {
 } ]
 
 [node name="Node2D" type="Control"]
-margin_right = 480.0
-margin_bottom = 460.0
+margin_right = 1218.0
+margin_bottom = 636.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 217, 132 )
+position = Vector2( 253, 257 )
+scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
-frame = 29
+frame = 34
 speed_scale = 5.0
 playing = true
 
 [node name="Label3" type="Label" parent="."]
-margin_left = 8.0
-margin_top = 268.0
-margin_right = 437.0
-margin_bottom = 403.0
+margin_left = 474.0
+margin_top = 211.0
+margin_right = 903.0
+margin_bottom = 346.0
 custom_fonts/font = ExtResource( 61 )
 text = "It is the fertilized egg produced from the union of egg cell and sperm cell"
 autowrap = true

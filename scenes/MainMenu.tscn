@@ -221,9 +221,13 @@ texture = ExtResource( 1 )
 expand = true
 stretch_mode = 4
 
-[node name="Logo" type="Sprite" parent="."]
-position = Vector2( 969, 273 )
-scale = Vector2( 0.729675, 0.729675 )
+[node name="Logo" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -750.0
+margin_top = 72.0
+margin_right = 750.0
+margin_bottom = 564.0
 texture = ExtResource( 2 )
 
 [node name="Button" type="Button" parent="."]

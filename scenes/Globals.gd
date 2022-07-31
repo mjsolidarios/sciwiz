@@ -26,6 +26,8 @@ var loader
 var wait_frames
 var time_max = 100 # msec
 
+var ans_score = 0
+
 
 func _ready():
 	var root = get_tree().get_root()

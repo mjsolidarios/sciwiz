@@ -71,21 +71,22 @@ animations = [ {
 } ]
 
 [node name="Node2D" type="Control"]
-margin_right = 480.0
-margin_bottom = 460.0
+margin_right = 1387.0
+margin_bottom = 681.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 217, 132 )
+position = Vector2( 251, 249 )
+scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
-frame = 32
+frame = 33
 speed_scale = 5.0
 playing = true
 
 [node name="Label3" type="Label" parent="."]
-margin_left = 8.0
-margin_top = 268.0
-margin_right = 437.0
-margin_bottom = 403.0
+margin_left = 474.0
+margin_top = 158.0
+margin_right = 903.0
+margin_bottom = 293.0
 custom_fonts/font = ExtResource( 61 )
 text = "Plants reproduce through
 their vegetative parts such

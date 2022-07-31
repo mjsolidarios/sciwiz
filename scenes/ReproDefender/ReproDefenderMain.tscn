@@ -1,8 +1,47 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/ReproDefender/CharacterBase.tscn" type="PackedScene" id=1]
-[ext_resource path="res://images/background.png" type="Texture" id=2]
+[ext_resource path="res://images/ans_assets/ReproDefenders background.PNG" type="Texture" id=2]
 [ext_resource path="res://fonts/Roboto-Medium.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://sounds/click_001.tres" type="AudioStream" id=4]
+[ext_resource path="res://scenes/TextButton.gd" type="Script" id=5]
+[ext_resource path="res://icons/arrowLeft.png" type="Texture" id=6]
+[ext_resource path="res://images/ans_assets/dna.png" type="Texture" id=7]
+[ext_resource path="res://images/ans_assets/blob-1.png" type="Texture" id=8]
+[ext_resource path="res://images/ans_assets/blob-2.png" type="Texture" id=9]
+[ext_resource path="res://images/ans_assets/blob-3.png" type="Texture" id=10]
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Control
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	$ScoreLabel.text = \"Score: \" + str($\"/root/Globals\".ans_score)
+"
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.0196078, 0.133333, 0.286275, 1 )
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 0.314773 ), 0.0, 0.0, 0, 0, Vector2( 0.593301, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=6]
+_data = [ Vector2( 0, 0.425 ), 0.0, 0.0, 0, 0, Vector2( 0.54067, 1 ), 0.204514, 0.204514, 0, 0, Vector2( 1, 0.825 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=7]
+offsets = PoolRealArray( 0, 0.241935, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 80
@@ -11,14 +50,115 @@ font_data = ExtResource( 3 )
 [sub_resource type="Environment" id=1]
 glow_enabled = true
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = SubResource( 4 )
 
 [node name="Background" type="Sprite" parent="."]
-position = Vector2( 1040, 550 )
-scale = Vector2( 1.21167, 1.21167 )
+position = Vector2( 954, 568 )
+scale = Vector2( 1.06562, 1.2037 )
 texture = ExtResource( 2 )
 
-[node name="Label" type="Label" parent="."]
+[node name="Panel" type="Panel" parent="."]
+margin_left = -345.0
+margin_top = -107.0
+margin_right = 2271.0
+margin_bottom = 1192.0
+custom_styles/panel = SubResource( 5 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2( 874, 494 )
+amount = 300
+lifetime = 10.0
+emission_shape = 1
+emission_sphere_radius = 1000.0
+gravity = Vector2( 1, 1 )
+scale_amount = 4.75
+scale_amount_curve = SubResource( 3 )
+color = Color( 0.443137, 0.92549, 1, 1 )
+
+[node name="CPUParticles2D5" type="CPUParticles2D" parent="."]
+position = Vector2( -866, 826 )
+amount = 1000
+lifetime = 10.0
+preprocess = 200.0
+speed_scale = 0.1
+texture = ExtResource( 10 )
+emission_shape = 1
+emission_sphere_radius = 300.0
+gravity = Vector2( 1, 1 )
+initial_velocity = 1000.0
+angular_velocity = 129.73
+radial_accel = 41.64
+radial_accel_random = 1.0
+scale_amount_curve = SubResource( 3 )
+color = Color( 0.443137, 0.92549, 1, 1 )
+
+[node name="CPUParticles2D4" type="CPUParticles2D" parent="."]
+position = Vector2( -212, 494 )
+amount = 5
+lifetime = 10.0
+speed_scale = 0.1
+texture = ExtResource( 9 )
+emission_shape = 1
+emission_sphere_radius = 1000.0
+direction = Vector2( 100, 0 )
+gravity = Vector2( 100, 1 )
+angular_velocity = 91.81
+scale_amount = 4.75
+color = Color( 0.443137, 0.92549, 1, 1 )
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+position = Vector2( 873, 497 )
+amount = 10
+lifetime = 20.0
+preprocess = 248.65
+speed_scale = 0.3
+randomness = 1.0
+lifetime_randomness = 1.0
+texture = ExtResource( 7 )
+emission_shape = 1
+emission_sphere_radius = 1500.0
+direction = Vector2( 100, 0 )
+spread = 180.0
+gravity = Vector2( 8, 20 )
+initial_velocity = 81.08
+initial_velocity_random = 1.0
+angular_velocity = 8.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.1
+linear_accel = 10.81
+scale_amount = 3.0
+scale_amount_curve = SubResource( 6 )
+color = Color( 0.443137, 0.92549, 1, 1 )
+color_ramp = SubResource( 7 )
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="."]
+position = Vector2( 873, 497 )
+amount = 5
+lifetime = 20.0
+preprocess = 248.65
+speed_scale = 0.1
+randomness = 1.0
+lifetime_randomness = 1.0
+texture = ExtResource( 8 )
+emission_shape = 1
+emission_sphere_radius = 1000.0
+direction = Vector2( 100, 0 )
+spread = 180.0
+gravity = Vector2( 30, 20 )
+initial_velocity = 81.08
+initial_velocity_random = 1.0
+angular_velocity = 8.0
+angular_velocity_random = 1.0
+linear_accel = 10.81
+scale_amount = 3.0
+scale_amount_curve = SubResource( 6 )
+color = Color( 0.443137, 0.92549, 1, 1 )
+color_ramp = SubResource( 7 )
+
+[node name="ScoreLabel" type="Label" parent="."]
 margin_left = 710.0
 margin_top = 7.0
 margin_right = 960.0
@@ -28,7 +168,21 @@ text = "Score: 10"
 align = 1
 
 [node name="CharacterBase" parent="." instance=ExtResource( 1 )]
-position = Vector2( 25, -11 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
+
+[node name="BackButton" type="TextureButton" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -162.0
+margin_bottom = 141.0
+texture_normal = ExtResource( 6 )
+expand = true
+script = ExtResource( 5 )
+path = "res://scenes/MainMenu.tscn"
+
+[node name="Click" type="AudioStreamPlayer" parent="BackButton"]
+stream = ExtResource( 4 )
+
+[connection signal="pressed" from="BackButton" to="BackButton" method="GotoScene"]
