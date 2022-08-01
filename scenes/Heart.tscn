@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://images/ans_assets/heart pixel art 254x254.png" type="Texture" id=1]
+
+[node name="Heart" type="TextureRect"]
+margin_right = 254.0
+margin_bottom = 254.0
+texture = ExtResource( 1 )
