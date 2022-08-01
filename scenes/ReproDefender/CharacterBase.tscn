@@ -202,7 +202,6 @@ func eval_answer(key, _type):
 		print(item[\"match\"] + \"||\"+ key + \":\" + item[\"type\"]+ \"||\"+_type)
 		if key == item[\"match\"] and _type == item[\"type\"]:
 			print(\"Matched\")
-			$\"/root/Globals\".ans_score =+ 10
 			monster_index += 1
 			if monster_index > monster_pool.size() - 1:
 				delete_children(get_node(\"MonsterBin\"))
@@ -210,18 +209,19 @@ func eval_answer(key, _type):
 			else:
 				clear_monster_and_replace(monster_index)
 			print(\"monster index: \"+ str(monster_index))
+			$\"/root/Globals\".ans_score += 10
 		else:
 			print(\"Unmatched\")
-			$\"/root/Globals\".ans_score -= 10
+			$\"/root/Globals\".ans_score -= 5
 			if player_type == \"s\":
 				player_s_life -= 1
 			else:
 				player_a_life -= 1
-			if player_a_life == 0 and player_s_life == 0:
+			if player_a_life == 0 or player_s_life == 0:
 				$PopupGameOver.show()
-		print($\"/root/Globals\".ans_score)
 	else:
 		delete_children(get_node(\"MonsterBin\"))
+	print(\"Current Score: \"+ str($\"/root/Globals\".ans_score))
 
 func _on_FireButton_pressed():
 	toggle_char(true)
@@ -1347,8 +1347,9 @@ texture = ExtResource( 1 )
 [node name="Label3" type="Label" parent="."]
 anchor_top = 0.5
 anchor_bottom = 0.5
+margin_left = 8.0
 margin_top = -45.5
-margin_right = 479.0
+margin_right = 487.0
 margin_bottom = -2.5
 rect_rotation = -89.9999
 custom_fonts/font = ExtResource( 86 )
@@ -1358,8 +1359,9 @@ align = 1
 [node name="Label4" type="Label" parent="."]
 anchor_top = 0.5
 anchor_bottom = 0.5
+margin_left = 8.0
 margin_top = 490.5
-margin_right = 479.0
+margin_right = 487.0
 margin_bottom = 533.5
 rect_rotation = -89.9999
 custom_fonts/font = ExtResource( 86 )
@@ -1577,7 +1579,7 @@ margin_top = -21.5
 margin_right = 185.0
 margin_bottom = 21.5
 custom_fonts/font = ExtResource( 86 )
-text = "Characters lost all life!"
+text = "A hero was defeated!"
 align = 1
 
 [node name="Score" type="Label" parent="PopupGameOver/Panel"]

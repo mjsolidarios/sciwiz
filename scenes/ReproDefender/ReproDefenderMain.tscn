@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/ReproDefender/CharacterBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://images/ans_assets/ReproDefenders background.PNG" type="Texture" id=2]
+[ext_resource path="res://sounds/Mind-Bender.ogg" type="AudioStream" id=3]
 [ext_resource path="res://images/ans_assets/dna.png" type="Texture" id=7]
 [ext_resource path="res://images/ans_assets/blob-1.png" type="Texture" id=8]
 [ext_resource path="res://images/ans_assets/blob-2.png" type="Texture" id=9]
@@ -49,10 +50,8 @@ scale = Vector2( 1.06562, 1.2037 )
 texture = ExtResource( 2 )
 
 [node name="Panel" type="Panel" parent="."]
-margin_left = -345.0
-margin_top = -107.0
-margin_right = 2271.0
-margin_bottom = 1192.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 custom_styles/panel = SubResource( 5 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
@@ -150,3 +149,8 @@ color_ramp = SubResource( 7 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -5.0
+autoplay = true
