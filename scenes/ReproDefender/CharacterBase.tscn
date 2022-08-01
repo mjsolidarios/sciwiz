@@ -55,72 +55,86 @@ onready var match_item_set = {
 	\"mma1\":{
 		\"name\": \"mma1\",
 		\"scene\": mma1,
-		\"match\": \"punch\"
+		\"match\": \"punch\",
+		\"type\": \"a\"
 	},
 	\"mma2\":{
 		\"name\": \"mma2\",
 		\"scene\": mma2,
-		\"match\": \"punch\"
+		\"match\": \"punch\",
+		\"type\": \"a\"
 	},
 	\"mma3\":{
 		\"name\": \"mma3\",
 		\"scene\": mma3,
-		\"match\": \"punch\"
+		\"match\": \"punch\",
+		\"type\": \"a\"
 	},
 	\"mma4\":{
 		\"name\": \"mma4\",
 		\"scene\": mma4,
-		\"match\": \"punch\"
+		\"match\": \"punch\",
+		\"type\": \"a\"
 	},
 	\"mmabin\":{
 		\"name\": \"mmabin\",
 		\"scene\": mmabin,
-		\"match\": \"binfis\" #binary fission
+		\"match\": \"binfis\",
+		\"type\": \"a\"
 	},
 	\"mmabud\":{
 		\"name\": \"mmabud\",
 		\"scene\": mmabud,
-		\"match\": \"budding\"
+		\"match\": \"budding\",
+		\"type\": \"a\"
 	},
 	\"mmafrag\":{
 		\"name\": \"mmafrag\",
 		\"scene\": mmafrag,
-		\"match\": \"fragmentation\"
+		\"match\": \"fragmentation\",
+		\"type\": \"a\"
 	},
 	\"mmaspore\":{
 		\"name\": \"mmaspore\",
 		\"scene\": mmaspore,
-		\"match\": \"sporeform\"
+		\"match\": \"sporeform\",
+		\"type\": \"s\"
 	},
 	\"mms1\":{
 		\"name\": \"mms1\",
 		\"scene\": mms1,
-		\"match\": \"punch\"
+		\"match\": \"punch\",
+		\"type\": \"s\"
 	},
 	\"mms2\":{
 		\"name\": \"mms2\",
 		\"scene\": mms2,
-		\"match\": \"punch\"
+		\"match\": \"punch\",
+		\"type\": \"s\"
 	},
 	\"mmsconj\":{
 		\"name\": \"mmsconj\",
 		\"scene\": mmsconj,
-		\"match\": \"conjugation\"
+		\"match\": \"conjugation\",
+		\"type\": \"s\"
 	},
 	\"mmsfert\":{
 		\"name\": \"mmsfert\",
 		\"scene\": mmsfert,
-		\"match\": \"fertilization\"
+		\"match\": \"fertilization\",
+		\"type\": \"s\"
 	},
 	\"mmspol\":{
 		\"name\": \"mmspol\",
 		\"scene\": mmspol,
-		\"match\": \"pollination\"
+		\"match\": \"pollination\",
+		\"type\": \"s\"
 	},
 	\"mmszygote\":{
 		\"name\": \"mmszygote\",
 		\"scene\": mmszygote,
-		\"match\": \"zygote\"
+		\"match\": \"zygote\",
+		\"type\": \"s\"
 	},
 }
 
@@ -131,6 +145,7 @@ onready var monster_pool = match_item_set.keys()
 var monster_index = 0
 
 var player_answer = \"\"
+var player_type = \"a\"
 
 
 
@@ -145,7 +160,7 @@ func _ready():
 	$Character.hide()
 	print(monster_pool[monster_index])
 	delete_children(get_node(\"MonsterBin\"))
-	get_node(\"MonsterBin\").add_child(match_item_set[monster_pool[monster_index]][\"scene\"].instance())
+	get_node(\"MonsterBin\").add_child(match_item_set[monster_pool[0]][\"scene\"].instance())
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -154,7 +169,10 @@ func _ready():
 
 func clear_monster_and_replace(index):
 	delete_children(get_node(\"MonsterBin\"))
-	get_node(\"MonsterBin\").add_child(match_item_set[monster_pool[index]][\"scene\"].instance())
+	if index < match_item_set.size():
+		get_node(\"MonsterBin\").add_child(match_item_set[monster_pool[index]][\"scene\"].instance())
+	else:
+		get_node(\"MonsterBin\").add_child(match_item_set[monster_pool[match_item_set.size()-1]][\"scene\"].instance())
 	
 	
 func toggle_char(s):
@@ -169,27 +187,41 @@ func toggle_char(s):
 		$SAvatar/Halo.hide()
 		$SAvatar2/Halo.show()
 
-func eval_answer(key):	
-	if key == match_item_set[monster_pool[monster_index]][\"match\"]:
-		$\"/root/Globals\".ans_score =+ 10
-		monster_index += 1
-		if monster_index <= match_item_set.size():
-			clear_monster_and_replace(monster_index)
+func eval_answer(key, _type):
+	if monster_index <= monster_pool.size()-1:
+		var item
+		if monster_index <= monster_pool.size()-1:
+			 item = match_item_set[monster_pool[monster_index]]
+		print(item[\"match\"] + \"||\"+ key + \":\" + item[\"type\"]+ \"||\"+_type)
+		if key == item[\"match\"] and _type == item[\"type\"]:
+			print(\"Matched\")
+			$\"/root/Globals\".ans_score =+ 10
+			monster_index += 1
+			if monster_index > monster_pool.size() - 1:
+				delete_children(get_node(\"MonsterBin\"))
+			else:
+				clear_monster_and_replace(monster_index)
+			print(\"monster index: \"+ str(monster_index))
+		else:
+			print(\"Unmatched\")
+			$\"/root/Globals\".ans_score -= 10
+		print($\"/root/Globals\".ans_score)
 	else:
-		$\"/root/Globals\".ans_score -= 10
-	print($\"/root/Globals\".ans_score)
+		delete_children(get_node(\"MonsterBin\"))
 
 func _on_FireButton_pressed():
 	toggle_char(true)
 	get_node(\"AnimationPlayer\").play(\"fireball\")
 	$AnimationPlayerFX.play(\"burn\")
 	player_answer = \"zygote\"
+	player_type = \"s\"
 
 func _on_IceButton_pressed():
 	toggle_char(true)
 	$AnimationPlayer.play(\"ice_beam\")
 	$AnimationPlayerFX.play(\"freeze\")
 	player_answer = \"pollination\"
+	player_type = \"s\"
 
 
 func _on_ElectricButton_pressed():
@@ -197,6 +229,7 @@ func _on_ElectricButton_pressed():
 	$AnimationPlayer.play(\"electric_shock\")
 	$AnimationPlayerFX.play(\"shock\")
 	player_answer = \"conjugation\"
+	player_type = \"s\"
 
 
 func _on_BeamButton_pressed():
@@ -204,6 +237,7 @@ func _on_BeamButton_pressed():
 	$AnimationPlayer.play(\"laser_beam\")
 	$AnimationPlayerFX.play(\"lazer\")
 	player_answer = \"fertilization\"
+	player_type = \"s\"
 
 
 func _on_FireButton_pressed2():
@@ -211,6 +245,7 @@ func _on_FireButton_pressed2():
 	$AnimationPlayer2.play(\"fireball\")
 	$AnimationPlayerFX.play(\"burn\")
 	player_answer = \"fragmentation\"
+	player_type = \"a\"
 
 
 func _on_IceButton_pressed2():
@@ -218,6 +253,7 @@ func _on_IceButton_pressed2():
 	$AnimationPlayer2.play(\"ice\")
 	$AnimationPlayerFX.play(\"freeze\")
 	player_answer = \"budding\"
+	player_type = \"a\"
 
 
 func _on_ElectricButton_pressed2():
@@ -225,13 +261,15 @@ func _on_ElectricButton_pressed2():
 	$AnimationPlayer2.play(\"electric\")
 	$AnimationPlayerFX.play(\"shock\")
 	player_answer = \"sporeform\"
+	player_type = \"s\"
 
 
 func _on_BeamButton_pressed2():
 	toggle_char(false)
 	$AnimationPlayer2.play(\"laser\")
 	$AnimationPlayerFX.play(\"lazer\")
-	player_answer = \"binfiz\"
+	player_answer = \"binfis\"
+	player_type = \"a\"
 
 
 func _on_PowerPunch1_pressed():
@@ -239,6 +277,7 @@ func _on_PowerPunch1_pressed():
 	$AnimationPlayer.play(\"power\")
 	$AnimationPlayerFX.play(\"punch\")
 	player_answer = \"punch\"
+	player_type = \"a\"
 
 
 func _on_PowerPunch2_pressed():
@@ -246,10 +285,11 @@ func _on_PowerPunch2_pressed():
 	$AnimationPlayer2.play(\"punch\")
 	$AnimationPlayerFX.play(\"punch\")
 	player_answer = \"punch\"
+	player_type = \"s\"
 
 
 func _on_AnimationPlayerFX_animation_finished(anim_name):
-	eval_answer(player_answer)
+	eval_answer(str(player_answer), str(player_type))
 "
 
 [sub_resource type="StyleBoxFlat" id=18]
@@ -1000,10 +1040,10 @@ texture_pressed = ExtResource( 14 )
 [node name="Label" type="Label" parent="Panel/GridContainer/GridContainer4"]
 margin_left = 165.0
 margin_top = 53.0
-margin_right = 355.0
+margin_right = 360.0
 margin_bottom = 96.0
 custom_fonts/font = ExtResource( 86 )
-text = "Fertilization"
+text = "Conjugation"
 
 [node name="GridContainer5" type="GridContainer" parent="Panel/GridContainer"]
 margin_top = 669.0
@@ -1021,10 +1061,10 @@ texture_pressed = ExtResource( 11 )
 [node name="Label" type="Label" parent="Panel/GridContainer/GridContainer5"]
 margin_left = 165.0
 margin_top = 53.0
-margin_right = 360.0
+margin_right = 355.0
 margin_bottom = 96.0
 custom_fonts/font = ExtResource( 86 )
-text = "Conjugation"
+text = "Fertilization"
 
 [node name="GridContainer2" type="GridContainer" parent="Panel"]
 margin_left = 33.0
@@ -1115,10 +1155,10 @@ texture_pressed = ExtResource( 14 )
 [node name="Label" type="Label" parent="Panel/GridContainer2/GridContainer9"]
 margin_left = 165.0
 margin_top = 53.0
-margin_right = 393.0
+margin_right = 435.0
 margin_bottom = 96.0
 custom_fonts/font = ExtResource( 86 )
-text = "Binary Fission"
+text = "Spore Formation"
 
 [node name="GridContainer10" type="GridContainer" parent="Panel/GridContainer2"]
 margin_top = 669.0
@@ -1136,10 +1176,10 @@ texture_pressed = ExtResource( 11 )
 [node name="Label" type="Label" parent="Panel/GridContainer2/GridContainer10"]
 margin_left = 165.0
 margin_top = 53.0
-margin_right = 435.0
+margin_right = 393.0
 margin_bottom = 96.0
 custom_fonts/font = ExtResource( 86 )
-text = "Spore Formation"
+text = "Binary Fission"
 
 [node name="Character" type="AnimatedSprite" parent="."]
 position = Vector2( 452.8, 502 )
