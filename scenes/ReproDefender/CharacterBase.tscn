@@ -60,85 +60,85 @@ onready var match_item_set = {
 		\"name\": \"mma1\",
 		\"scene\": mma1,
 		\"match\": \"punch\",
-		\"type\": \"a\"
+		\"type\": \"s\"
 	},
 	\"mma2\":{
 		\"name\": \"mma2\",
 		\"scene\": mma2,
 		\"match\": \"punch\",
-		\"type\": \"a\"
+		\"type\": \"s\"
 	},
 	\"mma3\":{
 		\"name\": \"mma3\",
 		\"scene\": mma3,
 		\"match\": \"punch\",
-		\"type\": \"a\"
+		\"type\": \"s\"
 	},
 	\"mma4\":{
 		\"name\": \"mma4\",
 		\"scene\": mma4,
 		\"match\": \"punch\",
-		\"type\": \"a\"
+		\"type\": \"s\"
 	},
 	\"mmabin\":{
 		\"name\": \"mmabin\",
 		\"scene\": mmabin,
 		\"match\": \"binfis\",
-		\"type\": \"a\"
+		\"type\": \"s\"
 	},
 	\"mmabud\":{
 		\"name\": \"mmabud\",
 		\"scene\": mmabud,
 		\"match\": \"budding\",
-		\"type\": \"a\"
+		\"type\": \"s\"
 	},
 	\"mmafrag\":{
 		\"name\": \"mmafrag\",
 		\"scene\": mmafrag,
 		\"match\": \"fragmentation\",
-		\"type\": \"a\"
+		\"type\": \"s\"
 	},
 	\"mmaspore\":{
 		\"name\": \"mmaspore\",
 		\"scene\": mmaspore,
 		\"match\": \"sporeform\",
-		\"type\": \"s\"
+		\"type\": \"a\"
 	},
 	\"mms1\":{
 		\"name\": \"mms1\",
 		\"scene\": mms1,
 		\"match\": \"punch\",
-		\"type\": \"s\"
+		\"type\": \"a\"
 	},
 	\"mms2\":{
 		\"name\": \"mms2\",
 		\"scene\": mms2,
 		\"match\": \"punch\",
-		\"type\": \"s\"
+		\"type\": \"a\"
 	},
 	\"mmsconj\":{
 		\"name\": \"mmsconj\",
 		\"scene\": mmsconj,
 		\"match\": \"conjugation\",
-		\"type\": \"s\"
+		\"type\": \"a\"
 	},
 	\"mmsfert\":{
 		\"name\": \"mmsfert\",
 		\"scene\": mmsfert,
 		\"match\": \"fertilization\",
-		\"type\": \"s\"
+		\"type\": \"a\"
 	},
 	\"mmspol\":{
 		\"name\": \"mmspol\",
 		\"scene\": mmspol,
 		\"match\": \"pollination\",
-		\"type\": \"s\"
+		\"type\": \"a\"
 	},
 	\"mmszygote\":{
 		\"name\": \"mmszygote\",
 		\"scene\": mmszygote,
 		\"match\": \"zygote\",
-		\"type\": \"s\"
+		\"type\": \"a\"
 	},
 }
 
