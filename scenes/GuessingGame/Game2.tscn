@@ -5,8 +5,8 @@
 [ext_resource path="res://images/background.png" type="Texture" id=3]
 [ext_resource path="res://sounds/Mind-Bender.ogg" type="AudioStream" id=4]
 [ext_resource path="res://icons/space.png" type="Texture" id=5]
-[ext_resource path="res://scenes/GuessingGame/images/a-degree-of-concern.jpg" type="Texture" id=6]
-[ext_resource path="res://scenes/GuessingGame/images/ex2.png" type="Texture" id=7]
+[ext_resource path="res://scenes/GuessingGame/images/ex4.png" type="Texture" id=6]
+[ext_resource path="res://scenes/GuessingGame/images/ex3.png" type="Texture" id=7]
 
 [sub_resource type="GDScript" id=4]
 script/source = "extends Control
@@ -106,9 +106,10 @@ font_data = ExtResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = SubResource( 4 )
-term = "e, , , ,e, , , , ,e, , , , , , , , , ,"
-character_sets = "e,t,u,x,r,m,p,a,s"
-next_scene = "res://scenes/GuessingGame/Game2.tscn"
+term = " , , , , , , "
+character_sets = "P,O,Y,T,N,H"
+correct_term = "typhoons"
+next_scene = "res://scenes/GuessingGame/Game3.tscn"
 
 [node name="1" type="TextureRect" parent="."]
 anchor_right = 1.0
@@ -153,7 +154,7 @@ autowrap = true
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/CenterContainer/HBoxContainer3/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 expand = true
 stretch_mode = 1
 
@@ -168,7 +169,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 3 )
-text = "CLIMATE CHANGE"
+text = "Excessive rain
+Mudslides
+Soil Erosion"
 align = 1
 valign = 1
 autowrap = true
@@ -192,7 +195,7 @@ autowrap = true
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/CenterContainer/HBoxContainer3/Panel3"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 7 )
+texture = ExtResource( 6 )
 expand = true
 stretch_mode = 1
 
@@ -210,12 +213,9 @@ margin_right = -24.0
 margin_bottom = -11.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 7 )
-text = "Warmer temperatures
-expected with climate
-change and the potential
-for more excessive
-temperature events will
-impact plant productivity."
+text = "Flood
+Destruction of Natural
+Environment"
 align = 1
 valign = 1
 autowrap = true
