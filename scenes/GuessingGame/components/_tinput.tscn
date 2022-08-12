@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://fonts/Roboto-Medium.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+font_data = ExtResource( 1 )
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends LineEdit
+
+
+var set_value setget set_value
+
+func set_value(value):
+  self.text = value
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
+[node name="Text" type="LineEdit"]
+margin_right = 154.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "E"
+align = 1
+max_length = 1
+editable = false
+script = SubResource( 2 )
