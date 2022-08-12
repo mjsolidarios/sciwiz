@@ -20,6 +20,7 @@ onready var text_button = preload(\"res://scenes/GuessingGame/components/_tbutto
 export var next_scene = \"\"
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$\"/root/Globals\".active_index_for_guessing_game = 1
 	var text_sets = term.rsplit(\",\")
 	var button_sets = character_sets.split(\",\")
 	for i in text_sets:
@@ -74,6 +75,7 @@ func _process(delta):
 
 func _load_next_scene():
 	$\"/root/Globals\".goto_scene(next_scene)
+	$\"/root/Globals\".active_index_for_guessing_game = 0
 
 
 func _add_space():
