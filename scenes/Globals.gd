@@ -28,6 +28,9 @@ var time_max = 100 # msec
 
 var ans_score = 0
 
+var active_index_for_guessing_game = 0
+var max_index_for_guessing_game = 0
+
 
 func _ready():
 	var root = get_tree().get_root()

@@ -15,9 +15,11 @@ var set_value setget set_value
 func set_value(value):
   $Label.text = value
 
+func set_target_value():
+	get_parent().get_parent().get_parent().get_parent().get_parent().get_parent().set_character($Label.text)
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	self.connect(\"pressed\", self, \"set_target_value\")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
