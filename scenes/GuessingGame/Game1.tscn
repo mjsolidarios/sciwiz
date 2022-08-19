@@ -12,7 +12,9 @@
 script/source = "extends Control
 
 
-export var term = \" , , , ,e,m,e, ,T,e,m,p,e,r,a,t,u,r,e,s\"
+#export var term = \" , , , ,e,m,e, ,T,e,m,p,e,r,a,t,u,r,e,s\"
+export var term1 = \" , , , ,e,m,e\"
+export var term2 = \"T,e,m,p,e,r,a,t,u,r,e,s\"
 export var character_sets = \"e,t,u,x,r,m,p,a\"
 export var correct_term = \"extreme temperatures\"
 onready var text_input = preload(\"res://scenes/GuessingGame/components/_tinput.tscn\")
@@ -20,57 +22,65 @@ onready var text_button = preload(\"res://scenes/GuessingGame/components/_tbutto
 export var next_scene = \"\"
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$\"/root/Globals\".active_index_for_guessing_game = 1
-	var text_sets = term.rsplit(\",\")
+	$\"/root/Globals\".active_index1_for_guessing_game = 1
+	var text_sets1 = term1.rsplit(\",\")
+	var text_sets2 = term2.split(\",\")
 	var button_sets = character_sets.split(\",\")
-	for i in text_sets:
-		print(i)
+	for i in text_sets1:
 		var new_text_input = text_input.instance()
 		new_text_input.set_value(i.to_upper())
 		get_node(\"VBoxContainer/TextSets/GridContainer\").add_child(new_text_input) 
+	for i in text_sets2:
+		var new_text_input = text_input.instance()
+		new_text_input.set_value(i.to_upper())
+		get_node(\"VBoxContainer/TextSets2/GridContainer\").add_child(new_text_input) 
 	for i in button_sets:
 		var button_instance = text_button.instance()
 		button_instance.set_value(i.to_upper())
 		get_node(\"VBoxContainer/ButtonSets/HBoxContainer/CenterContainer2/GridContainer\").add_child(button_instance) 
-	
-#	var active_texts = get_node(\"VBoxContainer/TextSets/GridContainer\").get_children()
-#	var string_set = \"\"
-#	for i in active_texts:
-#		string_set += i.text
-#	print(string_set)
 
 func set_character(value):
-	var text_sets = term.rsplit(\",\")
-	if $\"/root/Globals\".active_index_for_guessing_game <= text_sets.size()-1:
+	var text_sets1 = term1.rsplit(\",\")
+	var text_sets2 = term2.rsplit(\",\")
+	if $\"/root/Globals\".active_index1_for_guessing_game <= text_sets1.size():
 		var active_text = get_node(\"VBoxContainer/TextSets/GridContainer\").get_child($\"/root/Globals\".active_index_for_guessing_game)
 		active_text.set_value(value)
+		$\"/root/Globals\".active_index1_for_guessing_game += 1
 	else:
-		var active_text = get_node(\"VBoxContainer/TextSets/GridContainer\").get_child(text_sets.size()-1)
+		var active_text = get_node(\"VBoxContainer/TextSets2/GridContainer\").get_child($\"/root/Globals\".active_index2_for_guessing_game)
 		active_text.set_value(value)
-	if $\"/root/Globals\".active_index_for_guessing_game < text_sets.size():
-		var active_text_next = get_node(\"VBoxContainer/TextSets/GridContainer\").get_child($\"/root/Globals\".active_index_for_guessing_game+1)
-		if active_text_next != null:
-			if active_text_next.text == \" \":
-				$\"/root/Globals\".active_index_for_guessing_game += 1
-			else:
-				$\"/root/Globals\".active_index_for_guessing_game += 2
+		$\"/root/Globals\".active_index2_for_guessing_game += 1
+	
+#	if $\"/root/Globals\".active_index1_for_guessing_game <= text_sets1.size()-1:
+#		var active_text = get_node(\"VBoxContainer/TextSets/GridContainer\").get_child($\"/root/Globals\".active_index_for_guessing_game)
+#		active_text.set_value(value)
+#	else:
+#		var active_text = get_node(\"VBoxContainer/TextSets/GridContainer\").get_child(text_sets1.size()-1)
+#		active_text.set_value(value)
+#	if $\"/root/Globals\".active_index_for_guessing_game < text_sets1.size():
+#		var active_text_next = get_node(\"VBoxContainer/TextSets/GridContainer\").get_child($\"/root/Globals\".active_index_for_guessing_game+1)
+#		if active_text_next != null:
+#			if active_text_next.text == \" \":
+#				$\"/root/Globals\".active_index_for_guessing_game += 1
+#			else:
+#				$\"/root/Globals\".active_index_for_guessing_game += 2
 
 func delete_character():
 		if $\"/root/Globals\".active_index_for_guessing_game != 0:
 			get_node(\"VBoxContainer/TextSets/GridContainer\").get_child($\"/root/Globals\".active_index_for_guessing_game-1).set_value(\" \")
 			$\"/root/Globals\".active_index_for_guessing_game -= 1
 
-func _process(delta):
-	var active_texts = get_node(\"VBoxContainer/TextSets/GridContainer\").get_children()
-	var string_set = \"\"
-	for i in active_texts:
-		string_set += i.text
-		i.modulate = Color(\"ffffff\")
-	if string_set == correct_term.to_upper():
-		$Popup.visible = true
-	if $\"/root/Globals\".active_index_for_guessing_game <= correct_term.length()-1:
-		var active_text = get_node(\"VBoxContainer/TextSets/GridContainer\").get_child($\"/root/Globals\".active_index_for_guessing_game)
-		active_text.modulate = Color(\"00cfff\")
+#func _process(delta):
+#	var active_texts = get_node(\"VBoxContainer/TextSets/GridContainer\").get_children()
+#	var string_set = \"\"
+#	for i in active_texts:
+#		string_set += i.text
+#		i.modulate = Color(\"ffffff\")
+#	if string_set == correct_term.to_upper():
+#		$Popup.visible = true
+#	if $\"/root/Globals\".active_index_for_guessing_game <= correct_term.length()-1:
+#		var active_text = get_node(\"VBoxContainer/TextSets/GridContainer\").get_child($\"/root/Globals\".active_index_for_guessing_game)
+#		active_text.modulate = Color(\"00cfff\")
 
 
 func _load_next_scene():
@@ -108,7 +118,6 @@ font_data = ExtResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = SubResource( 4 )
-term = "e, , , ,e, , , , ,e, , , , , , , , , ,"
 character_sets = "e,t,u,x,r,m,p,a,s"
 next_scene = "res://scenes/GuessingGame/Game2.tscn"
 
@@ -124,7 +133,7 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 margin_top = -470.0
 margin_bottom = 470.0
-custom_constants/separation = 36
+custom_constants/separation = 20
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
 margin_right = 1920.0
@@ -223,23 +232,37 @@ valign = 1
 autowrap = true
 
 [node name="TextSets" type="CenterContainer" parent="VBoxContainer"]
-margin_top = 436.0
+margin_top = 420.0
 margin_right = 1920.0
-margin_bottom = 590.0
+margin_bottom = 540.0
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer/TextSets"]
 margin_left = 960.0
 margin_right = 960.0
-margin_bottom = 154.0
-rect_min_size = Vector2( 0, 154 )
-custom_constants/vseparation = 14
+margin_bottom = 120.0
+rect_min_size = Vector2( 0, 120 )
+custom_constants/vseparation = 5
+custom_constants/hseparation = 14
+columns = 10
+
+[node name="TextSets2" type="CenterContainer" parent="VBoxContainer"]
+margin_top = 560.0
+margin_right = 1920.0
+margin_bottom = 680.0
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/TextSets2"]
+margin_left = 960.0
+margin_right = 960.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 0, 120 )
+custom_constants/vseparation = 5
 custom_constants/hseparation = 14
 columns = 10
 
 [node name="ButtonSets" type="CenterContainer" parent="VBoxContainer"]
-margin_top = 626.0
+margin_top = 700.0
 margin_right = 1920.0
-margin_bottom = 780.0
+margin_bottom = 854.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ButtonSets"]
 margin_left = 745.0

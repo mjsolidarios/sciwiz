@@ -28,7 +28,8 @@ var time_max = 100 # msec
 
 var ans_score = 0
 
-var active_index_for_guessing_game = 0
+var active_index1_for_guessing_game = 0
+var active_index2_for_guessing_game = 0
 var max_index_for_guessing_game = 0
 
 
