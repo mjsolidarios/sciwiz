@@ -1,19 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://fonts/Roboto-Medium.ttf" type="DynamicFontData" id=1]
-
-[sub_resource type="DynamicFont" id=1]
-size = 50
-font_data = ExtResource( 1 )
+[ext_resource path="res://fonts/ANS_Labels.tres" type="DynamicFont" id=1]
 
 [sub_resource type="GDScript" id=2]
-script/source = "extends LineEdit
+script/source = "extends Control
 
 
 var set_value setget set_value
 
 func set_value(value):
-  self.text = value
+	$Label.text = value
 
 
 # Called when the node enters the scene tree for the first time.
@@ -26,14 +22,21 @@ func _ready():
 #	pass
 "
 
-[node name="Text" type="LineEdit"]
-margin_right = 154.0
-margin_bottom = 100.0
+[node name="Text" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 rect_min_size = Vector2( 100, 100 )
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+script = SubResource( 2 )
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 1 )
 text = "E"
 align = 1
-max_length = 1
-editable = false
-script = SubResource( 2 )
+valign = 1
