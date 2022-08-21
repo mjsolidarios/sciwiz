@@ -35,6 +35,9 @@ func _ready():
 			var new_text_input = text_input.instance()
 			new_text_input.get_node(\"Label\").text = i.to_upper()
 			get_node(\"VBoxContainer/TextSets2/GridContainer\").add_child(new_text_input) 
+#	var c_count = get_node(\"VBoxContainer/TextSets2/GridContainer\").get_child_count()
+#	get_node(\"VBoxContainer/TextSets2/GridContainer\").get_child(c_count-1).queue_free()
+			
 	for i in button_sets:
 		var button_instance = text_button.instance()
 		button_instance.set_value(i.to_upper())
@@ -58,14 +61,15 @@ func set_character(value):
 	else:
 		next_text_slot = get_node(\"VBoxContainer/TextSets2/GridContainer\").get_child($\"/root/Globals\".active_index2_for_guessing_game+1)
 		var active_text = get_node(\"VBoxContainer/TextSets2/GridContainer\").get_child($\"/root/Globals\".active_index2_for_guessing_game)
-		active_text.get_node(\"Label\").text = value
-		if next_text_slot == null:
-			$\"/root/Globals\".active_index2_for_guessing_game += 1
-		else:
-			if next_text_slot.get_child(1).text == \" \":
+		if next_text_slot and active_text != null:
+			active_text.get_node(\"Label\").text = value
+			if next_text_slot == null:
 				$\"/root/Globals\".active_index2_for_guessing_game += 1
 			else:
-				$\"/root/Globals\".active_index2_for_guessing_game += 2
+				if next_text_slot.get_child(1).text == \" \":
+					$\"/root/Globals\".active_index2_for_guessing_game += 1
+				else:
+					$\"/root/Globals\".active_index2_for_guessing_game += 2
 	
 #	if $\"/root/Globals\".active_index1_for_guessing_game <= text_sets1.size()-1:
 #		var active_text = get_node(\"VBoxContainer/TextSets/GridContainer\").get_child($\"/root/Globals\".active_index_for_guessing_game)
@@ -193,7 +197,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = SubResource( 4 )
 term1 = " , , , "
-term2 = " , , , , "
+term2 = " , , , , ,"
 character_sets = "N,A,F,D,O,C,I,H"
 correct_term = "foodchain"
 next_scene = "res://scenes/GuessingGame/Game14.tscn"
@@ -529,4 +533,8 @@ margin_bottom = 176.0
 custom_fonts/font = SubResource( 9 )
 text = "Main Menu"
 
+[connection signal="pressed" from="VBoxContainer/ButtonSets/HBoxContainer/Delete" to="." method="delete_character"]
+[connection signal="pressed" from="VBoxContainer/ButtonSets/HBoxContainer/Check" to="." method="_on_Check_pressed"]
 [connection signal="pressed" from="Popup/Panel/CenterContainer/VBoxContainer/Button" to="." method="_load_next_scene"]
+[connection signal="pressed" from="Popup2/Panel/CenterContainer/VBoxContainer/Retry" to="." method="_on_Retry_pressed"]
+[connection signal="pressed" from="Popup3/Panel/CenterContainer/VBoxContainer/GameOver" to="." method="_on_GameOver_pressed"]
