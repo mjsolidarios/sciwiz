@@ -31,6 +31,10 @@ var ans_score = 0
 var active_index1_for_guessing_game = 0
 var active_index2_for_guessing_game = 0
 var max_index_for_guessing_game = 0
+var guessing_game_score = 0
+var guessing_game_life = 3
+var guessing_game_question_pool = randi()%[1,2,3,4,5,6,7,8,9,10,11,12,13,14].size() #randomize
+var current_question_pool_index = 0
 
 
 func _ready():
