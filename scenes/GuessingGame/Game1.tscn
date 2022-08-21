@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://fonts/Roboto-Medium.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://icons/arrowLeft.png" type="Texture" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://icons/space.png" type="Texture" id=5]
 [ext_resource path="res://scenes/GuessingGame/images/a-degree-of-concern.jpg" type="Texture" id=6]
 [ext_resource path="res://scenes/GuessingGame/images/ex2.png" type="Texture" id=7]
+[ext_resource path="res://scenes/GuessingGame/components/GuessingGameStatsBox.tscn" type="PackedScene" id=8]
+[ext_resource path="res://images/ans_assets/heart pixel art 254x254.png" type="Texture" id=9]
 
 [sub_resource type="GDScript" id=4]
 script/source = "extends Control
@@ -87,30 +89,28 @@ func delete_character():
 			if $\"/root/Globals\".active_index1_for_guessing_game != 0:
 				get_node(\"VBoxContainer/TextSets/GridContainer\").get_child($\"/root/Globals\".active_index1_for_guessing_game-1).set_value(\" \")
 				$\"/root/Globals\".active_index1_for_guessing_game -= 1
-		print(\"index1:\" + str($\"/root/Globals\".active_index1_for_guessing_game))
-		print(\"index2:\" + str($\"/root/Globals\".active_index2_for_guessing_game ))
+#		print(\"index1:\" + str($\"/root/Globals\".active_index1_for_guessing_game))
+#		print(\"index2:\" + str($\"/root/Globals\".active_index2_for_guessing_game ))
 
 func _process(delta):
-	pass
-#	var active_texts1 = get_node(\"VBoxContainer/TextSets/GridContainer\").get_children()
-#	var active_texts2 = get_node(\"VBoxContainer/TextSets2/GridContainer\").get_children()
-#	var string_set = \"\"
-#	for i in active_texts1:
-#		string_set += i.get_node(\"Label\").text
-##		i.modulate = Color(\"ffffff\")
-#	for i in active_texts2:
-#		string_set += i.get_node(\"Label\").text
-#	if string_set == correct_term.to_upper():
-#		$Popup.visible = true
-#	if $\"/root/Globals\".active_index_for_guessing_game <= correct_term.length()-1:
-#		var active_text = get_node(\"VBoxContainer/TextSets/GridContainer\").get_child($\"/root/Globals\".active_index_for_guessing_game)
-#		active_text.modulate = Color(\"00cfff\")
+	if $\"/root/Globals\".guessing_game_life == 0:
+		$Popup3.show()
+		
+func _load_scene():
+	var _index = $\"/root/Globals\".current_question_pool_index
+	$\"/root/Globals\".guessing_game_question_pool.shuffle()
+	$\"/root/Globals\".guessing_game_question_pool.pop_back()
+#	print($\"/root/Globals\".guessing_game_question_pool)
+	if $\"/root/Globals\".guessing_game_question_pool.size()>0:
+		$\"/root/Globals\".goto_scene(\"res://scenes/GuessingGame/Game\"+str($\"/root/Globals\".guessing_game_question_pool.front())+\".tscn\")	
+	else:
+		$\"/root/Globals\".goto_scene(\"res://scenes/GuessingGame/GameComplete.tscn\")
+	$\"/root/Globals\".active_index1_for_guessing_game = 0
+	$\"/root/Globals\".active_index2_for_guessing_game = 0
 
 
 func _load_next_scene():
-	$\"/root/Globals\".goto_scene(next_scene)
-	$\"/root/Globals\".active_index1_for_guessing_game = 0
-	$\"/root/Globals\".active_index2_for_guessing_game = 0
+	_load_scene()
 
 
 func _add_space():
@@ -146,10 +146,18 @@ func _on_Check_pressed():
 			counter+=1
 		$Popup2.visible = true
 		print(points_to_deduct)
-		print(total_points-points_to_deduct)
+		$\"/root/Globals\".guessing_game_score = total_points-points_to_deduct
 		if $\"/root/Globals\".guessing_game_life == 0:
 			$Popup3.visible = true
 
+
+
+func _on_Retry_pressed():
+	_load_scene()
+
+
+func _on_GameOver_pressed():
+	$\"/root/Globals\".goto_scene(\"res://scenes/MainMenu.tscn\")
 "
 
 [sub_resource type="DynamicFont" id=3]
@@ -172,7 +180,7 @@ font_data = ExtResource( 1 )
 size = 60
 font_data = ExtResource( 1 )
 
-[node name="\\" type="Control"]
+[node name="Node" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = SubResource( 4 )
@@ -189,16 +197,22 @@ texture = ExtResource( 3 )
 expand = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
+margin_left = -960.0
 margin_top = -470.0
+margin_right = 960.0
 margin_bottom = 470.0
 custom_constants/separation = 20
 
+[node name="GuessingGameStatsBox" parent="VBoxContainer" instance=ExtResource( 8 )]
+
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+margin_top = 85.0
 margin_right = 1920.0
-margin_bottom = 400.0
+margin_bottom = 485.0
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/CenterContainer"]
 margin_left = 131.0
@@ -293,9 +307,9 @@ valign = 1
 autowrap = true
 
 [node name="TextSets" type="CenterContainer" parent="VBoxContainer"]
-margin_top = 420.0
+margin_top = 505.0
 margin_right = 1920.0
-margin_bottom = 540.0
+margin_bottom = 625.0
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer/TextSets"]
 margin_left = 960.0
@@ -307,9 +321,9 @@ custom_constants/hseparation = 14
 columns = 10
 
 [node name="TextSets2" type="CenterContainer" parent="VBoxContainer"]
-margin_top = 560.0
+margin_top = 645.0
 margin_right = 1920.0
-margin_bottom = 680.0
+margin_bottom = 765.0
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer/TextSets2"]
 margin_left = 960.0
@@ -321,9 +335,9 @@ custom_constants/hseparation = 14
 columns = 12
 
 [node name="ButtonSets" type="CenterContainer" parent="VBoxContainer"]
-margin_top = 700.0
+margin_top = 785.0
 margin_right = 1920.0
-margin_bottom = 854.0
+margin_bottom = 939.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ButtonSets"]
 margin_left = 745.0
@@ -425,9 +439,9 @@ anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Popup2/Panel/CenterContainer"]
 margin_left = 719.0
-margin_top = 452.0
+margin_top = 400.0
 margin_right = 1201.0
-margin_bottom = 628.0
+margin_bottom = 680.0
 
 [node name="Label" type="Label" parent="Popup2/Panel/CenterContainer/VBoxContainer"]
 margin_right = 482.0
@@ -436,10 +450,35 @@ custom_fonts/font = SubResource( 5 )
 text = "Sorry"
 align = 1
 
-[node name="Button" type="Button" parent="Popup2/Panel/CenterContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Popup2/Panel/CenterContainer/VBoxContainer"]
 margin_top = 99.0
 margin_right = 482.0
-margin_bottom = 176.0
+margin_bottom = 199.0
+
+[node name="Label2" type="Label" parent="Popup2/Panel/CenterContainer/VBoxContainer/HBoxContainer"]
+margin_top = 2.0
+margin_right = 239.0
+margin_bottom = 97.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 5 )
+text = "-1"
+align = 2
+
+[node name="Heart" type="TextureRect" parent="Popup2/Panel/CenterContainer/VBoxContainer/HBoxContainer"]
+margin_left = 243.0
+margin_right = 343.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 2
+size_flags_vertical = 0
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 1
+
+[node name="Retry" type="Button" parent="Popup2/Panel/CenterContainer/VBoxContainer"]
+margin_top = 203.0
+margin_right = 482.0
+margin_bottom = 280.0
 custom_fonts/font = SubResource( 6 )
 text = "Try Another Term"
 
@@ -469,12 +508,12 @@ custom_fonts/font = SubResource( 5 )
 text = "Game Over"
 align = 1
 
-[node name="Button" type="Button" parent="Popup3/Panel/CenterContainer/VBoxContainer"]
+[node name="GameOver" type="Button" parent="Popup3/Panel/CenterContainer/VBoxContainer"]
 margin_top = 99.0
 margin_right = 396.0
 margin_bottom = 176.0
 custom_fonts/font = SubResource( 6 )
-text = "Restart"
+text = "Main Menu"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
@@ -484,5 +523,5 @@ volume_db = -5.0
 [connection signal="pressed" from="VBoxContainer/ButtonSets/HBoxContainer/Delete" to="." method="delete_character"]
 [connection signal="pressed" from="VBoxContainer/ButtonSets/HBoxContainer/Check" to="." method="_on_Check_pressed"]
 [connection signal="pressed" from="Popup/Panel/CenterContainer/VBoxContainer/Button" to="." method="_load_next_scene"]
-[connection signal="pressed" from="Popup2/Panel/CenterContainer/VBoxContainer/Button" to="." method="_load_next_scene"]
-[connection signal="pressed" from="Popup3/Panel/CenterContainer/VBoxContainer/Button" to="." method="_load_next_scene"]
+[connection signal="pressed" from="Popup2/Panel/CenterContainer/VBoxContainer/Retry" to="." method="_on_Retry_pressed"]
+[connection signal="pressed" from="Popup3/Panel/CenterContainer/VBoxContainer/GameOver" to="." method="_on_GameOver_pressed"]

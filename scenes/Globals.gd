@@ -1,6 +1,5 @@
 extends Node
 
-
 var active_cell_part = ""
 var active_lens = ""
 var total_score = 0
@@ -31,13 +30,17 @@ var ans_score = 0
 var active_index1_for_guessing_game = 0
 var active_index2_for_guessing_game = 0
 var max_index_for_guessing_game = 0
-var guessing_game_score = 0
-var guessing_game_life = 3
-var guessing_game_question_pool = randi()%[1,2,3,4,5,6,7,8,9,10,11,12,13,14].size() #randomize
-var current_question_pool_index = 0
+var guessing_game_score = 5
+var guessing_game_life = 0
+
+var guessing_game_question_pool = [2,3,4,5,6,7,8,9,10,11,12,13,14]
+
+var current_question_pool_index = 1
 
 
 func _ready():
+	randomize()
+	guessing_game_question_pool.shuffle()
 	var root = get_tree().get_root()
 	current_scene = root.get_child(root.get_child_count() - 1)
 
