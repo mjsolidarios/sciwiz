@@ -24,6 +24,7 @@ export var next_scene = \"\"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$\"/root/Globals\".active_index1_for_guessing_game = 1
+	$\"/root/Globals\".active_index2_for_guessing_game = 1
 	var text_sets1 = term1.rsplit(\",\")
 	var text_sets2 = term2.rsplit(\",\")
 	var button_sets = character_sets.split(\",\")
@@ -192,8 +193,8 @@ font_data = ExtResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = SubResource( 4 )
-term1 = "food"
-term2 = "availability"
+term1 = "f, , , "
+term2 = "a, , , , , , , , , ,t, "
 character_sets = "F,T,O,A,D,L,I,B,T,Y,V"
 correct_term = "foodavailability"
 next_scene = "res://scenes/GuessingGame/Game6.tscn"
