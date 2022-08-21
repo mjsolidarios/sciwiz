@@ -518,6 +518,7 @@ text = "Main Menu"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 volume_db = -5.0
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/ButtonSets/HBoxContainer/Space" to="." method="_add_space"]
 [connection signal="pressed" from="VBoxContainer/ButtonSets/HBoxContainer/Delete" to="." method="delete_character"]

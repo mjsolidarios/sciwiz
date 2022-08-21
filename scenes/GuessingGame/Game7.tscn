@@ -31,10 +31,11 @@ func _ready():
 		var new_text_input = text_input.instance()
 		new_text_input.get_node(\"Label\").text = i.to_upper()
 		get_node(\"VBoxContainer/TextSets/GridContainer\").add_child(new_text_input) 
-	for i in text_sets2:
-		var new_text_input = text_input.instance()
-		new_text_input.get_node(\"Label\").text = i.to_upper()
-		get_node(\"VBoxContainer/TextSets2/GridContainer\").add_child(new_text_input) 
+	if text_sets2.size()>1:
+		for i in text_sets2:
+			var new_text_input = text_input.instance()
+			new_text_input.get_node(\"Label\").text = i.to_upper()
+			get_node(\"VBoxContainer/TextSets2/GridContainer\").add_child(new_text_input) 
 	for i in button_sets:
 		var button_instance = text_button.instance()
 		button_instance.set_value(i.to_upper())
