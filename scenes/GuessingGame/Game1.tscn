@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://fonts/Roboto-Medium.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://icons/arrowLeft.png" type="Texture" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://scenes/GuessingGame/images/ex2.png" type="Texture" id=7]
 [ext_resource path="res://scenes/GuessingGame/components/GuessingGameStatsBox.tscn" type="PackedScene" id=8]
 [ext_resource path="res://images/ans_assets/heart pixel art 254x254.png" type="Texture" id=9]
+[ext_resource path="res://sounds/click_001.tres" type="AudioStream" id=10]
+[ext_resource path="res://scenes/TextButton.gd" type="Script" id=11]
+[ext_resource path="res://icons/home.png" type="Texture" id=12]
 
 [sub_resource type="GDScript" id=4]
 script/source = "extends Control
@@ -520,9 +523,21 @@ stream = ExtResource( 4 )
 volume_db = -5.0
 autoplay = true
 
+[node name="BackButton" type="TextureButton" parent="."]
+margin_right = 162.0
+margin_bottom = 141.0
+texture_normal = ExtResource( 12 )
+expand = true
+script = ExtResource( 11 )
+path = "res://scenes/MainMenu.tscn"
+
+[node name="Click" type="AudioStreamPlayer" parent="BackButton"]
+stream = ExtResource( 10 )
+
 [connection signal="pressed" from="VBoxContainer/ButtonSets/HBoxContainer/Space" to="." method="_add_space"]
 [connection signal="pressed" from="VBoxContainer/ButtonSets/HBoxContainer/Delete" to="." method="delete_character"]
 [connection signal="pressed" from="VBoxContainer/ButtonSets/HBoxContainer/Check" to="." method="_on_Check_pressed"]
 [connection signal="pressed" from="Popup/Panel/CenterContainer/VBoxContainer/Button" to="." method="_load_next_scene"]
 [connection signal="pressed" from="Popup2/Panel/CenterContainer/VBoxContainer/Retry" to="." method="_on_Retry_pressed"]
 [connection signal="pressed" from="Popup3/Panel/CenterContainer/VBoxContainer/GameOver" to="." method="_on_GameOver_pressed"]
+[connection signal="pressed" from="BackButton" to="BackButton" method="GotoScene"]

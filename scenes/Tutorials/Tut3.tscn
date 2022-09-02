@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://sounds/click_001.tres" type="AudioStream" id=1]
+[ext_resource path="res://images/background.jpg" type="Texture" id=2]
+[ext_resource path="res://scenes/TextButton.gd" type="Script" id=3]
+[ext_resource path="res://fonts/Roboto-Medium.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://icons/home.png" type="Texture" id=6]
+[ext_resource path="res://icons/arrowLeft.png" type="Texture" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 63
+font_data = ExtResource( 4 )
+
+[node name="Node2D" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 120.0
+texture = ExtResource( 2 )
+
+[node name="BackButton" type="TextureButton" parent="."]
+margin_right = 162.0
+margin_bottom = 141.0
+texture_normal = ExtResource( 6 )
+expand = true
+script = ExtResource( 3 )
+path = "res://scenes/MainMenu.tscn"
+
+[node name="Click" type="AudioStreamPlayer" parent="BackButton"]
+stream = ExtResource( 1 )
+
+[node name="BackButton3" type="TextureButton" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -141.0
+margin_right = 162.0
+texture_normal = ExtResource( 7 )
+expand = true
+script = ExtResource( 3 )
+path = "res://scenes/Tutorials/Tut2.tscn"
+
+[node name="Click" type="AudioStreamPlayer" parent="BackButton3"]
+stream = ExtResource( 1 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -413.5
+margin_bottom = 441.5
+
+[node name="Control2" type="Control" parent="HBoxContainer"]
+margin_right = 80.0
+margin_bottom = 855.0
+rect_min_size = Vector2( 80, 80 )
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+margin_left = 84.0
+margin_right = 1784.0
+margin_bottom = 855.0
+rect_min_size = Vector2( 1700, 0 )
+custom_fonts/font = SubResource( 1 )
+text = "These learning competencies were incorporated in the form of games such as puzzles, quizzes, word, games, adventure-type, simulation, and an overlapping of these types. Designed for mobile phones, fun-filled learning experience in Living things and Their Environment can be achieved anytime and anywhere, whether you are inside a classroom in a synchronous class or at the comfort of your homes in asynchronous distance learning.
+
+Have fun playing and learning at the same time! Learn, think, and explore!"
+autowrap = true
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+margin_left = 1788.0
+margin_right = 1868.0
+margin_bottom = 855.0
+rect_min_size = Vector2( 80, 80 )
+
+[connection signal="pressed" from="BackButton" to="BackButton" method="GotoScene"]
+[connection signal="pressed" from="BackButton3" to="BackButton3" method="GotoScene"]
