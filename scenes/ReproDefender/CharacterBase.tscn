@@ -84,7 +84,7 @@ onready var match_item_set = {
 		\"name\": \"mmabin\",
 		\"scene\": mmabin,
 		\"match\": \"binfis\",
-		\"type\": \"s\"
+		\"type\": \"a\"
 	},
 	\"mmabud\":{
 		\"name\": \"mmabud\",
@@ -167,6 +167,8 @@ func _ready():
 	$Character.hide()
 	print(monster_pool[monster_index])
 	delete_children(get_node(\"MonsterBin\"))
+	randomize()
+	monster_pool.shuffle()
 	get_node(\"MonsterBin\").add_child(match_item_set[monster_pool[0]][\"scene\"].instance())
 
 
@@ -1560,7 +1562,6 @@ path = "res://scenes/MainMenu.tscn"
 stream = ExtResource( 29 )
 
 [node name="PopupGameOver" type="Popup" parent="."]
-visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 

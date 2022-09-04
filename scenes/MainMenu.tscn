@@ -135,9 +135,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -20.0
-margin_top = -20.0
+margin_top = 20.0
 margin_right = 20.0
-margin_bottom = 20.0
+margin_bottom = 60.0
 
 [node name="MicroSimButton" type="TextureButton" parent="Control"]
 margin_left = -874.0
@@ -194,14 +194,22 @@ texture_pressed = ExtResource( 19 )
 texture_disabled = ExtResource( 15 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 404.0
-margin_top = 464.0
-margin_right = 1520.0
-margin_bottom = 641.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -558.0
+margin_top = 23.5
+margin_right = 558.0
+margin_bottom = 200.5
 custom_fonts/font = SubResource( 5 )
 text = "iLearn Haynayan"
 
-[node name="Icon" type="Sprite" parent="."]
-position = Vector2( 982, 226 )
-scale = Vector2( 0.672, 0.672 )
+[node name="Icon" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -250.0
+margin_top = 40.0
+margin_right = 250.0
+margin_bottom = 540.0
 texture = ExtResource( 21 )

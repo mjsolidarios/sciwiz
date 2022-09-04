@@ -58,7 +58,11 @@ func set_character(value):
 			else:
 				$\"/root/Globals\".active_index1_for_guessing_game += 2
 	else:
-		next_text_slot = get_node(\"VBoxContainer/TextSets2/GridContainer\").get_child($\"/root/Globals\".active_index2_for_guessing_game+1)
+		if(get_node(\"VBoxContainer/TextSets2/GridContainer\").get_children().size()==$\"/root/Globals\".active_index2_for_guessing_game+1):
+			next_text_slot = get_node(\"VBoxContainer/TextSets2/GridContainer\").get_child($\"/root/Globals\".active_index2_for_guessing_game)
+		else:
+			next_text_slot = get_node(\"VBoxContainer/TextSets2/GridContainer\").get_child($\"/root/Globals\".active_index2_for_guessing_game+1)
+			
 		var active_text = get_node(\"VBoxContainer/TextSets2/GridContainer\").get_child($\"/root/Globals\".active_index2_for_guessing_game)
 		if next_text_slot and active_text != null:
 			active_text.get_node(\"Label\").text = value

@@ -13,10 +13,10 @@
 [sub_resource type="GDScript" id=4]
 script/source = "extends Control
 
-export var term1 = \" , , , ,e,m,e\"
-export var term2 = \"T,e,m,p,e,r,a,t,u,r,e,s\"
-export var character_sets = \"e,t,u,x,r,m,p,a\"
-export var correct_term = \"extreme temperatures\"
+export var term1 = \"\"
+export var term2 = \"\"
+export var character_sets = \"\"
+export var correct_term = \"\"
 onready var text_input = preload(\"res://scenes/GuessingGame/components/_tinput.tscn\")
 onready var text_button = preload(\"res://scenes/GuessingGame/components/_tbutton.tscn\")
 export var next_scene = \"\"
@@ -47,7 +47,8 @@ func set_character(value):
 	var text_sets1 = term1.rsplit(\",\")
 	var text_sets2 = term2.rsplit(\",\")
 	var next_text_slot
-	if $\"/root/Globals\".active_index1_for_guessing_game <= text_sets1.size()-1:		
+	if $\"/root/Globals\".active_index1_for_guessing_game <= text_sets1.size()-1:
+		print(\"children: \"+str(get_node(\"VBoxContainer/TextSets/GridContainer\").get_children().size()))
 		next_text_slot = get_node(\"VBoxContainer/TextSets/GridContainer\").get_child($\"/root/Globals\".active_index1_for_guessing_game+1)
 		var active_text = get_node(\"VBoxContainer/TextSets/GridContainer\").get_child($\"/root/Globals\".active_index1_for_guessing_game)
 		active_text.get_node(\"Label\").text = value
@@ -59,7 +60,11 @@ func set_character(value):
 			else:
 				$\"/root/Globals\".active_index1_for_guessing_game += 2
 	else:
-		next_text_slot = get_node(\"VBoxContainer/TextSets2/GridContainer\").get_child($\"/root/Globals\".active_index2_for_guessing_game+1)
+		print(\"children: \"+str(get_node(\"VBoxContainer/TextSets2/GridContainer\").get_children().size()))
+		if(get_node(\"VBoxContainer/TextSets2/GridContainer\").get_children().size()==$\"/root/Globals\".active_index2_for_guessing_game+1):
+			next_text_slot = get_node(\"VBoxContainer/TextSets2/GridContainer\").get_child($\"/root/Globals\".active_index2_for_guessing_game)
+		else:
+			next_text_slot = get_node(\"VBoxContainer/TextSets2/GridContainer\").get_child($\"/root/Globals\".active_index2_for_guessing_game+1)
 		var active_text = get_node(\"VBoxContainer/TextSets2/GridContainer\").get_child($\"/root/Globals\".active_index2_for_guessing_game)
 		if next_text_slot and active_text != null:
 			active_text.get_node(\"Label\").text = value
@@ -197,7 +202,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = SubResource( 4 )
 term1 = " , , , "
-term2 = " , , , , ,"
+term2 = " , , , , "
 character_sets = "N,A,F,D,O,C,I,H"
 correct_term = "foodchain"
 next_scene = "res://scenes/GuessingGame/Game14.tscn"

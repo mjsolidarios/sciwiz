@@ -193,7 +193,7 @@ font_data = ExtResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = SubResource( 4 )
-term1 = " , , , , , ,s , "
+term1 = " , , , , , ,s, ,  "
 term2 = ""
 character_sets = "M,B,I,O,S,Y"
 correct_term = "symbiosis"
@@ -527,6 +527,7 @@ margin_bottom = 176.0
 custom_fonts/font = SubResource( 9 )
 text = "Main Menu"
 
+[connection signal="pressed" from="VBoxContainer/ButtonSets/HBoxContainer/Delete" to="." method="delete_character"]
 [connection signal="pressed" from="VBoxContainer/ButtonSets/HBoxContainer/Check" to="." method="_on_Check_pressed"]
 [connection signal="pressed" from="Popup/Panel/CenterContainer/VBoxContainer/Button" to="." method="_load_next_scene"]
 [connection signal="pressed" from="Popup2/Panel/CenterContainer/VBoxContainer/Retry" to="." method="_on_Retry_pressed"]
