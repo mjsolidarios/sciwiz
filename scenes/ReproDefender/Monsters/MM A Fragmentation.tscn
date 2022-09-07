@@ -78,15 +78,15 @@ margin_bottom = 795.0
 position = Vector2( 259, 265 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
-frame = 49
+frame = 2
 speed_scale = 5.0
 playing = true
 
 [node name="Label3" type="Label" parent="."]
 margin_left = 472.0
-margin_top = 154.0
-margin_right = 901.0
-margin_bottom = 381.0
+margin_top = 159.0
+margin_right = 1115.0
+margin_bottom = 393.0
 custom_fonts/font = ExtResource( 61 )
 text = "A starfish can produce offspring when one of its arms breaks off, regenerates and becomes a new starfish."
 autowrap = true

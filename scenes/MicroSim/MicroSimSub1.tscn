@@ -10,6 +10,7 @@
 [ext_resource path="res://icons/arrowLeft.png" type="Texture" id=8]
 [ext_resource path="res://images/microsim_assets/Lab assistant.PNG" type="Texture" id=9]
 [ext_resource path="res://images/microsim_assets/Microscope background.PNG" type="Texture" id=10]
+[ext_resource path="res://scenes/Button.gd" type="Script" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 49
@@ -19,25 +20,19 @@ font_data = ExtResource( 3 )
 size = 69
 font_data = ExtResource( 4 )
 
-[sub_resource type="GDScript" id=3]
-script/source = "extends Button
+[node name="Node2D" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 
-export var path = \"\"
-
-func GotoScene():
-	$Click.play()
-	$\"/root/Globals\".goto_scene(path)
-"
-
-[node name="Node2D" type="Node2D"]
-
-[node name="MicroscopeBackground" type="Sprite" parent="."]
-position = Vector2( 1003, 341 )
-scale = Vector2( 0.983887, 0.983887 )
+[node name="MicroscopeBackground" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
 texture = ExtResource( 10 )
+expand = true
+stretch_mode = 1
 
 [node name="Microscope" type="Sprite" parent="MicroscopeBackground"]
-position = Vector2( 148.391, -82.3265 )
+position = Vector2( 1194, 142 )
 texture = ExtResource( 2 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -59,17 +54,17 @@ text = "Get the microscope from its box or the cabinet. How are you going to car
 autowrap = true
 
 [node name="Button" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 1529.0
-margin_top = 932.0
-margin_right = 1829.0
-margin_bottom = 1020.0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -381.0
+margin_top = -148.0
+margin_right = -81.0
+margin_bottom = -60.0
 custom_fonts/font = SubResource( 2 )
 text = "Next"
-script = SubResource( 3 )
+script = ExtResource( 11 )
 path = "res://scenes/MicroSim/MicroSimSub2.tscn"
 
 [node name="Click" type="AudioStreamPlayer" parent="Button"]
@@ -91,5 +86,5 @@ stream = ExtResource( 6 )
 volume_db = -5.0
 autoplay = true
 
-[connection signal="pressed" from="Button" to="Button" method="GotoScene"]
+[connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]
 [connection signal="pressed" from="BackButton" to="BackButton" method="GotoScene"]

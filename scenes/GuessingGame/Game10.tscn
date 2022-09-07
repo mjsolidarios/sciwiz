@@ -137,6 +137,7 @@ func _on_Check_pressed():
 		string_set += i.get_node(\"Label\").text
 	if string_set == correct_term.to_upper():		
 		$Popup.visible = true
+		$\"/root/Globals\".guessing_game_score += terms_character_count.size()
 	else:
 		$\"/root/Globals\".guessing_game_life-=1
 		var counter = 0
@@ -147,7 +148,7 @@ func _on_Check_pressed():
 			counter+=1
 		$Popup2.visible = true
 		print(points_to_deduct)
-		$\"/root/Globals\".guessing_game_score = total_points-points_to_deduct
+		$\"/root/Globals\".guessing_game_score -= total_points-points_to_deduct
 		if $\"/root/Globals\".guessing_game_life == 0:
 			$Popup3.visible = true
 
@@ -193,7 +194,7 @@ font_data = ExtResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = SubResource( 4 )
-term1 = " , , , , , , , , ,"
+term1 = " , , , , , , , , "
 term2 = ""
 character_sets = "I,O,N,D,P,R,A,T,E"
 correct_term = "predation"

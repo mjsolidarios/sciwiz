@@ -78,7 +78,7 @@ margin_bottom = 689.0
 position = Vector2( 255, 253 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
-frame = 13
+frame = 36
 speed_scale = 5.0
 playing = true
 

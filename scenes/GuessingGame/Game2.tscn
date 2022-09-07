@@ -135,8 +135,9 @@ func _on_Check_pressed():
 		string_set += i.get_node(\"Label\").text
 	for i in active_texts2:
 		string_set += i.get_node(\"Label\").text
-	if string_set == correct_term.to_upper():		
+	if string_set == correct_term.to_upper():
 		$Popup.visible = true
+		$\"/root/Globals\".guessing_game_score += terms_character_count.size()
 	else:
 		$\"/root/Globals\".guessing_game_life-=1
 		var counter = 0
@@ -147,7 +148,7 @@ func _on_Check_pressed():
 			counter+=1
 		$Popup2.visible = true
 		print(points_to_deduct)
-		$\"/root/Globals\".guessing_game_score = total_points-points_to_deduct
+		$\"/root/Globals\".guessing_game_score -= total_points-points_to_deduct
 		if $\"/root/Globals\".guessing_game_life == 0:
 			$Popup3.visible = true
 

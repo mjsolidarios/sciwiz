@@ -28,10 +28,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
 
-[node name="Background" type="Sprite" parent="."]
-position = Vector2( 1021, 581 )
-scale = Vector2( 1.315, 1.315 )
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
 texture = ExtResource( 4 )
+expand = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 material = SubResource( 1 )

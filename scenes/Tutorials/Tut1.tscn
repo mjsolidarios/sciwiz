@@ -22,8 +22,8 @@ anchor_bottom = 1.0
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_bottom = 120.0
 texture = ExtResource( 2 )
+expand = true
 
 [node name="BackButton" type="TextureButton" parent="."]
 margin_right = 162.0
@@ -60,32 +60,18 @@ custom_fonts/font = SubResource( 2 )
 text = "Game Information"
 autowrap = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="Label" type="Label" parent="."]
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_top = -192.5
-margin_bottom = 272.5
-
-[node name="Control2" type="Control" parent="HBoxContainer"]
-margin_right = 80.0
-margin_bottom = 465.0
-rect_min_size = Vector2( 80, 80 )
-
-[node name="Label" type="Label" parent="HBoxContainer"]
-margin_left = 84.0
-margin_right = 1784.0
-margin_bottom = 465.0
+margin_left = 100.0
+margin_top = -232.5
+margin_right = -100.0
+margin_bottom = 232.5
 rect_min_size = Vector2( 1700, 0 )
 custom_fonts/font = SubResource( 1 )
 text = "iLearn Haynayan is mobile game-based learning application that offers an exciting, fun, and mind-stimulating learning experience. It focuses on Grade 7 Living Things and Their Environment learning competencies identified as the least-learned by learners and most difficult to teach by teachers. "
 autowrap = true
-
-[node name="Control" type="Control" parent="HBoxContainer"]
-margin_left = 1788.0
-margin_right = 1868.0
-margin_bottom = 465.0
-rect_min_size = Vector2( 80, 80 )
 
 [connection signal="pressed" from="BackButton" to="BackButton" method="GotoScene"]
 [connection signal="pressed" from="BackButton2" to="BackButton2" method="GotoScene"]

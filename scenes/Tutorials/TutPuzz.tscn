@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://images/background.jpg" type="Texture" id=1]
 [ext_resource path="res://sounds/click_001.tres" type="AudioStream" id=2]
@@ -6,6 +6,40 @@
 [ext_resource path="res://scenes/TextButton.gd" type="Script" id=4]
 [ext_resource path="res://icons/buttonStart.png" type="Texture" id=5]
 [ext_resource path="res://icons/home.png" type="Texture" id=6]
+[ext_resource path="res://fonts/ANS_Labels.tres" type="DynamicFont" id=7]
+[ext_resource path="res://icons/buttonX.png" type="Texture" id=8]
+[ext_resource path="res://icons/question.png" type="Texture" id=9]
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Control
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+func _on_Help_pressed():
+	$Popup.show()
+
+
+func _on_CloseButton_pressed():
+	get_parent().get_node(\"Control/Popup\").hide()
+"
+
+[sub_resource type="DynamicFont" id=4]
+size = 78
+font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 63
@@ -22,36 +56,81 @@ anchor_bottom = 1.0
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_bottom = 120.0
 texture = ExtResource( 1 )
+expand = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = SubResource( 3 )
+
+[node name="Help" type="TextureButton" parent="Control"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -172.0
+margin_bottom = 150.0
+texture_normal = ExtResource( 9 )
+expand = true
+
+[node name="Click" type="AudioStreamPlayer" parent="Control/Help"]
+stream = ExtResource( 2 )
+
+[node name="Popup" type="Popup" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="Panel" parent="Control/Popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="Control/Popup/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -801.5
+margin_top = -156.5
+margin_right = 801.5
+margin_bottom = 156.5
+custom_fonts/font = ExtResource( 7 )
+text = "Choose a type of cell that you want to puzzle. Drag the organelles to their proper place inside the cell, one at a time. Every correct answer gives you 5 points."
+autowrap = true
+
+[node name="Label2" type="Label" parent="Control/Popup/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -801.0
+margin_top = -278.0
+margin_right = -429.0
+margin_bottom = -194.0
+custom_fonts/font = SubResource( 4 )
+text = "PuzzCell"
+autowrap = true
+
+[node name="CloseButton" type="Button" parent="Control/Popup"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -163.0
+margin_top = 30.0
+margin_right = -27.0
+margin_bottom = 159.0
+icon = ExtResource( 8 )
+icon_align = 1
+
+[node name="Label" type="Label" parent="."]
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_top = -413.5
-margin_bottom = 441.5
-
-[node name="Control2" type="Control" parent="HBoxContainer"]
-margin_right = 80.0
-margin_bottom = 855.0
-rect_min_size = Vector2( 80, 80 )
-
-[node name="Label" type="Label" parent="HBoxContainer"]
-margin_left = 84.0
-margin_top = 195.0
-margin_right = 1784.0
-margin_bottom = 660.0
+margin_left = 100.0
+margin_top = -232.5
+margin_right = -100.0
+margin_bottom = 232.5
 rect_min_size = Vector2( 1700, 0 )
 custom_fonts/font = SubResource( 1 )
 text = "Are you familiar with the different organelles of plant and animal cells? Can you identify which organelles belong only to plants? And to animals? With PuzzCell, you will get to identify the different cell organelles and put them on their proper place to complete the plant cell and the animal cell. Be familiar with their functions and descriptions, too!"
 autowrap = true
-
-[node name="Control" type="Control" parent="HBoxContainer"]
-margin_left = 1788.0
-margin_right = 1868.0
-margin_bottom = 855.0
-rect_min_size = Vector2( 80, 80 )
 
 [node name="BackButton" type="TextureButton" parent="."]
 margin_right = 162.0
@@ -89,5 +168,7 @@ custom_fonts/font = SubResource( 2 )
 text = "Puzzcell"
 autowrap = true
 
+[connection signal="pressed" from="Control/Help" to="Control" method="_on_Help_pressed"]
+[connection signal="pressed" from="Control/Popup/CloseButton" to="Control" method="_on_CloseButton_pressed"]
 [connection signal="pressed" from="BackButton" to="BackButton" method="GotoScene"]
 [connection signal="pressed" from="BackButton3" to="BackButton3" method="GotoScene"]

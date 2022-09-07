@@ -78,14 +78,14 @@ margin_bottom = 899.0
 position = Vector2( 257, 261 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
-frame = 36
+frame = 2
 speed_scale = 5.0
 playing = true
 
 [node name="Label3" type="Label" parent="."]
 margin_left = 464.0
 margin_top = 82.0
-margin_right = 893.0
+margin_right = 1319.0
 margin_bottom = 447.0
 custom_fonts/font = ExtResource( 61 )
 text = "Some bacteria, fungi, and protists reproduce through transfer of genetic material by cell-to-cell bridge-like connection between two microorganisms of the same."
