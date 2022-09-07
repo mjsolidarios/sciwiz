@@ -96,7 +96,7 @@ onready var match_item_set = {
 		\"name\": \"mmafrag\",
 		\"scene\": mmafrag,
 		\"match\": \"fragmentation\",
-		\"type\": \"s\"
+		\"type\": \"a\"
 	},
 	\"mmaspore\":{
 		\"name\": \"mmaspore\",
@@ -1048,7 +1048,7 @@ __meta__ = {
 }
 
 [node name="GridContainer" type="GridContainer" parent="Panel/GridContainer"]
-margin_right = 388.0
+margin_right = 411.0
 margin_bottom = 159.0
 custom_constants/hseparation = 15
 columns = 2
@@ -1061,15 +1061,15 @@ texture_pressed = ExtResource( 82 )
 
 [node name="Label" type="Label" parent="Panel/GridContainer/GridContainer"]
 margin_left = 174.0
-margin_top = 58.0
-margin_right = 388.0
-margin_bottom = 101.0
+margin_top = 55.0
+margin_right = 411.0
+margin_bottom = 103.0
 custom_fonts/font = ExtResource( 86 )
 text = "Power Punch"
 
 [node name="GridContainer2" type="GridContainer" parent="Panel/GridContainer"]
 margin_top = 174.0
-margin_right = 388.0
+margin_right = 411.0
 margin_bottom = 324.0
 custom_constants/hseparation = 15
 columns = 2
@@ -1082,15 +1082,15 @@ texture_pressed = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="Panel/GridContainer/GridContainer2"]
 margin_left = 165.0
-margin_top = 53.0
-margin_right = 277.0
-margin_bottom = 96.0
+margin_top = 51.0
+margin_right = 288.0
+margin_bottom = 99.0
 custom_fonts/font = ExtResource( 86 )
 text = "Zygote"
 
 [node name="GridContainer3" type="GridContainer" parent="Panel/GridContainer"]
 margin_top = 339.0
-margin_right = 388.0
+margin_right = 411.0
 margin_bottom = 489.0
 custom_constants/hseparation = 15
 columns = 2
@@ -1103,15 +1103,15 @@ texture_pressed = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="Panel/GridContainer/GridContainer3"]
 margin_left = 165.0
-margin_top = 53.0
-margin_right = 337.0
-margin_bottom = 96.0
+margin_top = 51.0
+margin_right = 356.0
+margin_bottom = 99.0
 custom_fonts/font = ExtResource( 86 )
 text = "Pollination"
 
 [node name="GridContainer4" type="GridContainer" parent="Panel/GridContainer"]
 margin_top = 504.0
-margin_right = 388.0
+margin_right = 411.0
 margin_bottom = 654.0
 custom_constants/hseparation = 15
 columns = 2
@@ -1124,15 +1124,15 @@ texture_pressed = ExtResource( 14 )
 
 [node name="Label" type="Label" parent="Panel/GridContainer/GridContainer4"]
 margin_left = 165.0
-margin_top = 53.0
-margin_right = 360.0
-margin_bottom = 96.0
+margin_top = 51.0
+margin_right = 381.0
+margin_bottom = 99.0
 custom_fonts/font = ExtResource( 86 )
 text = "Conjugation"
 
 [node name="GridContainer5" type="GridContainer" parent="Panel/GridContainer"]
 margin_top = 669.0
-margin_right = 388.0
+margin_right = 411.0
 margin_bottom = 819.0
 custom_constants/hseparation = 15
 columns = 2
@@ -1145,9 +1145,9 @@ texture_pressed = ExtResource( 11 )
 
 [node name="Label" type="Label" parent="Panel/GridContainer/GridContainer5"]
 margin_left = 165.0
-margin_top = 53.0
-margin_right = 355.0
-margin_bottom = 96.0
+margin_top = 51.0
+margin_right = 375.0
+margin_bottom = 99.0
 custom_fonts/font = ExtResource( 86 )
 text = "Fertilization"
 
@@ -1163,7 +1163,7 @@ __meta__ = {
 }
 
 [node name="GridContainer6" type="GridContainer" parent="Panel/GridContainer2"]
-margin_right = 435.0
+margin_right = 464.0
 margin_bottom = 159.0
 custom_constants/hseparation = 15
 columns = 2
@@ -1176,15 +1176,15 @@ texture_pressed = ExtResource( 84 )
 
 [node name="Label" type="Label" parent="Panel/GridContainer2/GridContainer6"]
 margin_left = 174.0
-margin_top = 58.0
-margin_right = 388.0
-margin_bottom = 101.0
+margin_top = 55.0
+margin_right = 411.0
+margin_bottom = 103.0
 custom_fonts/font = ExtResource( 86 )
 text = "Power Punch"
 
 [node name="GridContainer7" type="GridContainer" parent="Panel/GridContainer2"]
 margin_top = 174.0
-margin_right = 435.0
+margin_right = 464.0
 margin_bottom = 324.0
 custom_constants/hseparation = 15
 columns = 2
@@ -1197,15 +1197,15 @@ texture_pressed = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="Panel/GridContainer2/GridContainer7"]
 margin_left = 165.0
-margin_top = 53.0
-margin_right = 400.0
-margin_bottom = 96.0
+margin_top = 51.0
+margin_right = 427.0
+margin_bottom = 99.0
 custom_fonts/font = ExtResource( 86 )
 text = "Fragmentation"
 
 [node name="GridContainer8" type="GridContainer" parent="Panel/GridContainer2"]
 margin_top = 339.0
-margin_right = 435.0
+margin_right = 464.0
 margin_bottom = 489.0
 custom_constants/hseparation = 15
 columns = 2
@@ -1218,15 +1218,15 @@ texture_pressed = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="Panel/GridContainer2/GridContainer8"]
 margin_left = 165.0
-margin_top = 53.0
-margin_right = 297.0
-margin_bottom = 96.0
+margin_top = 51.0
+margin_right = 313.0
+margin_bottom = 99.0
 custom_fonts/font = ExtResource( 86 )
 text = "Budding"
 
 [node name="GridContainer9" type="GridContainer" parent="Panel/GridContainer2"]
 margin_top = 504.0
-margin_right = 435.0
+margin_right = 464.0
 margin_bottom = 654.0
 custom_constants/hseparation = 15
 columns = 2
@@ -1239,15 +1239,15 @@ texture_pressed = ExtResource( 14 )
 
 [node name="Label" type="Label" parent="Panel/GridContainer2/GridContainer9"]
 margin_left = 165.0
-margin_top = 53.0
-margin_right = 435.0
-margin_bottom = 96.0
+margin_top = 51.0
+margin_right = 464.0
+margin_bottom = 99.0
 custom_fonts/font = ExtResource( 86 )
 text = "Spore Formation"
 
 [node name="GridContainer10" type="GridContainer" parent="Panel/GridContainer2"]
 margin_top = 669.0
-margin_right = 435.0
+margin_right = 464.0
 margin_bottom = 819.0
 custom_constants/hseparation = 15
 columns = 2
@@ -1260,9 +1260,9 @@ texture_pressed = ExtResource( 11 )
 
 [node name="Label" type="Label" parent="Panel/GridContainer2/GridContainer10"]
 margin_left = 165.0
-margin_top = 53.0
-margin_right = 393.0
-margin_bottom = 96.0
+margin_top = 51.0
+margin_right = 416.0
+margin_bottom = 99.0
 custom_fonts/font = ExtResource( 86 )
 text = "Binary Fission"
 

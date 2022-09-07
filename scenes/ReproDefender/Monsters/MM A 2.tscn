@@ -78,15 +78,15 @@ margin_bottom = 681.0
 position = Vector2( 251, 249 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
-frame = 21
+frame = 2
 speed_scale = 5.0
 playing = true
 
 [node name="Label3" type="Label" parent="."]
 margin_left = 474.0
 margin_top = 158.0
-margin_right = 903.0
-margin_bottom = 293.0
+margin_right = 952.0
+margin_bottom = 308.0
 custom_fonts/font = ExtResource( 61 )
 text = "Plants reproduce through
 their vegetative parts such

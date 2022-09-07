@@ -78,15 +78,15 @@ margin_bottom = 693.0
 position = Vector2( 259, 257 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
-frame = 38
+frame = 45
 speed_scale = 5.0
 playing = true
 
 [node name="Label3" type="Label" parent="."]
 margin_left = 499.0
 margin_top = 166.0
-margin_right = 1183.0
-margin_bottom = 340.0
+margin_right = 858.0
+margin_bottom = 367.0
 custom_fonts/font = ExtResource( 61 )
 text = "A Hydra produces an offspring from an outgrowth known as bud."
 autowrap = true

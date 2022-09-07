@@ -78,15 +78,15 @@ margin_bottom = 689.0
 position = Vector2( 255, 253 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
-frame = 36
+frame = 54
 speed_scale = 5.0
 playing = true
 
 [node name="Label3" type="Label" parent="."]
 margin_left = 487.0
 margin_top = 172.0
-margin_right = 916.0
-margin_bottom = 307.0
+margin_right = 903.0
+margin_bottom = 346.0
 custom_fonts/font = ExtResource( 61 )
 text = "Occurs in plants as natural
 or artificial vegetative
