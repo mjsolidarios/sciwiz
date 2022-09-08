@@ -277,7 +277,7 @@ func _on_ElectricButton_pressed2():
 	$AnimationPlayer2.play(\"electric\")
 	$AnimationPlayerFX.play(\"shock\")
 	player_answer = \"sporeform\"
-	player_type = \"s\"
+	player_type = \"a\"
 
 
 func _on_BeamButton_pressed2():
