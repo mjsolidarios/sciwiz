@@ -36,19 +36,19 @@ func _process(delta):
 
 
 func _on_Up_pressed():
-	yPos -= 1
+	yPos += 5
 
 
 func _on_Right_pressed():
-	xPos += 1
+	xPos -= 5
 
 
 func _on_Down_pressed():
-	yPos += 1
+	yPos -= 5
 
 
 func _on_Left_pressed():
-	xPos -= 1
+	xPos += 5
 "
 
 [sub_resource type="DynamicFont" id=1]

@@ -166,7 +166,7 @@ margin_top = 726.0
 margin_right = 1352.0
 margin_bottom = 1021.0
 custom_fonts/font = SubResource( 1 )
-text = "Adjust the diaphragm so that enough amount of light can pass through the slide.  (Tap on the diaphragm.)"
+text = "Adjust the diaphragm so that enough amount of light can pass through the slide.  (“Specimen as viewed from the eyepiece”)"
 autowrap = true
 
 [node name="BackButton" type="TextureButton" parent="."]

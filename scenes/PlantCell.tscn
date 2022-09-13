@@ -60,7 +60,7 @@ size = 64
 font_data = ExtResource( 21 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 40
+size = 38
 font_data = ExtResource( 21 )
 
 [sub_resource type="DynamicFont" id=1]
@@ -653,23 +653,35 @@ wrong_image = ExtResource( 32 )
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -543.0
+margin_left = -605.0
 margin_top = 244.0
-margin_right = -59.0
+margin_right = 3.0
 margin_bottom = 1080.0
 custom_constants/separation = 41
 
+[node name="Control2" type="Control" parent="HUD/VBoxContainer"]
+margin_right = 608.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+
 [node name="Title" type="Label" parent="HUD/VBoxContainer"]
-margin_right = 484.0
-margin_bottom = 76.0
+margin_top = 91.0
+margin_right = 608.0
+margin_bottom = 167.0
 custom_fonts/font = SubResource( 2 )
 text = "Organelle"
 autowrap = true
 
+[node name="Control" type="Control" parent="HUD/VBoxContainer"]
+margin_top = 208.0
+margin_right = 608.0
+margin_bottom = 328.0
+rect_min_size = Vector2( 0, 120 )
+
 [node name="Description" type="Label" parent="HUD/VBoxContainer"]
-margin_top = 117.0
-margin_right = 484.0
-margin_bottom = 369.0
+margin_top = 369.0
+margin_right = 608.0
+margin_bottom = 611.0
 custom_fonts/font = SubResource( 3 )
 text = "Tap an organelle to know more about it.
 
