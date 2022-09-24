@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://images/ans_assets/Animations/MM A Fragmentation/MM A fragmentation/MM A fragmentation_00052.png" type="Texture" id=1]
 [ext_resource path="res://images/ans_assets/Animations/MM A Fragmentation/MM A fragmentation/MM A fragmentation_00056.png" type="Texture" id=2]
@@ -60,7 +60,7 @@
 [ext_resource path="res://images/ans_assets/Animations/MM A Fragmentation/MM A fragmentation/MM A fragmentation_00043.png" type="Texture" id=58]
 [ext_resource path="res://images/ans_assets/Animations/MM A Fragmentation/MM A fragmentation/MM A fragmentation_00047.png" type="Texture" id=59]
 [ext_resource path="res://images/ans_assets/Animations/MM A Fragmentation/MM A fragmentation/MM A fragmentation_00048.png" type="Texture" id=60]
-[ext_resource path="res://fonts/ANS_Labels.tres" type="DynamicFont" id=61]
+[ext_resource path="res://fonts/Roboto-Medium.ttf" type="DynamicFontData" id=61]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -70,6 +70,10 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="DynamicFont" id=2]
+size = 37
+font_data = ExtResource( 61 )
+
 [node name="Node2D" type="Control"]
 margin_right = 1650.0
 margin_bottom = 795.0
@@ -78,15 +82,15 @@ margin_bottom = 795.0
 position = Vector2( 259, 265 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
-frame = 41
+frame = 35
 speed_scale = 5.0
 playing = true
 
 [node name="Label3" type="Label" parent="."]
-margin_left = 452.0
-margin_top = 154.0
-margin_right = 913.0
+margin_left = 459.0
+margin_top = 149.0
+margin_right = 920.0
 margin_bottom = 406.0
-custom_fonts/font = ExtResource( 61 )
+custom_fonts/font = SubResource( 2 )
 text = "A starfish can produce offspring when one of its arms breaks off, regenerates and becomes a new starfish."
 autowrap = true

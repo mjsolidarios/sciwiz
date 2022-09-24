@@ -9,7 +9,7 @@
 [ext_resource path="res://icons/arrowLeft.png" type="Texture" id=7]
 
 [sub_resource type="DynamicFont" id=1]
-size = 63
+size = 53
 font_data = ExtResource( 4 )
 
 [node name="Node2D" type="Control"]
@@ -65,17 +65,23 @@ stream = ExtResource( 1 )
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = 100.0
-margin_top = -310.5
-margin_right = -100.0
-margin_bottom = 310.5
+margin_left = 150.0
+margin_top = -429.0
+margin_right = -50.0
+margin_bottom = 426.0
 rect_min_size = Vector2( 1700, 0 )
 custom_fonts/font = SubResource( 1 )
-text = "- predict the effect of changes in abiotic factors on the ecosystem;
+text = "These include the following learning competencies:
 
--  focus specimens using the compound microscope; and
+The learners should be able to
 
-- differentiate asexual from sexual reproduction in terms of: (a) number of individuals involved and (b) similarities of offspring to parents"
+1. focus specimens using the compound microscope;
+2. differentiate plant and animal cells according to presence or absence of certain organelles;
+3. differentiate asexual from sexual reproduction in terms of:
+    (a) number of individuals involved
+    (b) similarities of offspring to parents
+4. predict the effect of changes in one population on other populations in the ecosystem; and
+5. predict the effect of changes in abiotic factors on the ecosystem;"
 autowrap = true
 
 [connection signal="pressed" from="BackButton" to="BackButton" method="GotoScene"]

@@ -8,7 +8,7 @@
 [ext_resource path="res://icons/arrowLeft.png" type="Texture" id=7]
 
 [sub_resource type="DynamicFont" id=1]
-size = 63
+size = 60
 font_data = ExtResource( 4 )
 
 [node name="Node2D" type="Control"]
@@ -50,12 +50,12 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 margin_left = 100.0
-margin_top = -427.5
-margin_right = -100.0
-margin_bottom = 427.5
+margin_top = -394.0
+margin_right = -103.0
+margin_bottom = 428.0
 rect_min_size = Vector2( 1700, 0 )
 custom_fonts/font = SubResource( 1 )
-text = "These learning competencies were incorporated in the form of games such as puzzles, quizzes, word, games, adventure-type, simulation, and an overlapping of these types. Designed for mobile phones, fun-filled learning experience in Living things and Their Environment can be achieved anytime and anywhere, whether you are inside a classroom in a synchronous class or at the comfort of your homes in asynchronous distance learning.
+text = "These learning competencies were incorporated in the form of games such as puzzles, quizzes, word, games, adventure, simulation, and an overlapping of these types. Designed for mobile phones, fun-filled learning experience in Living things and Their Environment can be achieved anytime and anywhere, whether you are inside a classroom in a synchronous class or at the comfort of your homes in asynchronous distance learning.
 
 Have fun playing and learning at the same time! Learn, think, and explore!"
 autowrap = true

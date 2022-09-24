@@ -140,29 +140,19 @@ margin_right = 20.0
 margin_bottom = 60.0
 
 [node name="MicroSimButton" type="TextureButton" parent="Control"]
-margin_left = -874.0
+margin_left = -842.0
 margin_top = 169.0
-margin_right = 1174.0
+margin_right = 1206.0
 margin_bottom = 2217.0
 rect_scale = Vector2( 0.15, 0.15 )
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 8 )
 texture_disabled = ExtResource( 17 )
 
-[node name="PredictTermsButton" type="TextureButton" parent="Control"]
-margin_left = -520.0
-margin_top = 169.0
-margin_right = 1528.0
-margin_bottom = 2217.0
-rect_scale = Vector2( 0.15, 0.15 )
-texture_normal = ExtResource( 13 )
-texture_pressed = ExtResource( 11 )
-texture_disabled = ExtResource( 16 )
-
 [node name="PuzzCellButton" type="TextureButton" parent="Control"]
-margin_left = -142.0
+margin_left = -489.0
 margin_top = 169.0
-margin_right = 1906.0
+margin_right = 1559.0
 margin_bottom = 2217.0
 rect_scale = Vector2( 0.15, 0.15 )
 texture_normal = ExtResource( 10 )
@@ -170,23 +160,33 @@ texture_pressed = ExtResource( 9 )
 texture_disabled = ExtResource( 15 )
 
 [node name="ReproDefendersButton" type="TextureButton" parent="Control"]
-margin_left = 228.0
+margin_left = -121.0
 margin_top = 169.0
-margin_right = 2276.0
+margin_right = 1927.0
 margin_bottom = 2217.0
 rect_scale = Vector2( 0.15, 0.15 )
 texture_normal = ExtResource( 14 )
 texture_pressed = ExtResource( 12 )
 texture_disabled = ExtResource( 15 )
 
+[node name="PredictTermsButton" type="TextureButton" parent="Control"]
+margin_left = 240.0
+margin_top = 169.0
+margin_right = 2288.0
+margin_bottom = 2217.0
+rect_scale = Vector2( 0.15, 0.15 )
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 11 )
+texture_disabled = ExtResource( 16 )
+
 [node name="HelpButton" type="TextureButton" parent="Control"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 583.0
+margin_left = 590.0
 margin_top = 147.0
-margin_right = 2631.0
+margin_right = 2638.0
 margin_bottom = 2195.0
 rect_scale = Vector2( 0.15, 0.15 )
 texture_normal = ExtResource( 18 )

@@ -41,8 +41,8 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		$Button.disabled = false
 "
 
-[sub_resource type="DynamicFont" id=1]
-size = 52
+[sub_resource type="DynamicFont" id=8]
+size = 47
 font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=2]
@@ -143,11 +143,11 @@ texture = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = 578.0
-margin_top = 722.0
-margin_right = 1277.0
-margin_bottom = 988.0
-custom_fonts/font = SubResource( 1 )
-text = "Drag the slide to the stage. (Tap the slide)
+margin_top = 697.0
+margin_right = 1463.0
+margin_bottom = 999.0
+custom_fonts/font = SubResource( 8 )
+text = "Drag the slide to the stage. The prepared slide contains an onion skin membrane specimen. (Tap the slide.)
 "
 autowrap = true
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://images/ans_assets/Animations/MM A Spore Formation/MM A spore fomation/MM A spore fomation_00028.png" type="Texture" id=1]
 [ext_resource path="res://images/ans_assets/Animations/MM A Spore Formation/MM A spore fomation/MM A spore fomation_00036.png" type="Texture" id=2]
@@ -60,7 +60,7 @@
 [ext_resource path="res://images/ans_assets/Animations/MM A Spore Formation/MM A spore fomation/MM A spore fomation_00053.png" type="Texture" id=58]
 [ext_resource path="res://images/ans_assets/Animations/MM A Spore Formation/MM A spore fomation/MM A spore fomation_00056.png" type="Texture" id=59]
 [ext_resource path="res://images/ans_assets/Animations/MM A Spore Formation/MM A spore fomation/MM A spore fomation_00059.png" type="Texture" id=60]
-[ext_resource path="res://fonts/ANS_Labels.tres" type="DynamicFont" id=61]
+[ext_resource path="res://fonts/Roboto-Medium.ttf" type="DynamicFontData" id=61]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -70,6 +70,10 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="DynamicFont" id=2]
+size = 37
+font_data = ExtResource( 61 )
+
 [node name="Node2D" type="Control"]
 margin_right = 1425.0
 margin_bottom = 797.0
@@ -78,15 +82,15 @@ margin_bottom = 797.0
 position = Vector2( 264, 265 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
-frame = 8
+frame = 43
 speed_scale = 5.0
 playing = true
 
 [node name="Label3" type="Label" parent="."]
-margin_left = 453.0
-margin_top = 145.0
-margin_right = 899.0
-margin_bottom = 378.0
-custom_fonts/font = ExtResource( 61 )
+margin_left = 460.0
+margin_top = 153.0
+margin_right = 906.0
+margin_bottom = 415.0
+custom_fonts/font = SubResource( 2 )
 text = "A form of reproduction common to fungi where spores are released, and each spore develops into a new organism."
 autowrap = true

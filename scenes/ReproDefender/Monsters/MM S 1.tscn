@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://images/ans_assets/Animations/MM S 1/MM S 1/MM S 1_00054.png" type="Texture" id=1]
 [ext_resource path="res://images/ans_assets/Animations/MM S 1/MM S 1/MM S 1_00035.png" type="Texture" id=2]
@@ -60,7 +60,7 @@
 [ext_resource path="res://images/ans_assets/Animations/MM S 1/MM S 1/MM S 1_00045.png" type="Texture" id=58]
 [ext_resource path="res://images/ans_assets/Animations/MM S 1/MM S 1/MM S 1_00042.png" type="Texture" id=59]
 [ext_resource path="res://images/ans_assets/Animations/MM S 1/MM S 1/MM S 1_00053.png" type="Texture" id=60]
-[ext_resource path="res://fonts/ANS_Labels.tres" type="DynamicFont" id=61]
+[ext_resource path="res://fonts/Roboto-Medium.ttf" type="DynamicFontData" id=61]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -70,6 +70,10 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="DynamicFont" id=2]
+size = 37
+font_data = ExtResource( 61 )
+
 [node name="Node2D" type="Control"]
 margin_right = 1343.0
 margin_bottom = 655.0
@@ -78,16 +82,16 @@ margin_bottom = 655.0
 position = Vector2( 259, 259 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
-frame = 37
+frame = 45
 speed_scale = 5.0
 playing = true
 
 [node name="Label3" type="Label" parent="."]
 margin_left = 500.0
-margin_top = 208.0
-margin_right = 929.0
-margin_bottom = 343.0
-custom_fonts/font = ExtResource( 61 )
+margin_top = 180.0
+margin_right = 1055.0
+margin_bottom = 366.0
+custom_fonts/font = SubResource( 2 )
 text = "Involves the union of sex
 cells or gametes (sperm
 cell and egg cell)"

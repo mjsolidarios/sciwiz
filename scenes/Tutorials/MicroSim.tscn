@@ -6,7 +6,6 @@
 [ext_resource path="res://scenes/TextButton.gd" type="Script" id=4]
 [ext_resource path="res://icons/buttonStart.png" type="Texture" id=5]
 [ext_resource path="res://icons/home.png" type="Texture" id=6]
-[ext_resource path="res://fonts/ANS_Labels.tres" type="DynamicFont" id=7]
 [ext_resource path="res://icons/buttonX.png" type="Texture" id=8]
 [ext_resource path="res://icons/question.png" type="Texture" id=9]
 
@@ -36,6 +35,10 @@ func _on_Help_pressed():
 func _on_CloseButton_pressed():
 	get_parent().get_node(\"Control/Popup\").hide()
 "
+
+[sub_resource type="DynamicFont" id=5]
+size = 62
+font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 78
@@ -76,6 +79,7 @@ expand = true
 stream = ExtResource( 2 )
 
 [node name="Popup" type="Popup" parent="Control"]
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -92,7 +96,7 @@ margin_left = -801.5
 margin_top = -156.5
 margin_right = 801.5
 margin_bottom = 156.5
-custom_fonts/font = ExtResource( 7 )
+custom_fonts/font = SubResource( 5 )
 text = "Familiarize yourself with the different parts of the microscope and correctly follow the steps and procedures set by Franz, your virtual laboratory assistant in order to successfully view and focus the specimen under the microscope."
 autowrap = true
 

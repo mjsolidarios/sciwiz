@@ -142,7 +142,7 @@ margin_right = -100.0
 margin_bottom = 193.5
 rect_min_size = Vector2( 1700, 0 )
 custom_fonts/font = SubResource( 1 )
-text = "Monsters are on attack! Help Sexual and Asexual Defenders in defeat these monsters. Use your knowledge about sexual and asexual reproduction to weaponized and giver power to the Defenders in combatting the monsters and win the game."
+text = "Monsters are on attack! Help Sexual and Asexual Defenders in defeating these monsters. Use your knowledge about sexual and asexual reproduction to weaponize and give power to the Defenders in combatting the monsters and win the game."
 autowrap = true
 
 [node name="BackButton" type="TextureButton" parent="."]

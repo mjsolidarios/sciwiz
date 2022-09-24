@@ -21,8 +21,8 @@ func _process(delta):
 		get_node(\"Button\").disabled = false
 "
 
-[sub_resource type="DynamicFont" id=1]
-size = 49
+[sub_resource type="DynamicFont" id=6]
+size = 43
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=4]
@@ -61,13 +61,12 @@ position = Vector2( 863, 626 )
 texture = ExtResource( 9 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 580.0
-margin_top = 668.0
-margin_right = 1784.0
-margin_bottom = 909.0
-custom_fonts/font = SubResource( 1 )
-text = "To get the total magnification, multiply the magnification of the objective lens by 10, which is the magnification of the eyepiece.
-"
+margin_left = 578.0
+margin_top = 695.0
+margin_right = 1806.0
+margin_bottom = 864.0
+custom_fonts/font = SubResource( 6 )
+text = "To get the total magnification of the specimen in the previous instruction, multiple the magnification provided by the eyepiece which is 10x and the magnification of the objectives, that is 4x."
 autowrap = true
 
 [node name="Label2" type="Label" parent="."]

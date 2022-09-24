@@ -147,6 +147,11 @@ export var path = \"\"
 func GotoScene():
 	$Click.play()
 	$\"/root/Globals\".goto_scene(path)
+
+
+func _on_Button2_pressed():
+	$Click.play()
+	$\"/root/Globals\".goto_scene(path)
 "
 
 [node name="Node2D" type="Node2D"]
@@ -303,4 +308,5 @@ margin_bottom = 593.0
 [connection signal="animation_finished" from="Base/BaseAnimation" to="." method="_on_BaseAnimation_animation_finished"]
 [connection signal="pressed" from="BackButton" to="BackButton" method="GotoScene"]
 [connection signal="pressed" from="Button" to="Button" method="GotoScene"]
+[connection signal="pressed" from="Button2" to="Button2" method="_on_Button2_pressed"]
 [connection signal="pressed" from="TapButon" to="." method="_on_TapButon_pressed"]
