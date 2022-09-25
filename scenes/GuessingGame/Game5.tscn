@@ -90,8 +90,14 @@ func set_character(value):
 
 func delete_character():
 		if $\"/root/Globals\".active_index2_for_guessing_game != 0:
-			get_node(\"VBoxContainer/TextSets2/GridContainer\").get_child($\"/root/Globals\".active_index2_for_guessing_game-1).set_value(\" \")
-			$\"/root/Globals\".active_index2_for_guessing_game -= 1
+			print(\"Children: \"+str(get_node(\"VBoxContainer/TextSets2/GridContainer\").get_children().size()))
+			
+			if(!get_node(\"VBoxContainer/TextSets2/GridContainer\").get_child($\"/root/Globals\".active_index2_for_guessing_game-1)==null):
+				get_node(\"VBoxContainer/TextSets2/GridContainer\").get_child($\"/root/Globals\".active_index2_for_guessing_game-1).set_value(\" \")
+				$\"/root/Globals\".active_index2_for_guessing_game -= 1
+			else:
+				get_node(\"VBoxContainer/TextSets2/GridContainer\").get_child($\"/root/Globals\".active_index2_for_guessing_game-2).set_value(\" \")
+				$\"/root/Globals\".active_index2_for_guessing_game -= 2
 		else:
 			if $\"/root/Globals\".active_index1_for_guessing_game != 0:
 				get_node(\"VBoxContainer/TextSets/GridContainer\").get_child($\"/root/Globals\".active_index1_for_guessing_game-1).set_value(\" \")
