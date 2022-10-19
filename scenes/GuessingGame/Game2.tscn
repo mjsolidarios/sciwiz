@@ -99,8 +99,11 @@ func _process(delta):
 		
 func _load_scene():
 	var _index = $\"/root/Globals\".current_question_pool_index
-	$\"/root/Globals\".guessing_game_question_pool.shuffle()
-	$\"/root/Globals\".guessing_game_question_pool.pop_back()
+	#$\"/root/Globals\".guessing_game_question_pool.shuffle()
+	print(str($\"/root/Globals\".guessing_game_question_pool))
+	$\"/root/Globals\".guessing_game_question_pool.pop_front()
+	print(str($\"/root/Globals\".guessing_game_question_pool))
+	print(\"next: \"+str($\"/root/Globals\".guessing_game_question_pool.front()))
 #	print($\"/root/Globals\".guessing_game_question_pool)
 	if $\"/root/Globals\".guessing_game_question_pool.size()>0:
 		$\"/root/Globals\".goto_scene(\"res://scenes/GuessingGame/Game\"+str($\"/root/Globals\".guessing_game_question_pool.front())+\".tscn\")	
@@ -143,9 +146,10 @@ func _on_Check_pressed():
 		var counter = 0
 		var points_to_deduct = 0
 		for i in terms_character_count:
-			if i != string_set[counter]:
-				points_to_deduct += 2
-			counter+=1
+			if string_set[counter] != null:
+				if i != string_set[counter]:
+					points_to_deduct += 2
+				counter+=1
 		$Popup2.visible = true
 		print(points_to_deduct)
 		$\"/root/Globals\".guessing_game_score -= total_points-points_to_deduct
@@ -495,6 +499,7 @@ custom_fonts/font = SubResource( 9 )
 text = "Main Menu"
 
 [node name="Popup" type="Popup" parent="."]
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 

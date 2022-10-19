@@ -56,7 +56,7 @@ func set_character(value):
 			else:
 				$\"/root/Globals\".active_index1_for_guessing_game += 2
 	else:
-		next_text_slot = get_node(\"VBoxContainer/TextSets2/GridContainer\").get_child($\"/root/Globals\".active_index2_for_guessing_game+1)
+		next_text_slot = get_node(\"VBoxContainer/TextSets2/GridContainer\").get_child(9)
 		var active_text = get_node(\"VBoxContainer/TextSets2/GridContainer\").get_child($\"/root/Globals\".active_index2_for_guessing_game)
 		if next_text_slot and active_text != null:
 			active_text.get_node(\"Label\").text = value
@@ -99,8 +99,8 @@ func _process(delta):
 		
 func _load_scene():
 	var _index = $\"/root/Globals\".current_question_pool_index
-	$\"/root/Globals\".guessing_game_question_pool.shuffle()
-	$\"/root/Globals\".guessing_game_question_pool.pop_back()
+	#$\"/root/Globals\".guessing_game_question_pool.shuffle()
+	$\"/root/Globals\".guessing_game_question_pool.pop_front()
 #	print($\"/root/Globals\".guessing_game_question_pool)
 	if $\"/root/Globals\".guessing_game_question_pool.size()>0:
 		$\"/root/Globals\".goto_scene(\"res://scenes/GuessingGame/Game\"+str($\"/root/Globals\".guessing_game_question_pool.front())+\".tscn\")	
@@ -143,6 +143,7 @@ func _on_Check_pressed():
 		var counter = 0
 		var points_to_deduct = 0
 		for i in terms_character_count:
+			print(str(string_set.count()))
 			if i != string_set[counter]:
 				points_to_deduct += 2
 			counter+=1
