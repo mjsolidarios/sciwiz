@@ -319,6 +319,7 @@ polygon = PoolVector2Array( -446.587, 64.7828, -373.143, 124.012, -219.147, 115.
 polygon = PoolVector2Array( 232.178, 238.916, 235.731, 275.638, 286.668, 299.33, 415.788, 286.299, 482.124, 227.07, 470.278, 178.502, 363.666, 174.949, 266.531, 214.04 )
 
 [node name="Centrioles" type="Area2D" parent="PlantCell/Parts"]
+visible = false
 script = ExtResource( 19 )
 slot_target = "centrioles"
 hud_path = NodePath("../../../HUD")
@@ -359,6 +360,9 @@ stream = ExtResource( 23 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlantCell/Parts/Vesicles"]
 polygon = PoolVector2Array( -345.897, -251.5, -323.39, -242.023, -370.774, -120.012, -331.682, -111.72, -313.914, -146.073, -276.007, -123.565, -299.699, -40.6449, -373.143, -53.6752, -387.358, -159.103 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="PlantCell/Parts/Vesicles"]
+polygon = PoolVector2Array( -246.393, 170.21, -247.577, 214.04, -221.517, 225.886, -196.64, 223.517, -195.456, 238.916, -225.07, 266.161, -223.886, 293.407, -187.164, 300.514, -170.58, 261.423, -150.442, 247.208, -133.858, 222.332, -152.811, 199.825, -195.456, 209.302, -201.379, 186.795, -208.486, 172.58 )
 
 [node name="RoughEndoplasmic" type="Area2D" parent="PlantCell/Parts"]
 script = ExtResource( 19 )
@@ -583,6 +587,7 @@ scale = Vector2( 0.844, 0.844 )
 texture = ExtResource( 44 )
 
 [node name="centrioles" type="Sprite" parent="PlantCellColors"]
+visible = false
 position = Vector2( 969, 551 )
 scale = Vector2( 0.844, 0.844 )
 texture = ExtResource( 37 )
@@ -781,7 +786,7 @@ scroll_horizontal_enabled = false
 
 [node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
 margin_right = 250.0
-margin_bottom = 3786.0
+margin_bottom = 3514.0
 mouse_filter = 2
 custom_constants/vseparation = 22
 
@@ -797,6 +802,7 @@ identity_name = "vacuoles_plant"
 hud_path = NodePath("../../../HUD")
 
 [node name="Centrioles" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
+visible = false
 material = ExtResource( 5 )
 margin_left = 0.0
 margin_top = 272.0
@@ -810,9 +816,9 @@ hud_path = NodePath("../../../HUD")
 [node name="Chloroplast" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
 material = ExtResource( 5 )
 margin_left = 0.0
-margin_top = 544.0
+margin_top = 272.0
 margin_right = 250.0
-margin_bottom = 794.0
+margin_bottom = 522.0
 texture_normal = ExtResource( 14 )
 cell_image = ExtResource( 14 )
 identity_name = "chloroplast"
@@ -821,9 +827,9 @@ hud_path = NodePath("../../../HUD")
 [node name="Cytoplasm" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
 material = ExtResource( 5 )
 margin_left = 0.0
-margin_top = 816.0
+margin_top = 544.0
 margin_right = 250.0
-margin_bottom = 1066.0
+margin_bottom = 794.0
 texture_normal = ExtResource( 11 )
 cell_image = ExtResource( 11 )
 identity_name = "cytoplasm"
@@ -832,9 +838,9 @@ hud_path = NodePath("../../../HUD")
 [node name="GolgiBodies" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
 material = ExtResource( 5 )
 margin_left = 0.0
-margin_top = 1088.0
+margin_top = 816.0
 margin_right = 250.0
-margin_bottom = 1338.0
+margin_bottom = 1066.0
 texture_normal = ExtResource( 10 )
 cell_image = ExtResource( 10 )
 identity_name = "golgi_bodies"
@@ -843,9 +849,9 @@ hud_path = NodePath("../../../HUD")
 [node name="Lysosome" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
 material = ExtResource( 5 )
 margin_left = 0.0
-margin_top = 1360.0
+margin_top = 1088.0
 margin_right = 250.0
-margin_bottom = 1610.0
+margin_bottom = 1338.0
 texture_normal = ExtResource( 16 )
 cell_image = ExtResource( 16 )
 identity_name = "lysosomes"
@@ -854,9 +860,9 @@ hud_path = NodePath("../../../HUD")
 [node name="Mitochondria" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
 material = ExtResource( 5 )
 margin_left = 0.0
-margin_top = 1632.0
+margin_top = 1360.0
 margin_right = 250.0
-margin_bottom = 1882.0
+margin_bottom = 1610.0
 texture_normal = ExtResource( 7 )
 cell_image = ExtResource( 7 )
 identity_name = "mitochondria"
@@ -865,9 +871,9 @@ hud_path = NodePath("../../../HUD")
 [node name="Nucleus" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
 material = ExtResource( 5 )
 margin_left = 0.0
-margin_top = 1904.0
+margin_top = 1632.0
 margin_right = 250.0
-margin_bottom = 2154.0
+margin_bottom = 1882.0
 texture_normal = ExtResource( 13 )
 cell_image = ExtResource( 13 )
 identity_name = "nucleus"
@@ -876,9 +882,9 @@ hud_path = NodePath("../../../HUD")
 [node name="CellWall" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
 material = ExtResource( 5 )
 margin_left = 0.0
-margin_top = 2176.0
+margin_top = 1904.0
 margin_right = 250.0
-margin_bottom = 2426.0
+margin_bottom = 2154.0
 texture_normal = ExtResource( 20 )
 cell_image = ExtResource( 20 )
 identity_name = "cell_wall"
@@ -887,9 +893,9 @@ hud_path = NodePath("../../../HUD")
 [node name="Ribosomes" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
 material = ExtResource( 5 )
 margin_left = 0.0
-margin_top = 2448.0
+margin_top = 2176.0
 margin_right = 250.0
-margin_bottom = 2698.0
+margin_bottom = 2426.0
 texture_normal = ExtResource( 12 )
 cell_image = ExtResource( 12 )
 identity_name = "ribosomes"
@@ -898,9 +904,9 @@ hud_path = NodePath("../../../HUD")
 [node name="RoughEndoplasmic" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
 material = ExtResource( 5 )
 margin_left = 0.0
-margin_top = 2720.0
+margin_top = 2448.0
 margin_right = 250.0
-margin_bottom = 2970.0
+margin_bottom = 2698.0
 texture_normal = ExtResource( 6 )
 cell_image = ExtResource( 6 )
 identity_name = "rough_endoplasmic_reticulum"
@@ -909,9 +915,9 @@ hud_path = NodePath("../../../HUD")
 [node name="SmoothEndoplasmic" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
 material = ExtResource( 5 )
 margin_left = 0.0
-margin_top = 2992.0
+margin_top = 2720.0
 margin_right = 250.0
-margin_bottom = 3242.0
+margin_bottom = 2970.0
 texture_normal = ExtResource( 15 )
 cell_image = ExtResource( 15 )
 identity_name = "smooth_endoplasmic_reticulum"
@@ -920,9 +926,9 @@ hud_path = NodePath("../../../HUD")
 [node name="Vesicles" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
 material = ExtResource( 5 )
 margin_left = 0.0
-margin_top = 3264.0
+margin_top = 2992.0
 margin_right = 250.0
-margin_bottom = 3514.0
+margin_bottom = 3242.0
 texture_normal = ExtResource( 8 )
 cell_image = ExtResource( 8 )
 identity_name = "vesicles"
@@ -931,9 +937,9 @@ hud_path = NodePath("../../../HUD")
 [node name="PlasmaMembrane" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
 material = ExtResource( 5 )
 margin_left = 0.0
-margin_top = 3536.0
+margin_top = 3264.0
 margin_right = 250.0
-margin_bottom = 3786.0
+margin_bottom = 3514.0
 texture_normal = ExtResource( 43 )
 cell_image = ExtResource( 43 )
 identity_name = "plasma_membrane"
