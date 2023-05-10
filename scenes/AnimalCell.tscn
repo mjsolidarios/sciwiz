@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://shaders/outline-highlighted.tres" type="Material" id=1]
 [ext_resource path="res://scenes/HUD.gd" type="Script" id=2]
@@ -49,6 +49,8 @@
 [ext_resource path="res://images/vesicles-part.png" type="Texture" id=47]
 [ext_resource path="res://components/CellPart.tscn" type="PackedScene" id=48]
 [ext_resource path="res://sounds/Sky-Puzzle_LoFi.ogg" type="AudioStream" id=49]
+[ext_resource path="res://icon.png" type="Texture" id=50]
+[ext_resource path="res://icons/home.png" type="Texture" id=51]
 
 [sub_resource type="CanvasItemMaterial" id=10]
 blend_mode = 1
@@ -247,6 +249,10 @@ tracks/4/keys = {
 "update": 1,
 "values": [ "Wrong", "Wrong" ]
 }
+
+[sub_resource type="DynamicFont" id=11]
+size = 40
+font_data = ExtResource( 6 )
 
 [node name="Game" type="Node"]
 
@@ -608,6 +614,7 @@ mouse_filter = 2
 script = ExtResource( 2 )
 correct_image = ExtResource( 38 )
 wrong_image = ExtResource( 33 )
+correct_max_counter = 11
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD"]
 anchor_left = 1.0
@@ -903,6 +910,63 @@ stream = ExtResource( 49 )
 volume_db = -15.0
 autoplay = true
 
+[node name="PanelComplete" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TextureRect" type="TextureRect" parent="PanelComplete"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -250.0
+margin_top = -287.0
+margin_right = 250.0
+margin_bottom = 213.0
+texture = ExtResource( 50 )
+
+[node name="Title" type="Label" parent="PanelComplete"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -285.5
+margin_top = 202.0
+margin_right = 285.5
+margin_bottom = 357.0
+custom_fonts/font = SubResource( 11 )
+text = "Congratulations. You did great!"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Title2" type="Label" parent="PanelComplete"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -285.5
+margin_top = -425.5
+margin_right = 285.5
+margin_bottom = -270.5
+custom_fonts/font = SubResource( 2 )
+text = "Puzzle Complete!"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="BackButton" type="TextureButton" parent="PanelComplete"]
+margin_right = 162.0
+margin_bottom = 141.0
+texture_normal = ExtResource( 51 )
+expand = true
+script = ExtResource( 3 )
+path = "res://scenes/Main.tscn"
+
+[node name="Click" type="AudioStreamPlayer" parent="PanelComplete/BackButton"]
+stream = ExtResource( 45 )
+
 [connection signal="mouse_entered" from="AnimalCell/Parts/Mitochondria" to="AnimalCell/Parts/Mitochondria" method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_entered" from="AnimalCell/Parts/Centrioles" to="AnimalCell/Parts/Centrioles" method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_entered" from="AnimalCell/Parts/GolgiBodies" to="AnimalCell/Parts/GolgiBodies" method="_on_Area2D_mouse_entered"]
@@ -916,3 +980,4 @@ autoplay = true
 [connection signal="mouse_entered" from="AnimalCell/Parts/PlasmaMembrane" to="AnimalCell/Parts/PlasmaMembrane" method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_entered" from="AnimalCell/Parts/Ribosomes" to="AnimalCell/Parts/Ribosomes" method="_on_Area2D_mouse_entered"]
 [connection signal="pressed" from="BackButton" to="BackButton" method="GotoScene"]
+[connection signal="pressed" from="PanelComplete/BackButton" to="PanelComplete/BackButton" method="GotoScene"]

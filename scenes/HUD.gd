@@ -4,6 +4,8 @@ var file = File.new()
 var data
 export(Texture) var correct_image
 export(Texture) var wrong_image
+export(int) var correct_max_counter = 0
+export(int) var correct_current_counter = 0
 
 func _ready():
 	file.open("res://data/organelles.json", File.READ)
@@ -11,6 +13,8 @@ func _ready():
 
 func PlayCorrectAnswer():
 	$AnimationPlayer.play("correct")
+	correct_current_counter+=1
+	print("counter: "+ str(correct_current_counter))
 
 func PlayWrongAnswer():
 	$AnimationPlayer.play("wrong")
@@ -36,8 +40,8 @@ func DisplayInfo():
 	var content = str(data[active_cell_part][len(data[active_cell_part])-1])
 	$VBoxContainer/Description.text = content
 
-#func _process(delta):
-#	if $"/root/Globals".active_cell_part != "":
-#		pass
-#	else:
-#		print("no match")
+func _process(delta):
+	if correct_max_counter == correct_current_counter:
+		get_node(".").get_parent().get_node("PanelComplete").show()
+	else:
+		get_node(".").get_parent().get_node("PanelComplete").hide()

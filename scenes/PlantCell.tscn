@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://images/background.jpg" type="Texture" id=1]
 [ext_resource path="res://components/CellPart.tscn" type="PackedScene" id=2]
@@ -51,6 +51,8 @@
 [ext_resource path="res://images/vesicles-part-plant.png" type="Texture" id=49]
 [ext_resource path="res://images/ribosomes-part-plant.png" type="Texture" id=50]
 [ext_resource path="res://images/vacuole-part-plant.png" type="Texture" id=51]
+[ext_resource path="res://icon.png" type="Texture" id=52]
+[ext_resource path="res://icons/home.png" type="Texture" id=53]
 
 [sub_resource type="CanvasItemMaterial" id=10]
 blend_mode = 1
@@ -249,6 +251,14 @@ tracks/4/keys = {
 "update": 1,
 "values": [ "Wrong", "Wrong" ]
 }
+
+[sub_resource type="DynamicFont" id=11]
+size = 40
+font_data = ExtResource( 21 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 64
+font_data = ExtResource( 21 )
 
 [node name="Game" type="Node"]
 
@@ -654,6 +664,7 @@ mouse_filter = 2
 script = ExtResource( 28 )
 correct_image = ExtResource( 31 )
 wrong_image = ExtResource( 32 )
+correct_max_counter = 12
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD"]
 anchor_left = 1.0
@@ -786,7 +797,7 @@ scroll_horizontal_enabled = false
 
 [node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
 margin_right = 250.0
-margin_bottom = 3514.0
+margin_bottom = 3786.0
 mouse_filter = 2
 custom_constants/vseparation = 22
 
@@ -802,7 +813,6 @@ identity_name = "vacuoles_plant"
 hud_path = NodePath("../../../HUD")
 
 [node name="Centrioles" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
-visible = false
 material = ExtResource( 5 )
 margin_left = 0.0
 margin_top = 272.0
@@ -816,9 +826,9 @@ hud_path = NodePath("../../../HUD")
 [node name="Chloroplast" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
 material = ExtResource( 5 )
 margin_left = 0.0
-margin_top = 272.0
+margin_top = 544.0
 margin_right = 250.0
-margin_bottom = 522.0
+margin_bottom = 794.0
 texture_normal = ExtResource( 14 )
 cell_image = ExtResource( 14 )
 identity_name = "chloroplast"
@@ -827,9 +837,9 @@ hud_path = NodePath("../../../HUD")
 [node name="Cytoplasm" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
 material = ExtResource( 5 )
 margin_left = 0.0
-margin_top = 544.0
+margin_top = 816.0
 margin_right = 250.0
-margin_bottom = 794.0
+margin_bottom = 1066.0
 texture_normal = ExtResource( 11 )
 cell_image = ExtResource( 11 )
 identity_name = "cytoplasm"
@@ -838,9 +848,9 @@ hud_path = NodePath("../../../HUD")
 [node name="GolgiBodies" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
 material = ExtResource( 5 )
 margin_left = 0.0
-margin_top = 816.0
+margin_top = 1088.0
 margin_right = 250.0
-margin_bottom = 1066.0
+margin_bottom = 1338.0
 texture_normal = ExtResource( 10 )
 cell_image = ExtResource( 10 )
 identity_name = "golgi_bodies"
@@ -849,9 +859,9 @@ hud_path = NodePath("../../../HUD")
 [node name="Lysosome" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
 material = ExtResource( 5 )
 margin_left = 0.0
-margin_top = 1088.0
+margin_top = 1360.0
 margin_right = 250.0
-margin_bottom = 1338.0
+margin_bottom = 1610.0
 texture_normal = ExtResource( 16 )
 cell_image = ExtResource( 16 )
 identity_name = "lysosomes"
@@ -860,9 +870,9 @@ hud_path = NodePath("../../../HUD")
 [node name="Mitochondria" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
 material = ExtResource( 5 )
 margin_left = 0.0
-margin_top = 1360.0
+margin_top = 1632.0
 margin_right = 250.0
-margin_bottom = 1610.0
+margin_bottom = 1882.0
 texture_normal = ExtResource( 7 )
 cell_image = ExtResource( 7 )
 identity_name = "mitochondria"
@@ -871,9 +881,9 @@ hud_path = NodePath("../../../HUD")
 [node name="Nucleus" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
 material = ExtResource( 5 )
 margin_left = 0.0
-margin_top = 1632.0
+margin_top = 1904.0
 margin_right = 250.0
-margin_bottom = 1882.0
+margin_bottom = 2154.0
 texture_normal = ExtResource( 13 )
 cell_image = ExtResource( 13 )
 identity_name = "nucleus"
@@ -882,9 +892,9 @@ hud_path = NodePath("../../../HUD")
 [node name="CellWall" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
 material = ExtResource( 5 )
 margin_left = 0.0
-margin_top = 1904.0
+margin_top = 2176.0
 margin_right = 250.0
-margin_bottom = 2154.0
+margin_bottom = 2426.0
 texture_normal = ExtResource( 20 )
 cell_image = ExtResource( 20 )
 identity_name = "cell_wall"
@@ -893,9 +903,9 @@ hud_path = NodePath("../../../HUD")
 [node name="Ribosomes" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
 material = ExtResource( 5 )
 margin_left = 0.0
-margin_top = 2176.0
+margin_top = 2448.0
 margin_right = 250.0
-margin_bottom = 2426.0
+margin_bottom = 2698.0
 texture_normal = ExtResource( 12 )
 cell_image = ExtResource( 12 )
 identity_name = "ribosomes"
@@ -904,9 +914,9 @@ hud_path = NodePath("../../../HUD")
 [node name="RoughEndoplasmic" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
 material = ExtResource( 5 )
 margin_left = 0.0
-margin_top = 2448.0
+margin_top = 2720.0
 margin_right = 250.0
-margin_bottom = 2698.0
+margin_bottom = 2970.0
 texture_normal = ExtResource( 6 )
 cell_image = ExtResource( 6 )
 identity_name = "rough_endoplasmic_reticulum"
@@ -915,9 +925,9 @@ hud_path = NodePath("../../../HUD")
 [node name="SmoothEndoplasmic" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
 material = ExtResource( 5 )
 margin_left = 0.0
-margin_top = 2720.0
+margin_top = 2992.0
 margin_right = 250.0
-margin_bottom = 2970.0
+margin_bottom = 3242.0
 texture_normal = ExtResource( 15 )
 cell_image = ExtResource( 15 )
 identity_name = "smooth_endoplasmic_reticulum"
@@ -926,9 +936,9 @@ hud_path = NodePath("../../../HUD")
 [node name="Vesicles" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
 material = ExtResource( 5 )
 margin_left = 0.0
-margin_top = 2992.0
+margin_top = 3264.0
 margin_right = 250.0
-margin_bottom = 3242.0
+margin_bottom = 3514.0
 texture_normal = ExtResource( 8 )
 cell_image = ExtResource( 8 )
 identity_name = "vesicles"
@@ -937,9 +947,9 @@ hud_path = NodePath("../../../HUD")
 [node name="PlasmaMembrane" parent="ScrollContainer/GridContainer" instance=ExtResource( 2 )]
 material = ExtResource( 5 )
 margin_left = 0.0
-margin_top = 3264.0
+margin_top = 3536.0
 margin_right = 250.0
-margin_bottom = 3514.0
+margin_bottom = 3786.0
 texture_normal = ExtResource( 43 )
 cell_image = ExtResource( 43 )
 identity_name = "plasma_membrane"
@@ -961,6 +971,63 @@ stream = ExtResource( 30 )
 volume_db = -15.0
 autoplay = true
 
+[node name="PanelComplete" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TextureRect" type="TextureRect" parent="PanelComplete"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -250.0
+margin_top = -287.0
+margin_right = 250.0
+margin_bottom = 213.0
+texture = ExtResource( 52 )
+
+[node name="Title" type="Label" parent="PanelComplete"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -285.5
+margin_top = 202.0
+margin_right = 285.5
+margin_bottom = 357.0
+custom_fonts/font = SubResource( 11 )
+text = "Congratulations. You did great!"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Title2" type="Label" parent="PanelComplete"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -285.5
+margin_top = -425.5
+margin_right = 285.5
+margin_bottom = -270.5
+custom_fonts/font = SubResource( 12 )
+text = "Puzzle Complete!"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="BackButton" type="TextureButton" parent="PanelComplete"]
+margin_right = 162.0
+margin_bottom = 141.0
+texture_normal = ExtResource( 53 )
+expand = true
+script = ExtResource( 17 )
+path = "res://scenes/Main.tscn"
+
+[node name="Click" type="AudioStreamPlayer" parent="PanelComplete/BackButton"]
+stream = ExtResource( 47 )
+
 [connection signal="mouse_entered" from="PlantCell/Parts/Mitochondria" to="PlantCell/Parts/Mitochondria" method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_entered" from="PlantCell/Parts/Centrioles" to="PlantCell/Parts/Centrioles" method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_entered" from="PlantCell/Parts/GolgiBodies" to="PlantCell/Parts/GolgiBodies" method="_on_Area2D_mouse_entered"]
@@ -976,3 +1043,4 @@ autoplay = true
 [connection signal="mouse_entered" from="PlantCell/Parts/PlasmaMembrane" to="PlantCell/Parts/PlasmaMembrane" method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_entered" from="PlantCell/Parts/Chloroplasts" to="PlantCell/Parts/Chloroplasts" method="_on_Area2D_mouse_entered"]
 [connection signal="pressed" from="BackButton" to="BackButton" method="GotoScene"]
+[connection signal="pressed" from="PanelComplete/BackButton" to="PanelComplete/BackButton" method="GotoScene"]
