@@ -38,6 +38,23 @@ var guessing_game_question_pool = [1,2,3,4,5,6,7,8,9,10,11,12,13,14]
 var current_question_pool_index = 1
 
 
+func reset_cell():
+	cytoplasm_enabled = false
+	golgi_bodies_enabled = false
+	centrioles_enabled = false
+	lysosomes_enabled = false
+	mitochondria_enabled = false
+	nucleus_enabled = false
+	rough_endoplasmic_reticulum_enabled = false
+	smooth_endoplasmic_reticulum_enabled = false
+	vacuoles_animal_enabled = false
+	vacuoles_plant_enabled = false
+	plasma_membrane_enabled = false
+	cell_wall_enabled = false
+	ribosomes_enabled = false
+	vesicles_enabled = false
+	chloroplast_enabled = false
+
 func _ready():
 	randomize()
 	# guessing_game_question_pool.shuffle()

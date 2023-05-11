@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://images/background.jpg" type="Texture" id=1]
 [ext_resource path="res://components/CellPart.tscn" type="PackedScene" id=2]
@@ -251,6 +251,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [ "Wrong", "Wrong" ]
 }
+
+[sub_resource type="GDScript" id=13]
+script/source = "extends TextureButton
+
+export var path = \"res://scenes/Main.tscn\"
+
+func GotoScene():
+	$Click.play()
+	$\"/root/Globals\".goto_scene(path)
+	$\"/root/Globals\".ans_score = 0
+	$\"/root/Globals\".reset_cell()
+"
 
 [sub_resource type="DynamicFont" id=11]
 size = 40
@@ -960,8 +972,7 @@ margin_right = 162.0
 margin_bottom = 141.0
 texture_normal = ExtResource( 46 )
 expand = true
-script = ExtResource( 17 )
-path = "res://scenes/Main.tscn"
+script = SubResource( 13 )
 
 [node name="Click" type="AudioStreamPlayer" parent="BackButton"]
 stream = ExtResource( 47 )
@@ -972,6 +983,7 @@ volume_db = -15.0
 autoplay = true
 
 [node name="PanelComplete" type="Panel" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
